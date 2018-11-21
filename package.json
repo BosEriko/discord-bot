@@ -1,0 +1,19 @@
+{
+  "name": "kuru-anime-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KuruAnime/kuru-anime-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KuruAnime/kuru-anime-bot/issues"
+  },
+  "homepage": "https://github.com/KuruAnime/kuru-anime-bot#readme"
+}
