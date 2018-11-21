@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/KuruAnime/kuru-anime-bot#readme",
   "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
+    "discord.js": "^11.4.2",
+    "request": "^2.88.0"
   }
 }
