@@ -12,6 +12,9 @@ client.on('message', message => {
     if (message.content === 'ka!avatar') {
         message.reply(message.author.avatarURL);
     }
+    if (message.content === 'ka!wow') {
+        message.channel.send('WOW');
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
