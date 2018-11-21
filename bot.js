@@ -6,14 +6,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === 'ping') {
-        message.reply('pong');
-    }
-    if (message.content === 'pung') {
-        message.reply('peng');
-    }
-    if(message.content === 'seishun') {
-        message.reply('https://www.youtube.com/watch?v=3g9ihd-d2UY');
+    if (message.content === 'ka!help') {
+        message.reply('No one will help you.');
     }
 });
 
