@@ -20,7 +20,7 @@ client.on('message', message => {
     }
     // Rich Embed
     if (message.content === 'ka!wowzer') {
-        const embed = new RichEmbed()
+        const embed = new Discord.RichEmbed()
             .setTitle('WOWZER')
             .setColor(0xFF0000)
             .setDescription('RICH EMBED! :meguface:');
