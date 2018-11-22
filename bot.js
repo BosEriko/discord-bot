@@ -1,24 +1,24 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-var apiai = require('apiai');
-var app = apiai(process.env.DF_CLIENT_ACCESS_TOKEN);
+const Discord   = require('discord.js');
+const Client    = new Discord.Client();
+const ApiAI     = require('apiai');
+const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
-client.on('ready', () => {
-    console.log('Bot is ready.');
+Client.on('ready', () => {
+    console.log('Bot has started.');
 });
 
-client.on('message', message => {
+Client.on('message', message => {
     // Help Message
     if (message.content === '--help') {
         message.reply('I\'m the official Discord Bot of Kuru Anime. Talk to me by tagging me!');
     }
     // Dialogflow
-    if ((message.cleanContent.startsWith("@" + client.user.username) || message.channel.type == 'dm') && client.user.id != message.author.id) {
-        var mess = remove(client.user.username, message.cleanContent);
+    if ((message.cleanContent.startsWith("@" + Client.user.username) || message.channel.type == 'dm') && Client.user.id != message.author.id) {
+        var mess = remove(Client.user.username, message.cleanContent);
         console.log(mess);
         const user = message.author.id;
         var promise = new Promise(function (resolve, reject) {
-            var request = app.textRequest(mess, {
+            var request = App.textRequest(mess, {
                 sessionId: user
             });
             request.on('response', function (response) {
@@ -46,4 +46,4 @@ function remove(username, text) {
     return text.replace("@" + username + " ", "");
 }
 
-client.login(process.env.BOT_TOKEN);
+Client.login(process.env.BOT_TOKEN);
