@@ -10,7 +10,7 @@ client.on('ready', () => {
 client.on('message', message => {
     // Help Message
     if (message.content === '--help') {
-        message.reply('I\'m the official Discord Bot of Kuru Anime. Talk to my by tagging me!');
+        message.reply('I\'m the official Discord Bot of Kuru Anime. Talk to me by tagging me!');
     }
     // Dialogflow
     if ((message.cleanContent.startsWith("@" + client.user.username) || message.channel.type == 'dm') && client.user.id != message.author.id) {
