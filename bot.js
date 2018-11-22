@@ -59,4 +59,8 @@ client.on('message', message => {
     }
 });
 
+function remove(username, text) {
+    return text.replace("@" + username + " ", "");
+}
+
 client.login(process.env.BOT_TOKEN);
