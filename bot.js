@@ -29,7 +29,7 @@ client.on('message', message => {
         // Send the embed to the same channel as the message
         message.channel.send(embed);
     }
-    // Dialogflow Test
+    // Dialogflow
     if ((message.cleanContent.startsWith("@" + client.user.username) || message.channel.type == 'dm') && client.user.id != message.author.id) {
         var mess = remove(client.user.username, message.cleanContent);
         console.log(mess);
