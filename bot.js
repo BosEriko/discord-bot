@@ -9,25 +9,8 @@ client.on('ready', () => {
 
 client.on('message', message => {
     // Help Message
-    if (message.content === 'ka!help') {
-        message.reply('No one will help you.');
-    }
-    // Show Avatar
-    if (message.content === 'ka!avatar') {
-        message.reply(message.author.avatarURL);
-    }
-    // WOW
-    if (message.content === 'ka!wow') {
-        message.channel.send('WOW');
-    }
-    // Rich Embed
-    if (message.content === 'ka!wowzer') {
-        const embed = new Discord.RichEmbed()
-            .setTitle('WOWZER')
-            .setColor(0xFF0000)
-            .setDescription('RICH EMBED! :meguface:');
-        // Send the embed to the same channel as the message
-        message.channel.send(embed);
+    if (message.content === '--help') {
+        message.reply('I\'m the official Discord Bot of Kuru Anime. Talk to my by tagging me!');
     }
     // Dialogflow
     if ((message.cleanContent.startsWith("@" + client.user.username) || message.channel.type == 'dm') && client.user.id != message.author.id) {
