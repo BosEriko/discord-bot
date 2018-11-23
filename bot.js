@@ -1,7 +1,7 @@
-const Discord   = require('discord.js');
-const Client    = new Discord.Client();
-const ApiAI     = require('apiai');
-const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+const Discord = require('discord.js');
+const Client = new Discord.Client();
+const ApiAI = require('apiai');
+const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 Client.on('ready', () => {
     console.log('Bot is ready.');
@@ -27,7 +27,11 @@ Client.on('message', message => {
             let result = await promise;
             if (result) {
                 if (result === "rules") {
-                    message.reply("holy shit");
+                    const embed = new RichEmbed()
+                        .setTitle('Rules')
+                        .setColor(0xFF0000)
+                        .setDescription('These are the slick rules!');
+                    message.channel.send(embed);
                 } else {
                     message.reply(result);
                 }
