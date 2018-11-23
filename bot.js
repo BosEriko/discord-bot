@@ -30,7 +30,7 @@ Client.on('message', message => {
                     const embed = new Discord.RichEmbed()
                         .setTitle('Rules')
                         .setColor(0xcd3c2a)
-                        .setDescription(`1. test
+                        .setDescription(`**1.** Please do not be an asshole
                         2. test again`);
                     message.channel.send(embed);
                 } else {
