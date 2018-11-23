@@ -31,8 +31,8 @@ Client.on('message', message => {
                         .setTitle('Rules to obey')
                         .setColor(0xcd3c2a)
                         .setThumbnail('https://i.imgur.com/5q2WR9V.png')
-                        .setDescription(`**1.** Please do not be an asshole! Basically, don't be mean, racist, sexist and so on.
-                        **2.** Do not post outside links. Let's all be safe from malicious links!
+                        .setDescription(`**1.** Please do not be an asshole!
+                        **2.** Do not post outside links.
                         **3.** Please talk in English only.
                         **4.** Only talk to the bots on their own channels.`);
                     message.channel.send(embed);
