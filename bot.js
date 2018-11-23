@@ -29,8 +29,9 @@ Client.on('message', message => {
                 if (result === "rules") {
                     const embed = new Discord.RichEmbed()
                         .setTitle('Rules')
-                        .setColor(0xFF0000)
-                        .setDescription('These are the slick rules!');
+                        .setColor(0xcd3c2a)
+                        .setDescription(`1. test
+                        2. test again`);
                     message.channel.send(embed);
                 } else {
                     message.reply(result);
