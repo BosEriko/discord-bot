@@ -25,6 +25,7 @@ Client.on('message', message => {
         });
         (async function () {
             let result = await promise;
+            console.log(result);
             if (result) {
                 message.reply(result);
             } else {
