@@ -4,7 +4,7 @@ const ApiAI     = require('apiai');
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 Client.on('ready', () => {
-    console.log('Bot has started.');
+    console.log('Bot is ready.');
 });
 
 Client.on('message', message => {
