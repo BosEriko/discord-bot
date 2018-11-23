@@ -8,12 +8,9 @@ Client.on('ready', () => {
 });
 
 Client.on('message', message => {
-    // Help Message
-    if (message.content === '--help') {
-        message.reply('I\'m the official Discord Bot of Kuru Anime. Talk to me by tagging me!');
-    }
     // Dialogflow
     if ((message.cleanContent.startsWith("@" + Client.user.username) || message.channel.type == 'dm') && Client.user.id != message.author.id) {
+        console.log(Channel);
         var mess = remove(Client.user.username, message.cleanContent);
         console.log(mess);
         const user = message.author.id;
