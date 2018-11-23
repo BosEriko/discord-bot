@@ -10,7 +10,7 @@ Client.on('ready', () => {
 Client.on('message', message => {
     // Dialogflow
     if ((message.cleanContent.startsWith("@" + Client.user.username) || message.channel.type == 'dm') && Client.user.id != message.author.id) {
-        console.log(message.channel);
+        console.log(message.channel.name);
         var mess = remove(Client.user.username, message.cleanContent);
         console.log(mess);
         const user = message.author.id;
