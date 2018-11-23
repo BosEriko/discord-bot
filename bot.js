@@ -23,14 +23,14 @@ Client.on('message', message => {
             });
             request.end();
         });
-        (async (() => {
+        (async function () {
             let result = await promise;
             if (result) {
                 message.reply(result);
             } else {
                 message.reply("nothing here");
             }
-        })());
+        }());
     }
 });
 
