@@ -26,7 +26,7 @@ Client.on('message', message => {
         (async function () {
             let result = await promise;
             if (result) {
-                if (result === "rules") {
+                if (result === "M46?91GZWhP[RAQ") {
                     const embed = new Discord.RichEmbed()
                         .setTitle('Rules to obey')
                         .setColor(0xcd3c2a)
