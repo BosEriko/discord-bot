@@ -9,10 +9,8 @@ Client.on('ready', () => {
 
 Client.on('message', message => {
     // Dialogflow
-    if ((message.cleanContent.startsWith("@" + Client.user.username) || message.channel.type == 'dm') && Client.user.id != message.author.id) {
-        console.log(message.channel.name);
-        var mess = remove(Client.user.username, message.cleanContent);
-        console.log(mess);
+    if ((message.channel.name === "kuru-anime" || message.channel.type == 'dm') && Client.user.id != message.author.id) {
+        var mess = message.cleanContent;
         const user = message.author.id;
         var promise = new Promise(function (resolve, reject) {
             var request = App.textRequest(mess, {
@@ -38,9 +36,5 @@ Client.on('message', message => {
         }());
     }
 });
-
-function remove(username, text) {
-    return text.replace("@" + username + " ", "");
-}
 
 Client.login(process.env.BOT_TOKEN);
