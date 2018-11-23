@@ -27,7 +27,7 @@ Client.on('message', message => {
             let result = await promise;
             if (result) {
                 if (result === "rules") {
-                    const embed = new RichEmbed()
+                    const embed = new Discord.RichEmbed()
                         .setTitle('Rules')
                         .setColor(0xFF0000)
                         .setDescription('These are the slick rules!');
