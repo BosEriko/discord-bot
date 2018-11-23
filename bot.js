@@ -8,32 +8,29 @@ Client.on('ready', () => {
 });
 
 Client.on('message', message => {
-    // Dialogflow
-    if ((message.channel.name === "kuru-anime" || message.channel.type == 'dm') && Client.user.id != message.author.id) {
-        var mess = message.cleanContent;
-        const user = message.author.id;
-        var promise = new Promise(function (resolve, reject) {
-            var request = App.textRequest(mess, {
-                sessionId: user
+    if ((message.channel.name === "kuru-anime" || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
+        let promise = new Promise((resolve, reject) => {
+            let request = App.textRequest(message.cleanContent, {
+                sessionId: message.author.id
             });
-            request.on('response', function (response) {
+            request.on('response', (response) => {
                 console.log(response);
-                var rep = response.result.fulfillment.speech;
+                let rep = response.result.fulfillment.speech;
                 resolve(rep);
             });
-            request.on('error', function (error) {
+            request.on('error', (error) => {
                 resolve(null);
             });
             request.end();
         });
-        (async function () {
-            var result = await promise;
+        (async (() => {
+            let result = await promise;
             if (result) {
                 message.reply(result);
             } else {
                 message.reply("nothing here");
             }
-        }());
+        })());
     }
 });
 
