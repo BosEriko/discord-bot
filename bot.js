@@ -25,9 +25,12 @@ Client.on('message', message => {
         });
         (async function () {
             let result = await promise;
-            console.log("result is =======>", result);
             if (result) {
-                message.reply(result);
+                if (result === "rules") {
+                    message.reply("holy shit");
+                } else {
+                    message.reply(result);
+                }
             } else {
                 message.reply("nothing here");
             }
