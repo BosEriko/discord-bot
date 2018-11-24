@@ -4,6 +4,8 @@ const firebase  = require("firebase");
 
 const Client    = new Discord.Client();
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+
+// Initialize Firebase
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_PROJECT_ID + ".firebaseapp.com",
@@ -12,15 +14,18 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// Rules Text
 const rulesText = `**1.** Please do not be an asshole!
 **2.** Do not post outside links.
 **3.** Please talk in English only.
 **4.** Only talk to the bots on their own channels.`;
 
+// Bot Ready Message
 Client.on('ready', () => {
     console.log('Bot is ready.');
 });
 
+// Main Code
 Client.on('message', message => {
     if ((message.channel.name === "kuru-anime" || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
         let promise = new Promise((resolve, reject) => {
@@ -58,4 +63,5 @@ Client.on('message', message => {
     }
 });
 
+// Discord Login
 Client.login(process.env.BOT_TOKEN);
