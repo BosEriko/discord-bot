@@ -1,7 +1,16 @@
-const Discord = require('discord.js');
-const Client = new Discord.Client();
-const ApiAI = require('apiai');
-const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+const Discord   = require('discord.js');
+const ApiAI     = require('apiai');
+const firebase  = require("firebase");
+
+const Client    = new Discord.Client();
+const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_PROJECT_ID + ".firebaseapp.com",
+    databaseURL: "https://" + process.env.FIREBASE_DATABASE_NAME + ".firebaseio.com",
+    storageBucket: process.env.FIREBASE_BUCKET + ".appspot.com",
+};
+firebase.initializeApp(firebaseConfig);
 
 const rulesText = `**1.** Please do not be an asshole!
 **2.** Do not post outside links.
