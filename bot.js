@@ -3,6 +3,11 @@ const Client = new Discord.Client();
 const ApiAI = require('apiai');
 const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
+const rulesText = `**1.** Please do not be an asshole!
+**2.** Do not post outside links.
+**3.** Please talk in English only.
+**4.** Only talk to the bots on their own channels.`;
+
 Client.on('ready', () => {
     console.log('Bot is ready.');
 });
@@ -30,11 +35,9 @@ Client.on('message', message => {
                     const embed = new Discord.RichEmbed()
                         .setTitle('Rules to obey')
                         .setColor(0xcd3c2a)
+                        .setAuthor('Kuru Anime')
                         .setThumbnail('https://i.imgur.com/5q2WR9V.png')
-                        .setDescription(`**1.** Please do not be an asshole!
-                        **2.** Do not post outside links.
-                        **3.** Please talk in English only.
-                        **4.** Only talk to the bots on their own channels.`);
+                        .setDescription(rulesText);
                     message.channel.send(embed);
                 } else {
                     message.reply(result);
