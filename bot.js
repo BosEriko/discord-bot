@@ -77,7 +77,7 @@ Client.on('message', message => {
                     // Show Avatar
                     case "LOy543jJ1EU0L0C":
                         const avatarEmbed = new Discord.RichEmbed()
-                            .setTitle(message.author.displayName + '\'s Avatar')
+                            .setTitle(message.author.nickname + '\'s Avatar')
                             .setColor(0xcd3c2a)
                             .setAuthor(appTitle)
                             .setImage(message.author.avatarURL);
