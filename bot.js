@@ -20,6 +20,9 @@ const rulesText = `**1.** Please do not be an asshole!
 **3.** Please talk in English only.
 **4.** Only talk to the bots on their own channels.`;
 
+// Welcome Message
+const welcomeText = 'Hello! Thanks for joining Kuru Anime! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!';
+
 // Bot Ready Message
 Client.on('ready', () => {
     console.log('Bot is ready.');
@@ -27,7 +30,7 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    member.send('Hello! Thanks for joining Kuru Anime! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!')
+    member.send(welcomeText)
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error);
 });
