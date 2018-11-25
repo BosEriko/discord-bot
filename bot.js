@@ -76,7 +76,7 @@ Client.on('message', message => {
                         break;
                     // Show Avatar
                     case "LOy543jJ1EU0L0C":
-                        const attachment = new Attachment(message.author.avatarURL);
+                        const attachment = new Discord.Attachment(message.author.avatarURL);
                         message.reply(attachment);
                         break;
                     // Normal Message
