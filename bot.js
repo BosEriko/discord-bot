@@ -72,7 +72,7 @@ Client.on('message', message => {
                         break;
                     // Flip a Coin
                     case "F54U62312>4727u":
-                        message.reply("This feature is in the making.");
+                        message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
                         break;
                     // Normal Message
                     default:
