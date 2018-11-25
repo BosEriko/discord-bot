@@ -27,7 +27,7 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    member.send('hello!')
+    member.send('Hello! Thanks for joining Kuru Anime! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!')
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error);
 });
