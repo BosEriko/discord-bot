@@ -74,6 +74,11 @@ Client.on('message', message => {
                     case "F54U62312>4727u":
                         message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
                         break;
+                    // Show Avatar
+                    case "LOy543jJ1EU0L0C":
+                        const attachment = new Attachment(message.author.avatarURL);
+                        message.reply(attachment);
+                        break;
                     // Normal Message
                     default:
                         message.reply(result);
