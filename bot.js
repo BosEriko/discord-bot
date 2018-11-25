@@ -68,6 +68,7 @@ Client.on('message', message => {
                             .setThumbnail('https://i.imgur.com/5q2WR9V.png')
                             .setDescription(rulesText);
                         message.channel.send(embed);
+                        message.reply("Be sure to follow them. Okay?");
                         break;
                     // Normal Message
                     default:
