@@ -62,13 +62,13 @@ Client.on('message', message => {
                     // Rules Text
                     case "M46?91GZWhP[RAQ":
                         message.reply("Be sure to follow them. Okay?");
-                        const embed = new Discord.RichEmbed()
+                        const rulesEmbed = new Discord.RichEmbed()
                             .setTitle('Rules to obey')
                             .setColor(0xcd3c2a)
                             .setAuthor(appTitle)
                             .setThumbnail('https://i.imgur.com/5q2WR9V.png')
                             .setDescription(rulesText);
-                        message.channel.send(embed);
+                        message.channel.send(rulesEmbed);
                         break;
                     // Flip a Coin
                     case "F54U62312>4727u":
@@ -76,12 +76,12 @@ Client.on('message', message => {
                         break;
                     // Show Avatar
                     case "LOy543jJ1EU0L0C":
-                        const embed = new Discord.RichEmbed()
+                        const avatarEmbed = new Discord.RichEmbed()
                             .setTitle('Avatar')
                             .setColor(0xcd3c2a)
                             .setAuthor(appTitle)
                             .setImage('message.author.avatarURL')
-                        message.channel.send(embed);
+                        message.channel.send(avatarEmbed);
                         break;
                     // Normal Message
                     default:
