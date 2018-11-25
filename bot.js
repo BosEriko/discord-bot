@@ -70,6 +70,10 @@ Client.on('message', message => {
                             .setDescription(rulesText);
                         message.channel.send(embed);
                         break;
+                    // Flip a Coin
+                    case "F54U62312>4727u":
+                        message.reply("This feature is in the making.");
+                        break;
                     // Normal Message
                     default:
                         message.reply(result);
