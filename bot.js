@@ -80,7 +80,7 @@ Client.on('message', message => {
                             .setTitle('Avatar')
                             .setColor(0xcd3c2a)
                             .setAuthor(appTitle)
-                            .setImage('message.author.avatarURL')
+                            .setImage(message.author.avatarURL);
                         message.channel.send(avatarEmbed);
                         break;
                     // Normal Message
