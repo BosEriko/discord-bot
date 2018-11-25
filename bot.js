@@ -65,7 +65,6 @@ Client.on('message', message => {
                         const rulesEmbed = new Discord.RichEmbed()
                             .setTitle('Rules to obey')
                             .setColor(0xcd3c2a)
-                            .setAuthor(appTitle)
                             .setThumbnail('https://i.imgur.com/5q2WR9V.png')
                             .setDescription(rulesText);
                         message.channel.send(rulesEmbed);
@@ -79,7 +78,6 @@ Client.on('message', message => {
                         const avatarEmbed = new Discord.RichEmbed()
                             .setTitle('Avatar Full View')
                             .setColor(0xcd3c2a)
-                            .setAuthor(appTitle)
                             .setImage(message.author.avatarURL);
                         message.channel.send(avatarEmbed);
                         break;
