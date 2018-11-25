@@ -27,10 +27,9 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    // const user = new Discord.GuildMember(member);
-    // user.send('hello!')
-    //     .then(message => console.log(`Sent message: ${message.content}`))
-    //     .catch(console.error);
+    member.send('hello!')
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.error);
 });
 
 // Main Code
