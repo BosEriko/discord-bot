@@ -55,16 +55,20 @@ Client.on('message', message => {
         (async function () {
             let result = await promise;
             if (result) {
-                if (result === "M46?91GZWhP[RAQ") {
-                    const embed = new Discord.RichEmbed()
-                        .setTitle('Rules to obey')
-                        .setColor(0xcd3c2a)
-                        .setAuthor('Kuru Anime')
-                        .setThumbnail('https://i.imgur.com/5q2WR9V.png')
-                        .setDescription(rulesText);
-                    message.channel.send(embed);
-                } else {
-                    message.reply(result);
+                switch(result) {
+                    // Rules Text
+                    case "M46?91GZWhP[RAQ":
+                        const embed = new Discord.RichEmbed()
+                            .setTitle('Rules to obey')
+                            .setColor(0xcd3c2a)
+                            .setAuthor('Kuru Anime')
+                            .setThumbnail('https://i.imgur.com/5q2WR9V.png')
+                            .setDescription(rulesText);
+                        message.channel.send(embed);
+                        break;
+                    // Normal Message
+                    default:
+                        message.reply(result);
                 }
             } else {
                 message.reply("nothing here");
