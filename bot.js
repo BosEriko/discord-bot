@@ -14,6 +14,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// App Title
+const appTitle = 'Kuru Anime';
+
 // Rules Text
 const rulesText = `**1.** Please do not be an asshole!
 **2.** Do not post outside links.
@@ -21,7 +24,7 @@ const rulesText = `**1.** Please do not be an asshole!
 **4.** Only talk to the bots on their own channels.`;
 
 // Welcome Message
-const welcomeText = 'Hello! Thanks for joining Kuru Anime! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!';
+const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!';
 
 // Bot Ready Message
 Client.on('ready', () => {
@@ -61,7 +64,7 @@ Client.on('message', message => {
                         const embed = new Discord.RichEmbed()
                             .setTitle('Rules to obey')
                             .setColor(0xcd3c2a)
-                            .setAuthor('Kuru Anime')
+                            .setAuthor(appTitle)
                             .setThumbnail('https://i.imgur.com/5q2WR9V.png')
                             .setDescription(rulesText);
                         message.channel.send(embed);
