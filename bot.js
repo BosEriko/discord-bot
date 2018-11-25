@@ -76,8 +76,12 @@ Client.on('message', message => {
                         break;
                     // Show Avatar
                     case "LOy543jJ1EU0L0C":
-                        const attachment = new Discord.Attachment(message.author.avatarURL);
-                        message.reply(attachment);
+                        const embed = new Discord.RichEmbed()
+                            .setTitle('Avatar')
+                            .setColor(0xcd3c2a)
+                            .setAuthor(appTitle)
+                            .setImage('message.author.avatarURL')
+                        message.channel.send(embed);
                         break;
                     // Normal Message
                     default:
