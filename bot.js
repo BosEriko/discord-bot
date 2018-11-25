@@ -27,7 +27,10 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    console.log("member =============>", member);
+    const channel = new Discord.DMChannel();
+    channel.send('hello!')
+        .then(message => console.log(`Sent message: ${message.content}`))
+        .catch(console.error);
 });
 
 
