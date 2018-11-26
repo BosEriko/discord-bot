@@ -69,10 +69,6 @@ Client.on('message', message => {
                             .setDescription(rulesText);
                         message.channel.send(rulesEmbed);
                         break;
-                    // Flip a Coin
-                    case "F54U62312>4727u":
-                        message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
-                        break;
                     // Show Avatar
                     case "LOy543jJ1EU0L0C":
                         const avatarEmbed = new Discord.RichEmbed()
