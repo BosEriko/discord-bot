@@ -1,6 +1,6 @@
 const Discord   = require('discord.js');
 const ApiAI     = require('apiai');
-const firebase  = require("firebase");
+const firebase  = require('firebase');
 
 const Client    = new Discord.Client();
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
@@ -8,9 +8,9 @@ const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_PROJECT_ID + ".firebaseapp.com",
-    databaseURL: "https://" + process.env.FIREBASE_DATABASE_NAME + ".firebaseio.com",
-    storageBucket: process.env.FIREBASE_BUCKET + ".appspot.com",
+    authDomain: process.env.FIREBASE_PROJECT_ID + '.firebaseapp.com',
+    databaseURL: 'https://' + process.env.FIREBASE_DATABASE_NAME + '.firebaseio.com',
+    storageBucket: process.env.FIREBASE_BUCKET + '.appspot.com',
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -40,7 +40,7 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    if ((message.channel.name === "kuru-anime" || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
+    if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
         let promise = new Promise((resolve, reject) => {
             let request = App.textRequest(message.cleanContent, {
                 sessionId: message.author.id
@@ -60,8 +60,8 @@ Client.on('message', message => {
             if (result) {
                 switch(result) {
                     // Rules Text
-                    case "M46?91GZWhP[RAQ":
-                        message.reply("Be sure to follow them. Okay?");
+                    case 'M46?91GZWhP[RAQ':
+                        message.reply('Be sure to follow them. Okay?');
                         const rulesEmbed = new Discord.RichEmbed()
                             .setTitle('Rules to obey')
                             .setColor(0xcd3c2a)
@@ -70,7 +70,8 @@ Client.on('message', message => {
                         message.channel.send(rulesEmbed);
                         break;
                     // Show Avatar
-                    case "LOy543jJ1EU0L0C":
+                    case 'LOy543jJ1EU0L0C':
+                        message.reply('Here\'s your avatar!');
                         const avatarEmbed = new Discord.RichEmbed()
                             .setTitle('Avatar Full View')
                             .setColor(0xcd3c2a)
@@ -82,7 +83,7 @@ Client.on('message', message => {
                         message.reply(result);
                 }
             } else {
-                message.reply("nothing here");
+                message.reply('nothing here');
             }
         }());
     }
