@@ -38,9 +38,20 @@ Client.on('guildMemberAdd', member => {
         .catch(console.error);
 });
 
+// Respect
+client.on('message', message => {
+    if (message.content === 'F') {
+        message.channel.send('F');
+    }
+});
+
 // Main Code
 Client.on('message', message => {
-    if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
+    if (
+            (message.channel.name === 'kuru-anime' || message.channel.type === 'dm') 
+            && Client.user.id !== message.author.id 
+            && message.cleanContent !== 'F'
+        ) {
         let promise = new Promise((resolve, reject) => {
             let request = App.textRequest(message.cleanContent, {
                 sessionId: message.author.id
