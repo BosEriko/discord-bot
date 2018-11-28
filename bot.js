@@ -40,7 +40,7 @@ Client.on('guildMemberAdd', member => {
 
 // Respect
 Client.on('message', message => {
-    if (message.content === 'F') {
+    if (message.content === 'F' && Client.user.id !== message.author.id) {
         message.channel.send('F');
     }
 });
