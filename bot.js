@@ -31,8 +31,8 @@ const symbolCommand = '%';
 
 // Fun Help Command
 const funHelp = `
-**Command          Description**
-${symbolCommand}rules   test text`;
+**Command\t\t\t\t\tDescription**
+${symbolCommand}rules\t\t\t\t\ttest text`;
 
 // Bot Ready Message
 Client.on('ready', () => {
