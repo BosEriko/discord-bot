@@ -26,11 +26,13 @@ const rulesText = `**1.** Please do not be an asshole!
 // Welcome Message
 const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel.';
 
-// Fun Help Command
-const funHelp = 'Help command is under maintenance';
-
 // Symbol Command of Fun
 const symbolCommand = '%';
+
+// Fun Help Command
+const funHelp = `
+**Command          Description**
+${symbolCommand}rules   test text`;
 
 // Bot Ready Message
 Client.on('ready', () => {
@@ -80,8 +82,11 @@ Client.on('message', message => {
                 break;
             // Show Help
             case symbolCommand + 'help':
-                message.channel.send(funHelp);
-                break;
+                const helpEmbed = new Discord.RichEmbed()
+                    .setTitle('List of commands')
+                    .setColor(0xcd3c2a)
+                    .setDescription(funHelp);
+                message.channel.send(helpEmbed);
             // Normal Message
             default:
                 message.reply("Command not found!");
