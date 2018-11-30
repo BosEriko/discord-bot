@@ -72,7 +72,7 @@ Client.on('message', message => {
                 break;
             // Show Help
             case symbolCommand + 'help':
-                message.channel.send(fulHelp);
+                message.channel.send(funHelp);
                 break;
             // Normal Message
             default:
