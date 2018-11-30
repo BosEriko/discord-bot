@@ -87,6 +87,7 @@ Client.on('message', message => {
                     .setColor(0xcd3c2a)
                     .setDescription(funHelp);
                 message.channel.send(helpEmbed);
+                break;
             // Normal Message
             default:
                 message.reply("Command not found!");
