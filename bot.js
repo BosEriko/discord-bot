@@ -24,7 +24,13 @@ const rulesText = `**1.** Please do not be an asshole!
 **4.** Only talk to the bots on their own channels.`;
 
 // Welcome Message
-const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! If you have any questions feel free to ask me. Do you want the rules? Our Facebook page? Or maybe you just want to talk to me? Go ahead!';
+const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel.';
+
+// Fun Help Command
+const funHelp = 'Help command is under maintenance';
+
+// Symbol Command of Fun
+const symbolCommand = '%';
 
 // Bot Ready Message
 Client.on('ready', () => {
@@ -42,7 +48,32 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
-        message.reply('#kuru-fun is under maintenance.');
+        switch(result) {
+            // Rules Text
+            case symbolCommand + 'rules':
+                const rulesEmbed = new Discord.RichEmbed()
+                    .setTitle('Rules to obey')
+                    .setColor(0xcd3c2a)
+                    .setThumbnail('https://i.imgur.com/5q2WR9V.png')
+                    .setDescription(rulesText);
+                message.channel.send(rulesEmbed);
+                break;
+            // Show Avatar
+            case symbolCommand + 'avatar':
+                message.reply('Here\'s your avatar!');
+                const avatarEmbed = new Discord.RichEmbed()
+                    .setTitle('Avatar Full View')
+                    .setColor(0xcd3c2a)
+                    .setImage(message.author.avatarURL);
+                message.channel.send(avatarEmbed);
+                break;
+            case symbolCommand + 'help':
+                message.reply(funHelp);
+                break;
+            // Normal Message
+            default:
+                message.reply("Command not found!");
+        }
     }
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
@@ -67,30 +98,7 @@ Client.on('message', message => {
         (async function () {
             let result = await promise;
             if (result) {
-                switch(result) {
-                    // Rules Text
-                    case 'M46?91GZWhP[RAQ':
-                        message.reply('Be sure to follow them. Okay?');
-                        const rulesEmbed = new Discord.RichEmbed()
-                            .setTitle('Rules to obey')
-                            .setColor(0xcd3c2a)
-                            .setThumbnail('https://i.imgur.com/5q2WR9V.png')
-                            .setDescription(rulesText);
-                        message.channel.send(rulesEmbed);
-                        break;
-                    // Show Avatar
-                    case 'LOy543jJ1EU0L0C':
-                        message.reply('Here\'s your avatar!');
-                        const avatarEmbed = new Discord.RichEmbed()
-                            .setTitle('Avatar Full View')
-                            .setColor(0xcd3c2a)
-                            .setImage(message.author.avatarURL);
-                        message.channel.send(avatarEmbed);
-                        break;
-                    // Normal Message
-                    default:
-                        message.reply(result);
-                }
+                message.reply(result);
             } else {
                 message.reply('nothing here');
             }
