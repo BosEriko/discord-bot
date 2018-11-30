@@ -40,6 +40,15 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
+    // Kuru Fun
+    if ((message.channel.name === 'kuru-fun' || message.channel.type !== 'dm') && Client.user.id !== message.author.id) {
+        message.reply('#kuru-fun is under maintenance.');
+    }
+    // Kuru Election
+    if ((message.channel.name === 'kuru-election' || message.channel.type !== 'dm') && Client.user.id !== message.author.id) {
+        message.reply('#kuru-election is under maintenance.');
+    }
+    // Dialogflow
     if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
         let promise = new Promise((resolve, reject) => {
             let request = App.textRequest(message.cleanContent, {
