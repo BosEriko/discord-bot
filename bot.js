@@ -60,15 +60,19 @@ Client.on('message', message => {
                 break;
             // Show Avatar
             case symbolCommand + 'avatar':
-                message.reply('Here\'s your avatar!');
                 const avatarEmbed = new Discord.RichEmbed()
                     .setTitle('Avatar Full View')
                     .setColor(0xcd3c2a)
                     .setImage(message.author.avatarURL);
                 message.channel.send(avatarEmbed);
                 break;
+            // Flip a coin
+            case symbolCommand + 'flip':
+                message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
+                break;
+            // Show Help
             case symbolCommand + 'help':
-                message.reply(funHelp);
+                message.channel.send(fulHelp);
                 break;
             // Normal Message
             default:
