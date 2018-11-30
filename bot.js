@@ -70,6 +70,14 @@ Client.on('message', message => {
             case symbolCommand + 'flip':
                 message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
                 break;
+            // Fortune Cookie
+            case symbolCommand + 'fortune':
+                message.reply('Fortune cookie is under maintenance');
+                break;
+            // 8-ball
+            case symbolCommand + '8ball':
+                message.reply('8-ball is under maintenance.');
+                break;
             // Show Help
             case symbolCommand + 'help':
                 message.channel.send(funHelp);
