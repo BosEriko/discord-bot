@@ -48,7 +48,7 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
-        switch(result) {
+        switch(message.cleanContent) {
             // Rules Text
             case symbolCommand + 'rules':
                 const rulesEmbed = new Discord.RichEmbed()
