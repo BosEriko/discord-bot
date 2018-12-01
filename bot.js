@@ -40,7 +40,7 @@ const funHelp = `
 `;
 
 // Fortune Cookie Answers
-// http://www.fortunecookiemessage.com/archive.php?start=0
+// http://www.fortunecookiemessage.com/archive.php
 const fortuneCookie = [
     "A chance meeting opens new doors to success and friendship.",
     "A dream you have will come true.",
