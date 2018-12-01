@@ -27,10 +27,14 @@ const rulesText = `**1.** Please do not be an asshole!
 const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel.';
 
 // Symbol Command of Fun
-const symbolCommand = '%';
+const symbolCommand = '~';
 
 // Fun Help Command
-const funHelp = `**${symbolCommand}rules** Show the server rules
+const funHelp = `**${symbolCommand}help** Show all available commands
+**${symbolCommand}rules** Show the server rules
+**${symbolCommand}flip** Flip a coin
+**${symbolCommand}fortune** Fortune cookie
+**${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar`;
 
 // Bot Ready Message
