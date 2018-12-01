@@ -134,7 +134,6 @@ Client.on('message', message => {
             // Fortune Cookie
             case symbolCommand + 'fortune':
                 message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)]);
-                message.reply('Fortune cookie is under maintenance');
                 break;
             // 8-ball
             case symbolCommand + '8ball':
