@@ -40,6 +40,7 @@ const funHelp = `
 `;
 
 // Fortune Cookie Answers
+// http://www.fortunecookiemessage.com/archive.php?start=0
 const fortuneCookie = [
     "Today it's up to you to create the peacefulness you long for.",
     "A friend asks only for your time not your money.",
