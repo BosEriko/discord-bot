@@ -30,9 +30,8 @@ const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! Feel free to ta
 const symbolCommand = '%';
 
 // Fun Help Command
-const funHelp = `
-**Command\t\t\t\t\tDescription**
-${symbolCommand}rules\t\t\t\t\ttest text`;
+const funHelp = `**${symbolCommand}rules** Show the server rules
+**${symbolCommand}avatar** Show your avatar`;
 
 // Bot Ready Message
 Client.on('ready', () => {
