@@ -23,9 +23,6 @@ const rulesText = `**1.** Please do not be an asshole!
 **3.** Please talk in English only.
 **4.** Only talk to the bots on their own channels.`;
 
-// Welcome Message
-const welcomeText = 'Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel.';
-
 // Symbol Command of Fun
 const symbolCommand = '~';
 
@@ -225,9 +222,16 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    member.send(welcomeText)
+    member.send('Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel.')
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error);
+});
+
+// User Left
+Client.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.find(ch => ch.name === 'goodbye');
+    if (!channel) return;
+    channel.send(`${member} left the server!`);
 });
 
 // Main Code
