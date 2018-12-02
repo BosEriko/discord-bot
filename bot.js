@@ -211,7 +211,7 @@ Client.on('message', message => {
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command   = message.cleanContent.split(" ")[0];
-        const parameter = command.replace(command + " ", "");
+        const parameter = message.cleanContent.replace(command + " ", "");
         switch(command) {
             // Rules Text
             case symbolCommand + 'rules':
