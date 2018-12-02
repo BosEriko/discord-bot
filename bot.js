@@ -149,7 +149,7 @@ const fortuneCookie = [
     "Nothing astonishes men so much as common sense and plain dealing.",
     "Now is the time to try something new.",
     "Our deeds determine us, as much as we determine our deeds.",
-    "Patience is a virtue, unless its against a brick wall.",
+    "Patience is a virtue, unless it's against a brick wall.",
     "People are naturally attracted to you.",
     "Rivers need springs.",
     "Seek out the significance of your problem at this time. Try to understand.",
