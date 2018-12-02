@@ -240,7 +240,7 @@ Client.on('message', message => {
                 break;
             // 8-ball
             case symbolCommand + '8ball':
-                message.reply(paramter).reply('8-ball is under maintenance.').reply("this is a test");
+                message.reply(parameter).reply('8-ball is under maintenance.').reply("this is a test");
                 break;
             // Show Help
             case symbolCommand + 'help':
