@@ -210,7 +210,8 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
-        const command = message.cleanContent.split(" ")[0];
+        const command   = message.cleanContent.split(" ")[0];
+        const parameter = command.replace(command + " ", "");
         switch(command) {
             // Rules Text
             case symbolCommand + 'rules':
@@ -239,7 +240,7 @@ Client.on('message', message => {
                 break;
             // 8-ball
             case symbolCommand + '8ball':
-                message.reply('8-ball is under maintenance.').reply("this is a test");
+                message.reply(paramter).reply('8-ball is under maintenance.').reply("this is a test");
                 break;
             // Show Help
             case symbolCommand + 'help':
