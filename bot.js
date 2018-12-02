@@ -149,7 +149,7 @@ const fortuneCookie = [
     "We can't help everyone. But everyone can help someone.",
     "Wealth awaits you very soon.",
     "Welcome the change coming into your life.",
-    "What ever you're goal is in life, embrace it visualize it, and for it will be yours.",
+    "What ever your goal is in life, embrace it visualize it, and for it will be yours.",
     "When all else seems to fail, smile for today and just love someone.",
     "When fear hurts you, conquer it and defeat it!",
     "When hungry, order more Chinese food.",
@@ -182,7 +182,7 @@ const fortuneCookie = [
     "You will make many changes before settling down happily.",
     "You will marry your lover.",
     "You will travel to many exotic places in your lifetime.",
-    "You're true love will show himself to you under the moonlight.",
+    "Your true love will show himself to you under the moonlight.",
     "Your ability for accomplishment will be followed by success.",
     "Your ability for accomplishment will follow with success.",
     "Your emotional nature is strong and sensitive.",
@@ -210,7 +210,8 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
-        switch(message.cleanContent) {
+        const command = message.cleanContent.split(" ")[0];
+        switch(command) {
             // Rules Text
             case symbolCommand + 'rules':
                 const rulesEmbed = new Discord.RichEmbed()
