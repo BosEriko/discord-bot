@@ -231,7 +231,8 @@ Client.on('guildMemberAdd', member => {
 Client.on('guildMemberRemove', member => {
     const channel = member.guild.channels.find(ch => ch.name === 'goodbye');
     if (!channel) return;
-    channel.send(`${member.tag} left the server!`);
+    console.log(member);
+    channel.send(`${member} left the server!`);
 });
 
 // Main Code
