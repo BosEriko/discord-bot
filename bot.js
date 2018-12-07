@@ -17,12 +17,6 @@ firebase.initializeApp(firebaseConfig);
 // App Title
 const appTitle = 'Kuru Anime';
 
-// Rules Text
-const rulesText = `**1.** Please do not be an asshole!
-**2.** Do not post outside links.
-**3.** Please talk in English only.
-**4.** Only talk to the bots on their own channels.`;
-
 // Symbol Command of Fun
 const symbolCommand = '~';
 
@@ -33,7 +27,6 @@ const funHelp = `
 **${symbolCommand}flip** Flip a coin
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
-**${symbolCommand}rules** Show the server rules
 `;
 
 // 8Ball answers
@@ -241,15 +234,6 @@ Client.on('message', message => {
         const command   = message.cleanContent.split(" ")[0];
         const parameter = message.cleanContent.replace(command + " ", "");
         switch(command) {
-            // Rules Text
-            case symbolCommand + 'rules':
-                const rulesEmbed = new Discord.RichEmbed()
-                    .setTitle('Rules to obey')
-                    .setColor(0xcd3c2a)
-                    .setThumbnail('https://i.imgur.com/5q2WR9V.png')
-                    .setDescription(rulesText);
-                message.channel.send(rulesEmbed);
-                break;
             // Show Avatar
             case symbolCommand + 'avatar':
                 const avatarEmbed = new Discord.RichEmbed()
