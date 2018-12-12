@@ -1,6 +1,7 @@
 const Discord   = require('discord.js');
 const ApiAI     = require('apiai');
 const firebase  = require('firebase');
+const Axios     = require('axios');
 
 const Client    = new Discord.Client();
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
@@ -273,7 +274,15 @@ Client.on('message', message => {
     }
     // Rabbit Announcement Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
-        message.reply(process.env.RABBIT_WEBHOOK);
+        Axios.post(process.env.RABBIT_WEBHOOK, {
+            "content": message.cleanContent
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
     // Dialogflow
     if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
