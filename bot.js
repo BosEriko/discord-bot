@@ -271,6 +271,10 @@ Client.on('message', message => {
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply('#kuru-election is under maintenance.');
     }
+    // Rabbit Announcement Post
+    if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
+        message.reply(process.env.RABBIT_WEBHOOK);
+    }
     // Dialogflow
     if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
         let promise = new Promise((resolve, reject) => {
