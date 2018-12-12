@@ -272,9 +272,21 @@ Client.on('message', message => {
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply('#kuru-election is under maintenance.');
     }
-    // Rabbit Announcement Post
+    // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
         Axios.post(process.env.RABBIT_WEBHOOK, {
+            "content": message.cleanContent
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    // Announcements Post
+    if (message.channel.name === 'announcements-post' && Client.user.id !== message.author.id) {
+        Axios.post(process.env.ANNOUNCEMENTS_WEBHOOK, {
             "content": message.cleanContent
         })
         .then(function (response) {
