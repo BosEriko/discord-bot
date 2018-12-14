@@ -273,7 +273,7 @@ Client.on('message', message => {
     }
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
-        message.reply(electionData);
+        message.reply(electionData.once('value'));
     }
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
