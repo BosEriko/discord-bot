@@ -15,6 +15,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// Election Data
+const electionData = firebase.database().ref().child('election');
+
 // App Title
 const appTitle = 'Kuru Anime';
 
@@ -270,7 +273,7 @@ Client.on('message', message => {
     }
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
-        message.reply('#kuru-election is under maintenance.');
+        message.reply(electionData);
     }
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
