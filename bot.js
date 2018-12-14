@@ -17,6 +17,10 @@ firebase.initializeApp(firebaseConfig);
 
 // Election Data
 const electionData = firebase.database().ref().child('election');
+let electionDataValue;
+electionData.on("value", snap => {
+    electionDataValue = snap.val();
+});
 
 // App Title
 const appTitle = 'Kuru Anime';
@@ -273,7 +277,7 @@ Client.on('message', message => {
     }
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
-        message.reply(electionData.once('value'));
+        message.reply(electionDataValue);
     }
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
