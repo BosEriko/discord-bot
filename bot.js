@@ -235,6 +235,14 @@ Client.on('guildMemberRemove', member => {
     channel.send(`${member} left the server!`);
 });
 
+// User Left Test
+Client.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.find(ch => ch.name === 'goodbye-test');
+    if (!channel) return;
+    channel.send(`${member} left the server!`);
+    console.log(member);
+});
+
 // Main Code
 Client.on('message', message => {
     // Kuru Fun
@@ -278,7 +286,6 @@ Client.on('message', message => {
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply(electionDataValue);
-        console.log(message);
     }
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
