@@ -239,7 +239,7 @@ Client.on('guildMemberRemove', member => {
 Client.on('guildMemberRemove', member => {
     const channel = member.guild.channels.find(ch => ch.name === 'goodbye-test');
     if (!channel) return;
-    channel.send(`${user.username}#${user.discriminator} left the server!`);
+    channel.send(`${User.username}#${User.discriminator} left the server!`);
     console.log(member);
 });
 
