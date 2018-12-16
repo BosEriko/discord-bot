@@ -283,7 +283,7 @@ Client.on('message', message => {
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
         Axios.post(process.env.RABBIT_WEBHOOK, {
-            "content": message.cleanContent
+            "content": message.content
         })
         .then(function (response) {
             console.log(response);
@@ -295,7 +295,7 @@ Client.on('message', message => {
     // Announcements Post
     if (message.channel.name === 'announcements-post' && Client.user.id !== message.author.id) {
         Axios.post(process.env.ANNOUNCEMENTS_WEBHOOK, {
-            "content": message.cleanContent
+            "content": message.content
         })
         .then(function (response) {
             console.log(response);
