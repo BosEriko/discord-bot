@@ -400,10 +400,9 @@ Client.on('message', message => {
         message.reply(electionDataValue);
     }
     // Topic of the Day
-    if (message.channel.name === 'general' && Client.user.id !== message.author.id) {
+    if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id) {
         if(message.content.startsWith(symbolCommand + 'topic')) {
             message.reply(topicOfTheDay[day % topicOfTheDay.length]);
-            console.log("CHANNEL ========>", message.channel);
         }
     }
     // Rabbit Post
