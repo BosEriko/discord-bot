@@ -1,4 +1,11 @@
 exports.botFun = (message, symbolCommand, Discord) => {
+    const funHelp = `
+**${symbolCommand}8ball** Magic 8-ball
+**${symbolCommand}avatar** Show your avatar
+**${symbolCommand}flip** Flip a coin
+**${symbolCommand}fortune** Fortune cookie
+**${symbolCommand}help** Show all available commands
+    `;
     const eightBall = [
         "It is certain.",
         "It is decidedly so.",
