@@ -7,7 +7,6 @@ const Client    = new Discord.Client();
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 // Bot Modules
-const botPost   = require('./bot-post');
 const botFun    = require('./features/bot-fun');
 
 // Initialize Firebase
@@ -158,7 +157,6 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botPost.botPost(message, symbolCommand);
     botFun.botFun(message, symbolCommand, Discord, Client);
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
