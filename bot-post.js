@@ -4,6 +4,7 @@ exports.botPost = (message, symbolCommand) => {
     if (message.author.id === '230249439481167872') {
         if(message.content.startsWith(symbolCommand + 'bot-post')) {
             message.channel.send(parameter);
+            message.delete();
         }
     }
 };
