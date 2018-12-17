@@ -1,5 +1,4 @@
 exports.botElection = (message, Client, firebase) => {
-    // Election Data
     const electionData = firebase.database().ref().child('election');
     let electionDataValue;
     electionData.on("value", snap => {
