@@ -22,6 +22,13 @@ electionData.on("value", snap => {
     electionDataValue = snap.val();
 });
 
+// Current Day
+let now = new Date();
+let start = new Date(now.getFullYear(), 0, 0);
+let diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+let oneDay = 1000 * 60 * 60 * 24;
+let day = Math.floor(diff / oneDay);
+
 // App Title
 const appTitle = 'Kuru Anime';
 
@@ -286,6 +293,11 @@ Client.on('message', message => {
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply(electionDataValue);
+    }
+    if (message.channel.name === 'general' && Client.user.id !== message.author.id) {
+        if(message.content.startsWith(symbolCommand + 'topic')) {
+            message.reply(day);
+        }
     }
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
