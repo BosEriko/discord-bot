@@ -6,6 +6,9 @@ const Axios     = require('axios');
 const Client    = new Discord.Client();
 const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
+// Bot Modules
+const botPost   = require('./bot-post');
+
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -357,6 +360,7 @@ Client.on('guildMemberRemove', member => {
 
 // Main Code
 Client.on('message', message => {
+    botPost.botPost(message, symbolCommand);
     // Kuru Fun
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command   = message.cleanContent.split(" ")[0];
