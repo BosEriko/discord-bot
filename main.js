@@ -10,6 +10,7 @@ const App           = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 const botFun        = require('./features/bot-fun');
 const botElection   = require('./features/bot-election');
 const botTopic      = require('./features/bot-topic');
+const botPost       = require('./features/bot-post');
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -43,30 +44,7 @@ Client.on('message', message => {
     botFun.botFun(message, symbolCommand, Discord, Client);
     botElection.botElection(message, Client, firebase);
     botTopic.botTopic(message, Client, symbolCommand);
-    // Rabbit Post
-    if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
-        Axios.post(process.env.RABBIT_WEBHOOK, {
-            "content": message.content
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
-    // Announcements Post
-    if (message.channel.name === 'announcements-post' && Client.user.id !== message.author.id) {
-        Axios.post(process.env.ANNOUNCEMENTS_WEBHOOK, {
-            "content": message.content
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    }
+    botPost.botPost(message, Client, Axios);
     // Dialogflow
     if ((message.channel.name === 'kuru-anime' || message.channel.type === 'dm') && Client.user.id !== message.author.id) {
         let promise = new Promise((resolve, reject) => {
