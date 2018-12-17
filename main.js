@@ -9,6 +9,7 @@ const App           = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 // Bot Modules
 const botFun        = require('./features/bot-fun');
 const botElection   = require('./features/bot-election');
+const botTopic      = require('./features/bot-topic');
 
 // Initialize Firebase
 const firebaseConfig = {
