@@ -159,7 +159,7 @@ Client.on('guildMemberAdd', member => {
 // Main Code
 Client.on('message', message => {
     botPost.botPost(message, symbolCommand);
-    botFun.botFun(message, symbolCommand, Discord);
+    botFun.botFun(message, symbolCommand, Discord, Client);
     // Kuru Election
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply(electionDataValue);

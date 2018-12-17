@@ -1,4 +1,4 @@
-exports.botFun = (message, symbolCommand, Discord) => {
+exports.botFun = (message, symbolCommand, Discord, Client) => {
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
