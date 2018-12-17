@@ -23,11 +23,11 @@ electionData.on("value", snap => {
 });
 
 // Current Day
-let now = new Date();
-let start = new Date(now.getFullYear(), 0, 0);
-let diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-let oneDay = 1000 * 60 * 60 * 24;
-let day = Math.floor(diff / oneDay);
+const now       = new Date();
+const start     = new Date(now.getFullYear(), 0, 0);
+const diff      = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+const oneDay    = 1000 * 60 * 60 * 24;
+const day       = Math.floor(diff / oneDay);
 
 // App Title
 const appTitle = 'Kuru Anime';
@@ -43,6 +43,12 @@ const funHelp = `
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
 `;
+
+// Topic of the Day answers
+const topicOfTheDay = [
+    "What is something you hate but you wished you loved?",
+    "Where do you go and what do you do to wind down/relax?",
+];
 
 // 8Ball answers
 const eightBall = [
@@ -294,9 +300,10 @@ Client.on('message', message => {
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         message.reply(electionDataValue);
     }
+    // Topic of the Day
     if (message.channel.name === 'general' && Client.user.id !== message.author.id) {
         if(message.content.startsWith(symbolCommand + 'topic')) {
-            message.reply(day);
+            message.reply(topicOfTheDay[day % topicOfTheDay.length]);
         }
     }
     // Rabbit Post
