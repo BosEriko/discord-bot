@@ -42,7 +42,7 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     botFun.botFun(message, symbolCommand, Discord, Client);
     botElection.botElection(message, Client, firebase);
-    botTopic.botTopic(message, Client);
+    botTopic.botTopic(message, Client, symbolCommand);
     // Rabbit Post
     if (message.channel.name === 'rabbit-post' && Client.user.id !== message.author.id) {
         Axios.post(process.env.RABBIT_WEBHOOK, {
