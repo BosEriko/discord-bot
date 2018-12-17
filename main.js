@@ -1,13 +1,14 @@
-const Discord   = require('discord.js');
-const ApiAI     = require('apiai');
-const firebase  = require('firebase');
-const Axios     = require('axios');
+const Discord       = require('discord.js');
+const ApiAI         = require('apiai');
+const firebase      = require('firebase');
+const Axios         = require('axios');
 
-const Client    = new Discord.Client();
-const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+const Client        = new Discord.Client();
+const App           = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 // Bot Modules
-const botFun    = require('./features/bot-fun');
+const botFun        = require('./features/bot-fun');
+const botElection   = require('./features/bot-election');
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -17,13 +18,6 @@ const firebaseConfig = {
     storageBucket: process.env.FIREBASE_BUCKET + '.appspot.com',
 };
 firebase.initializeApp(firebaseConfig);
-
-// Election Data
-const electionData = firebase.database().ref().child('election');
-let electionDataValue;
-electionData.on("value", snap => {
-    electionDataValue = snap.val();
-});
 
 // Current Day
 const now       = new Date();
@@ -158,10 +152,7 @@ Client.on('guildMemberAdd', member => {
 // Main Code
 Client.on('message', message => {
     botFun.botFun(message, symbolCommand, Discord, Client);
-    // Kuru Election
-    if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
-        message.reply(electionDataValue);
-    }
+    botElection.botElection(message, Client, firebase);
     // Topic of the Day
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id) {
         if(message.content.startsWith(symbolCommand + 'topic')) {
