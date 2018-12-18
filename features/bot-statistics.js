@@ -14,7 +14,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     });
     const updatedMessageCountValue = messageCountValue + 1;
     database.ref('statistics/' + message.author.id).set({
-        message_count: updatedMessageCountValue
+        message_count: 10
     });
 
     // The Main Stuff
