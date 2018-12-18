@@ -11,7 +11,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
                 message_count: 0
             })
         };
-        // messageCountValue = snap.val();
+        messageCountValue = snap.val();
     });
     // database.ref('statistics/' + message.author.id).set({
     //     message_count: messageCountValue++
