@@ -12,9 +12,10 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
         };
         messageCountValue = snap.val();
     });
+    console.log("Loggint out ====>", messageCountValue);
     // Update the data
     database.ref('statistics/' + message.author.id).set({
-        message_count: parseInt(messageCountValue)
+        message_count: 0
     });
     // The Main Stuff
     if (Client.user.id !== message.author.id) {
