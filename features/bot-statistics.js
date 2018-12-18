@@ -16,6 +16,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     database.ref('statistics/' + message.author.id).set({
         message_count: 0
     });
+    
     // The Main Stuff
     if (Client.user.id !== message.author.id) {
         if (message.content.startsWith(symbolCommand + 'stats-message')) {
