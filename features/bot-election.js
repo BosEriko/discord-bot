@@ -5,7 +5,7 @@ exports.botElection = (message, Client, firebase, symbolCommand) => {
     const electionData = database.ref().child('election/' + message.author.id + '/data');
     let electionDataValue;
     electionData.on("value", snap => {
-        electionDataValue = snap.val();
+        electionDataValue = snap.exists() ? snap.val() : "No data yet";
     });
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         if (command === (symbolCommand + 'write')) {
