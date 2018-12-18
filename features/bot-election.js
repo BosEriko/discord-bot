@@ -10,7 +10,7 @@ exports.botElection = (message, Client, firebase, symbolCommand) => {
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
         if (command === (symbolCommand + 'write')) {
             database.ref('election/' + message.author.id).set({
-                samle: "sample"
+                samle: "sample2"
             })
         }else{
             message.reply(electionDataValue);
