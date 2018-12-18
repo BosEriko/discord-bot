@@ -13,7 +13,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
         messageCountValue = snap.val();
         console.log("Logging out 1 ====>", snap.val());
     });
-    console.log("Logging out 2 ====>", messageCountValue);
+    console.log("Logging out 2 ====>", messageCountValue++);
     // Update the data
     database.ref('statistics/' + message.author.id).set({
         message_count: 0
