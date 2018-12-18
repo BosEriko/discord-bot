@@ -2,7 +2,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     // Firebase Data
     const database = firebase.database();
     const messageCount = database.ref().child('statistics/' + message.author.id + '/message_count');
-    var messageCountValue;
+    let messageCountValue;
     // Get the data
     messageCount.on("value", snap => {
         if(!snap.exists()){

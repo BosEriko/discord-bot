@@ -7,7 +7,7 @@ exports.botElection = (message, Client, firebase, symbolCommand) => {
     // Firebase Data
     const database = firebase.database();
     const electionData = database.ref().child('election/' + message.author.id + '/data');
-    var electionDataValue;
+    let electionDataValue;
     electionData.on("value", snap => {
         electionDataValue = snap.exists() ? snap.val() : "No data yet";
     });
