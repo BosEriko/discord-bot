@@ -14,7 +14,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     });
     // Update the data
     database.ref('statistics/' + message.author.id).set({
-        message_count: 0
+        message_count: messageCountValue
     });
     // The Main Stuff
     if (Client.user.id !== message.author.id) {
