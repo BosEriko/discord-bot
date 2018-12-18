@@ -12,9 +12,9 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
         };
         messageCountValue = snap.val();
     });
-    const updatedMessageCountValue = messageCountValue + 1;
+    const updatedMessageCountValue = parseInt(messageCountValue + 1);
     database.ref('statistics/' + message.author.id).set({
-        message_count: 10
+        message_count: updatedMessageCountValue
     });
 
     // The Main Stuff
