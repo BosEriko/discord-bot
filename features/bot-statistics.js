@@ -8,14 +8,14 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     messageCount.on("value", snap => {
         if(!snap.exists()){
             database.ref('statistics/' + message.author.id).set({
-                message_count: "0"
+                message_count: 0
             })
         };
-        messageCountValue = snap.val();
+        // messageCountValue = snap.val();
     });
-    database.ref('statistics/' + message.author.id).set({
-        message_count: messageCountValue++
-    });
+    // database.ref('statistics/' + message.author.id).set({
+    //     message_count: messageCountValue++
+    // });
 
     // The Main Stuff
     if (Client.user.id !== message.author.id) {
