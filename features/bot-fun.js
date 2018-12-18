@@ -78,7 +78,7 @@ exports.botFun = (message, symbolCommand, Discord, Client) => {
         "Happiness is often a rebound from hard work.",
         "Hard work pays off in the future, laziness pays off now.",
         "He who slithers among the ground is not always a foe.",
-        "Help is always needed but not always appreciated. Stay true to your heart and help those in need weather they appreciate it or not.",
+        "Help is always needed but not always appreciated. Stay true to your heart and help those in need whether they appreciate it or not.",
         "Hidden in a valley beside an open stream- This will be the type of place where you will find your dream.",
         "Hone your competitive instincts.",
         "How can you have a beutiful ending without making beautiful mistakes.",
