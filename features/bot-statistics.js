@@ -3,7 +3,7 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
     const database = firebase.database();
     const messageCount = database.ref().child('statistics/' + message.author.id + '/message_count');
     let messageCountValue;
-    // Logic
+    // Get the data
     messageCount.on("value", snap => {
         if(!snap.exists()){
             database.ref('statistics/' + message.author.id).set({
@@ -12,11 +12,10 @@ exports.botStatistics = (message, Client, firebase, symbolCommand) => {
         };
         messageCountValue = snap.val();
     });
-    const updatedMessageCountValue = parseInt(messageCountValue + 1);
+    // Update the data
     database.ref('statistics/' + message.author.id).set({
         message_count: 0
     });
-
     // The Main Stuff
     if (Client.user.id !== message.author.id) {
         if (message.content.startsWith(symbolCommand + 'stats-message')) {
