@@ -6,11 +6,11 @@ exports.botElection = (message, Client, firebase, symbolCommand) => {
 
     // Firebase Data
     const database = firebase.database();
-    const electionData = database.ref().child('election/' + message.author.id + '/data');
-    let electionDataValue;
-    electionData.on("value", snap => {
-        electionDataValue = snap.exists() ? snap.val() : "No data yet";
-    });
+    // const electionData = database.ref().child('election/' + message.author.id + '/data');
+    // let electionDataValue;
+    // electionData.on("value", snap => {
+    //     electionDataValue = snap.exists() ? snap.val() : "No data yet";
+    // });
 
     // The Main Stuff
     if (message.channel.name === 'kuru-election' && Client.user.id !== message.author.id) {
