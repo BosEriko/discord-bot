@@ -11,7 +11,7 @@ exports.botStats = (message, Client, firebase, symbolCommand) => {
     const statsDataMessageShow = () => {
         statsData.once('value').then(snap => {
             return snap.exists() ? snap.val() : 0;
-        }
+        })
     }
 
     // The Main Stuff
