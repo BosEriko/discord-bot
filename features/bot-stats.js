@@ -5,8 +5,9 @@ exports.botStats = (message, Client, firebase, symbolCommand) => {
     let statsDataMessage;
     statsData.once('value').then(snap => {
         statsDataMessage = snap.exists() ? snap.val() : 0;
+        console.log(statsDataMessage);
         database.ref('stats/' + message.author.id).set({
-            message_count: statsDataMessage++
+            message_count: statsDataMessage + 1
         });
     });
 
