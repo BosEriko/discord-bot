@@ -11,7 +11,7 @@ exports.botStats = (message, Client, firebase, symbolCommand) => {
         if (message.content.startsWith(symbolCommand + 'st-message')) {
             statsData.once('value').then(snap => {
                 message.reply(snap.exists() ? snap.val() : 0);
-            }
+            })
         }
     }
 };
