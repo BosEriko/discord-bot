@@ -10,7 +10,7 @@ exports.botStats = (message, Client, firebase, symbolCommand) => {
     if (Client.user.id !== message.author.id) {
         if (message.content.startsWith(symbolCommand + 'st-message')) {
             statsData.once('value').then(snap => {
-                message.reply(snap.exists() ? snap.val() : 0 + "messages sent by you!");
+                message.reply((snap.exists() ? snap.val() : 0) + "messages sent by you!");
             })
         }
     }
