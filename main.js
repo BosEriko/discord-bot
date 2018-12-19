@@ -10,7 +10,6 @@ const App           = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 const botFun        = require('./features/bot-fun');
 const botElection   = require('./features/bot-election');
 const botTopic      = require('./features/bot-topic');
-const botStats      = require('./features/bot-stats');
 const botPost       = require('./features/bot-post');
 const botDF         = require('./features/bot-df');
 
@@ -43,9 +42,8 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botFun.botFun(message, symbolCommand, Discord, Client);
+    botFun.botFun(message, symbolCommand, Discord, Client, firebase);
     botElection.botElection(message, Client, firebase, symbolCommand);
-    botStats.botStats(message, Client, firebase, symbolCommand);
     botTopic.botTopic(message, Client, symbolCommand);
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);

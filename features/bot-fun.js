@@ -1,10 +1,19 @@
-exports.botFun = (message, symbolCommand, Discord, Client) => {
+exports.botFun = (message, symbolCommand, Discord, Client, firebase) => {
+    const database = firebase.database();
+    const messageCountREF = database.ref().child('statistics/' + message.author.id + '/message_count');
+    messageCountREF.once('value').then(snap => {
+        let messageCountData = snap.exists() ? snap.val() : 0;
+        database.ref('statistics/' + message.author.id).set({
+            message_count: messageCountData + 1
+        });
+    });
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
 **${symbolCommand}flip** Flip a coin
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
+**${symbolCommand}message-count** Show how much messages you've sent
     `;
     const eightBall = [
         "It is certain.",
@@ -191,6 +200,12 @@ exports.botFun = (message, symbolCommand, Discord, Client) => {
                     .setColor(0xcd3c2a)
                     .setImage(message.author.avatarURL);
                 message.channel.send(avatarEmbed);
+                break;
+            // Message Count
+            case symbolCommand + 'message-count':
+                messageCountREF.once('value').then(snap => {
+                    message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!');
+                });
                 break;
             // Flip a coin
             case symbolCommand + 'flip':
