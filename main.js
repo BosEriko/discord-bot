@@ -45,7 +45,7 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     botFun.botFun(message, symbolCommand, Discord, Client);
     botElection.botElection(message, Client, firebase, symbolCommand);
-    botStats.botStats(message, Client, firebase, symbolCommand);
+    // botStats.botStats(message, Client, firebase, symbolCommand);
     botTopic.botTopic(message, Client, symbolCommand);
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);
