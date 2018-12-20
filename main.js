@@ -1,17 +1,17 @@
-const Discord       = require('discord.js');
-const ApiAI         = require('apiai');
-const firebase      = require('firebase');
-const Axios         = require('axios');
+const Discord = require('discord.js');
+const ApiAI = require('apiai');
+const firebase = require('firebase');
+const Axios = require('axios');
 
-const Client        = new Discord.Client();
-const App           = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
+const Client = new Discord.Client();
+const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 // Bot Modules
-const botFun        = require('./features/bot-fun');
-const botElection   = require('./features/bot-election');
-const botTopic      = require('./features/bot-topic');
-const botPost       = require('./features/bot-post');
-const botDF         = require('./features/bot-df');
+const botFun = require('./features/bot-fun');
+const botElection = require('./features/bot-election');
+const botTopic = require('./features/bot-topic');
+const botPost = require('./features/bot-post');
+const botDF = require('./features/bot-df');
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -42,11 +42,21 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
+    firebase.auth().createUserWithEmailAndPassword(message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function(error) {
+        console.log("Register Error Code ===========>", error.code);
+        console.log("Register Error Message ===========>", error.message);
+    });
+    // Code Start
     botFun.botFun(message, symbolCommand, Discord, Client, firebase);
     botElection.botElection(message, Client, firebase, symbolCommand);
     botTopic.botTopic(message, Client, symbolCommand);
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);
+    // Code End
+    firebase.auth().signOut().catch(function(error) {
+        console.log("Sign Out Error Code ===========>", error.code);
+        console.log("Sign Out Error Message ===========>", error.message);
+    });
 });
 
 // Discord Login
