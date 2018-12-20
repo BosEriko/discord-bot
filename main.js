@@ -42,9 +42,13 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    firebase.auth().createUserWithEmailAndPassword(message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function(error) {
-        console.log("Register Error Code ===========>", error.code);
-        console.log("Register Error Message ===========>", error.message);
+    firebase.auth().createUserWithEmailAndPassword(message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+        if (error.code === "auth/email-already-in-use") {
+            firebase.auth().signInWithEmailAndPassword(message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+                console.log(error.code);
+                console.log(error.message);
+            });
+        };
     });
     // Code Start
     botFun.botFun(message, symbolCommand, Discord, Client, firebase);
@@ -53,9 +57,9 @@ Client.on('message', message => {
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);
     // Code End
-    firebase.auth().signOut().catch(function(error) {
-        console.log("Sign Out Error Code ===========>", error.code);
-        console.log("Sign Out Error Message ===========>", error.message);
+    firebase.auth().signOut().catch(function (error) {
+        console.log(error.code);
+        console.log(error.message);
     });
 });
 
