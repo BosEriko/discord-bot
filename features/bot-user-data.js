@@ -1,5 +1,5 @@
 exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabase, Discord) => {
-    const user = new Discord.User(message.author);
+    const user = new Discord.User(message.author.id);
     console.log("MESSAGE AUTHOR: ", user.tag);
     // const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id));
     // userAccountRef.once('value').then(snap => {
