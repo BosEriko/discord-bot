@@ -1,6 +1,6 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
-    const messageCountREF = firebaseDatabase.child('statistics/' + message.author.id + '/message_count');
-    messageCountREF.once('value').then(snap => {
+    const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count');
+    messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0;
         firebaseDatabase.child('statistics/' + message.author.id).set({
             message_count: messageCountData + 1
@@ -202,7 +202,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break;
             // Message Count
             case symbolCommand + 'message-count':
-                messageCountREF.once('value').then(snap => {
+                messageCountRef.once('value').then(snap => {
                     message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!');
                 });
                 break;
