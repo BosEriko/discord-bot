@@ -43,7 +43,7 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    const firebaseEmail = message.author.id + process.env.FIREBASE_ACCOUNT_PASSWORD;
+    const firebaseEmail = message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL;
     const firebasePassword = message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD;
     firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
         // Error for Registering
