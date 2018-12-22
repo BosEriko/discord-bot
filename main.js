@@ -43,30 +43,12 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    const firebaseEmail = message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL;
-    const firebasePassword = message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD;
-    firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
-        if (error.code === "auth/email-already-in-use") {
-            firebase.auth().signInWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
-                // Error for Loggin In
-                console.log("Login Error Code: ", error.code);
-                console.log("Login Error Message: ", error.message);
-            });
-        };
-    });
-    // ============================================================ Code Start
     botFun.botFun(message, symbolCommand, Discord, Client, firebase);
     botElection.botElection(message, Client, firebase, symbolCommand);
     botReputation.botReputation(message, Client, firebase, symbolCommand);
     botTopic.botTopic(message, Client, symbolCommand);
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);
-    // ============================================================ Code End
-    firebase.auth().signOut().catch(function (error) {
-        // Error Signing Out
-        console.log("Sign Out Error Code: ", error.code);
-        console.log("Sign Out Error Message: ", error.message);
-    });
 });
 
 // Discord Login
