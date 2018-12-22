@@ -23,6 +23,9 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// Initialize Firebase Database
+const firebaseDatabase = firebase.database().ref(process.env.FIREBASE_PERSONAL_API_KEY);
+
 // App Title
 const appTitle = 'Kuru Anime';
 
@@ -43,9 +46,9 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botFun.botFun(message, symbolCommand, Discord, Client, firebase);
-    botElection.botElection(message, Client, firebase, symbolCommand);
-    botReputation.botReputation(message, Client, firebase, symbolCommand);
+    botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase);
+    botElection.botElection(message, Client, firebase, symbolCommand, firebaseDatabase);
+    botReputation.botReputation(message, Client, firebase, symbolCommand, firebaseDatabase);
     botTopic.botTopic(message, Client, symbolCommand);
     botPost.botPost(message, Client, Axios);
     botDF.botDF(message, Client, App);
