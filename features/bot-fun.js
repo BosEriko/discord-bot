@@ -1,6 +1,6 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebase) => {
     const database = firebase.database();
-    const messageCountREF = database.ref().child('statistics/' + message.author.id + '/message_count');
+    const messageCountREF = database.ref(process.env.FIREBASE_PERSONAL_API_KEY).child('statistics/' + message.author.id + '/message_count');
     messageCountREF.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0;
         database.ref('statistics/' + message.author.id).set({
