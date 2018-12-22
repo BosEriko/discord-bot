@@ -43,12 +43,15 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    firebase.auth().createUserWithEmailAndPassword(message.author.id, process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+    const firebaseEmail = message.author.id + process.env.FIREBASE_ACCOUNT_PASSWORD;
+    const firebasePassword = message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD;
+    firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
         // Error for Registering
         console.log("Register Error Code: ", error.code);
         console.log("Register Error Message: ", error.message);
         if (error.code === "auth/email-already-in-use") {
-            firebase.auth().signInWithEmailAndPassword(message.author.id, process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+            firebase.auth().signInWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
+                // Error for Loggin In
                 console.log("Login Error Code: ", error.code);
                 console.log("Login Error Message: ", error.message);
             });
@@ -63,6 +66,7 @@ Client.on('message', message => {
     botDF.botDF(message, Client, App);
     // ============================================================ Code End
     firebase.auth().signOut().catch(function (error) {
+        // Error Signing Out
         console.log("Sign Out Error Code: ", error.code);
         console.log("Sign Out Error Message: ", error.message);
     });
