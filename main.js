@@ -43,11 +43,11 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    firebase.auth().createUserWithEmailAndPassword(message.author.id, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+    firebase.auth().createUserWithEmailAndPassword(message.author.id, process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
         console.log(error.code);
         console.log(error.message);
         if (error.code === "auth/email-already-in-use") {
-            firebase.auth().signInWithEmailAndPassword(message.author.id, message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
+            firebase.auth().signInWithEmailAndPassword(message.author.id, process.env.FIREBASE_ACCOUNT_PASSWORD).catch(function (error) {
                 console.log(error.code);
                 console.log(error.message);
             });
