@@ -1,8 +1,8 @@
 exports.botReputation = (message, Client, firebase, symbolCommand) => {
     const database = firebase.database();
-    const userAccountRef = database.ref().child('user_account/' + (message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL));
+    const userAccountRef = database.ref().child('user_account/' + (message.author.id));
     userAccountRef.once('value').then(snap => {
-        database.ref('user_account/' + (message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL)).set({
+        database.ref('user_account/' + (message.author.id)).set({
             nickname: "test"
         });
     });
