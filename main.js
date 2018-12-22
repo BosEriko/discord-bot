@@ -46,9 +46,6 @@ Client.on('message', message => {
     const firebaseEmail = message.author.id + process.env.FIREBASE_ACCOUNT_EMAIL;
     const firebasePassword = message.author.id + "-" + process.env.FIREBASE_ACCOUNT_PASSWORD;
     firebase.auth().createUserWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
-        // Error for Registering
-        console.log("Register Error Code: ", error.code);
-        console.log("Register Error Message: ", error.message);
         if (error.code === "auth/email-already-in-use") {
             firebase.auth().signInWithEmailAndPassword(firebaseEmail, firebasePassword).catch(function (error) {
                 // Error for Loggin In
