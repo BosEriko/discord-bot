@@ -219,7 +219,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Nicknames
             case symbolCommand + 'nicknames':
                 if (taggedUser !== null) {
-                    console.log("TAGGED USER: ", taggedUser);
+                    console.log("TAGGED USER: ", taggedUser.id);
                 } else {
                     firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
                         snap.val().map((names, key) => {
