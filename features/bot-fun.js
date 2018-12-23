@@ -13,6 +13,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}message-count** Show how much messages you've sent
+**${symbolCommand}nicknames** Show a list of the past 10 nicknames
     `;
     const eightBall = [
         "It is certain.",
@@ -213,6 +214,14 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Fortune Cookie
             case symbolCommand + 'fortune':
                 message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)]);
+                break;
+            // Nicknames
+            case symbolCommand + 'nicknames':
+                firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
+                    snap.val().map((names, key) => {
+                        message.channel.send(`${key}. ${names}`);
+                    });
+                });
                 break;
             // 8-ball
             case symbolCommand + '8ball':
