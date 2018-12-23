@@ -219,9 +219,11 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Nicknames
             case symbolCommand + 'nicknames':
                 firebaseDatabase.child('user_account/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('nicknames').once('value').then(snap => {
+                    let nicknameMessage = "";
                     snap.val().map((names, key) => {
-                        message.channel.send(`${key + 1}. ${names}`);
+                        nicknameMessage += "\n" + (key + 1) + ". " + names;
                     });
+                    message.channel.send(nicknameMessage);
                 });
                 break;
             // 8-ball
