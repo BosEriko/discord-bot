@@ -8,7 +8,7 @@ exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabas
             });
         } else {
             let nicknamesArray = snap.val();
-            if (currentName !== snap.val()[snap.val().length - 1]) {
+            if (currentName !== nicknamesArray[nicknamesArray.length - 1]) {
                 nicknamesArray.push(currentName)
                 userAccountRef.set({
                     nicknames: nicknamesArray
