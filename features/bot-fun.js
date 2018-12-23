@@ -219,7 +219,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             case symbolCommand + 'nicknames':
                 firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
                     snap.val().map((names, key) => {
-                        message.channel.send(`${key}. ${names}`);
+                        message.channel.send(`${key+1}. ${names}`);
                     });
                 });
                 break;
