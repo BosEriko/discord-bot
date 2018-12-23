@@ -219,9 +219,9 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Nicknames
             case symbolCommand + 'nicknames':
                 firebaseDatabase.child('user_account/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('nicknames').once('value').then(snap => {
-                    let nicknameMessage = "";
+                    let nicknameMessage = "Only the previous **10** nickname change will be shown:\n";
                     snap.val().map((names, key) => {
-                        nicknameMessage += "\n" + (key + 1) + ". " + names;
+                        nicknameMessage += "\n**" + (key + 1) + "**. " + names;
                     });
                     message.channel.send(nicknameMessage);
                 });
