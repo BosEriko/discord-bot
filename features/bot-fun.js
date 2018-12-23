@@ -218,15 +218,11 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break;
             // Nicknames
             case symbolCommand + 'nicknames':
-                if (taggedUser !== null) {
-                    console.log("TAGGED USER: ", taggedUser.id);
-                } else {
-                    firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
-                        snap.val().map((names, key) => {
-                            message.channel.send(`${key + 1}. ${names}`);
-                        });
+                firebaseDatabase.child('user_account/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('nicknames').once('value').then(snap => {
+                    snap.val().map((names, key) => {
+                        message.channel.send(`${key + 1}. ${names}`);
                     });
-                }
+                });
                 break;
             // 8-ball
             case symbolCommand + '8ball':
