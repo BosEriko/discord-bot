@@ -2,6 +2,6 @@ exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabas
     const currentName = message.member.nickname === null ? message.author.username + " (Default)" : message.member.nickname;
     const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id));
     userAccountRef.set({
-        nicknames: currentName
+        nicknames: [currentName]
     });
 };
