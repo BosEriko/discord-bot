@@ -1,6 +1,6 @@
 exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabase) => {
-    console.log("USERNAME: ", message.author.username);
-    const currentName = message.member.nickname === null ? message.author.username + " (Default)" : message.member.nickname;
+    console.log("USERNAME: ", );
+    const currentName = message.member.nickname === null && message.author.username !== 'Kuru Anime' ? message.author.username + " (Default)" : message.member.nickname;
     const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id));
     userAccountRef.child('nicknames').once('value').then(snap => {
         if (!snap.exists()) {
