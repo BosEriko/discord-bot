@@ -4,4 +4,7 @@ exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabas
     userAccountRef.set({
         nicknames: [currentName]
     });
+    userAccountRef.child('nicknames').once('value').then(snap => {
+        console.log(snap.val());
+    });
 };
