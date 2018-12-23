@@ -14,7 +14,7 @@ exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabas
                     nicknames: nicknamesArray
                 });
             }
-            if (snap.val().length > 10) {
+            if (nicknamesArray.length > 10) {
                 nicknamesArray.shift();
                 userAccountRef.set({
                     nicknames: nicknamesArray
