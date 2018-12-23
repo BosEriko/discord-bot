@@ -1,5 +1,6 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
     const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count');
+    const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null;
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0;
         firebaseDatabase.child('statistics/' + message.author.id).set({
@@ -217,11 +218,15 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break;
             // Nicknames
             case symbolCommand + 'nicknames':
-                firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
-                    snap.val().map((names, key) => {
-                        message.channel.send(`${key+1}. ${names}`);
+                if (taggedUser !== null) {
+                    console.log("TAGGED USER: ", taggedUser);
+                } else {
+                    firebaseDatabase.child('user_account/' + (message.author.id)).child('nicknames').once('value').then(snap => {
+                        snap.val().map((names, key) => {
+                            message.channel.send(`${key + 1}. ${names}`);
+                        });
                     });
-                });
+                }
                 break;
             // 8-ball
             case symbolCommand + '8ball':
