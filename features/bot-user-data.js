@@ -7,14 +7,17 @@ exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabas
                 nicknames: [currentName]
             });
         } else {
+            let nicknamesArray = snap.val();
             if (currentName !== snap.val()[snap.val().length - 1]) {
+                nicknamesArray.push(currentName)
                 userAccountRef.set({
-                    nicknames: snap.val().push(currentName)
+                    nicknames: nicknamesArray
                 });
             }
             if (snap.val().length > 10) {
+                nicknamesArray.shift();
                 userAccountRef.set({
-                    nicknames: snap.val().shift()
+                    nicknames: nicknamesArray
                 });
             }
         }
