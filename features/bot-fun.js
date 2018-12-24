@@ -46,7 +46,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount + 1,
-                            reasons: "**Upvote:**" + parameterNoTag
+                            reasons: "**+1:**" + parameterNoTag
                         })
                     })
                     message.delete()
@@ -63,7 +63,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount - 1,
-                            reasons: "**Downvote:**" + parameterNoTag
+                            reasons: "**-1:**" + parameterNoTag
                         })
                     })
                     message.delete()
