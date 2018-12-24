@@ -40,9 +40,9 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: Upvote
             case symbolCommand + 'upvote':
-                firebaseDatabase.child('reputation/' + message.author.id).once('value').then(snap => {
+                firebaseDatabase.child('reputation/' + message.author.id + '/vote').once('value').then(snap => {
                     let voteCount = snap.exists() ? snap.val() : 0
-                    firebaseDatabase.child('reputation/' + message.author.id + '/vote').set({
+                    firebaseDatabase.child('reputation/' + message.author.id).set({
                         vote: voteCount + 1
                     })
                 })
