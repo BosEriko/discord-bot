@@ -46,8 +46,14 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                            vote: voteCount + 1,
-                            reasons: "**+1 by " + currentName + ":**" + parameterNoTag
+                            vote: voteCount + 1
+                        })
+                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').once('value').then(snap => {
+                            let voteReasons = snap.exists() ? snap.val() : []
+                            voteReasons.push({ "status": "upvote", "by": currentName, "reason": parameterNoTag })
+                            firebaseDatabase.child('reputation/' + taggedUser.id).set({
+                                reasons: voteReasons
+                            })
                         })
                     })
                     message.delete()
@@ -63,8 +69,14 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                            vote: voteCount - 1,
-                            reasons: "**-1 by " + currentName + ":**" + parameterNoTag
+                            vote: voteCount - 1
+                        })
+                    })
+                    firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').once('value').then(snap => {
+                        let voteReasons = snap.exists() ? snap.val() : []
+                        voteReasons.push({ "status": "downvote", "by": currentName, "reason": parameterNoTag })
+                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
+                            reasons: voteReasons
                         })
                     })
                     message.delete()
