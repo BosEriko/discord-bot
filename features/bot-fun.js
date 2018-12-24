@@ -194,9 +194,9 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "Your shoes will make you happy today.",
     ]
     firebaseDatabase.child('fun_data').set({
-        fortune: fortuneCookie,
+        fortune_cookie: fortuneCookie,
         eight_ball: eight_ball,
-        fornute: [
+        fornute_cookie: [
             '"Slavery is big gay" - Penny Nibba',
             "Squidward, Digiorno Text",
             "I'm sorry i don't speak Italics",
