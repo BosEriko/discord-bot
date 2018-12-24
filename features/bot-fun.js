@@ -61,7 +61,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         })
                     })
                 } else if (taggedUser.id === message.author.id) {
-                    message.reply('You can\'t downpvote yourself!');
+                    message.reply('You can\'t downvote yourself!');
                 }
                 break
             // Reputation: History
