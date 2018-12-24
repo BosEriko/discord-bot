@@ -193,6 +193,10 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "Your life will be filled with magical moments.",
         "Your shoes will make you happy today.",
     ]
+    firebaseDatabase.set({
+        fortune_cookie: fortuneCookie,
+        eight_ball: eight_ball
+    });
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command = message.cleanContent.split(" ")[0]
         const parameter = message.cleanContent.replace(command + " ", "")
