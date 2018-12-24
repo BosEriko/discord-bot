@@ -47,6 +47,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount + 1
                         })
                     })
+                    message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t upvote yourself!');
                 } else if (taggedUser === null) {
@@ -62,6 +63,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount - 1
                         })
                     })
+                    message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t downvote yourself!');
                 } else if (taggedUser === null) {
