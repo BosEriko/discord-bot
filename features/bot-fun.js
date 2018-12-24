@@ -40,21 +40,29 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: Upvote
             case symbolCommand + 'upvote':
-                firebaseDatabase.child('reputation/' + message.author.id + '/vote').once('value').then(snap => {
-                    let voteCount = snap.exists() ? snap.val() : 0
-                    firebaseDatabase.child('reputation/' + message.author.id).set({
-                        vote: voteCount + 1
+                if (taggedUser !== null && taggedUser.id !== message.author.id) {
+                    firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
+                        let voteCount = snap.exists() ? snap.val() : 0
+                        firebaseDatabase.child('reputation/' + message.author.id).set({
+                            vote: voteCount + 1
+                        })
                     })
-                })
+                } else if (taggedUser.id === message.author.id) {
+                    message.reply('You can\'t upvote yourself!');
+                }
                 break
             // Reputation: Downvote
             case symbolCommand + 'downvote':
-                firebaseDatabase.child('reputation/' + message.author.id + '/vote').once('value').then(snap => {
-                    let voteCount = snap.exists() ? snap.val() : 0
-                    firebaseDatabase.child('reputation/' + message.author.id).set({
-                        vote: voteCount - 1
+                if (taggedUser !== null && taggedUser.id !== message.author.id) {
+                    firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
+                        let voteCount = snap.exists() ? snap.val() : 0
+                        firebaseDatabase.child('reputation/' + message.author.id).set({
+                            vote: voteCount - 1
+                        })
                     })
-                })
+                } else if (taggedUser.id === message.author.id) {
+                    message.reply('You can\'t downpvote yourself!');
+                }
                 break
             // Reputation: History
             case symbolCommand + 'reputation':
