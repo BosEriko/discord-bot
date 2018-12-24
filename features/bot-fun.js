@@ -47,10 +47,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
                         let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
                         voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag })
-                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                            vote: voteCount + 1,
-                            reasons: voteReasons
-                        })
+                        firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount + 1)
+                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
@@ -66,10 +64,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
                         let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
                         voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag })
-                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                            vote: voteCount - 1,
-                            reasons: voteReasons
-                        })
+                        firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount - 1)
+                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
