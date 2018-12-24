@@ -46,6 +46,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
                         let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
                         let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
+                        voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag })
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount + 1,
                             reasons: voteReasons
@@ -61,16 +62,12 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Reputation: Downvote
             case symbolCommand + 'downvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
-                    firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
-                        let voteCount = snap.exists() ? snap.val() : 0
+                    firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
+                        let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
+                        let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
+                        voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag })
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                            vote: voteCount - 1
-                        })
-                    })
-                    firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').once('value').then(snap => {
-                        let voteReasons = snap.exists() ? snap.val() : []
-                        voteReasons.push({ "status": "downvote", "by": currentName, "reason": parameterNoTag })
-                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
+                            vote: voteCount - 1,
                             reasons: voteReasons
                         })
                     })
