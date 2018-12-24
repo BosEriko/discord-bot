@@ -195,7 +195,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     ]
     firebaseDatabase.child('fun_data').set({
         fortune_cookie: fortuneCookie,
-        eight_ball: eight_ball,
+        eight_ball: eightBall,
         fornute_cookie: [
             '"Slavery is big gay" - Penny Nibba',
             "Squidward, Digiorno Text",
