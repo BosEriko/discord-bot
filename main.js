@@ -7,12 +7,13 @@ const Client = new Discord.Client()
 const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 
 // Bot Modules
-const botFun = require('./features/bot-fun')
-const botElection = require('./features/bot-election')
-const botUserData = require('./features/bot-user-data')
-const botTopic = require('./features/bot-topic')
-const botPost = require('./features/bot-post')
 const botDF = require('./features/bot-df')
+const botElection = require('./features/bot-election')
+const botFun = require('./features/bot-fun')
+const botPost = require('./features/bot-post')
+const botReputation = require('./features/bot-reputation')
+const botTopic = require('./features/bot-topic')
+const botUserData = require('./features/bot-user-data')
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -46,12 +47,13 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
-    botElection.botElection(message, Client)
-    botUserData.botUserData(message, firebaseDatabase)
-    botTopic.botTopic(message, Client, symbolCommand)
-    botPost.botPost(message, Client, Axios)
     botDF.botDF(message, Client, App)
+    botElection.botElection(message, Client)
+    botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
+    botPost.botPost(message, Client, Axios)
+    botReputation.botReputation(message, firebaseDatabase)
+    botTopic.botTopic(message, Client, symbolCommand)
+    botUserData.botUserData(message, firebaseDatabase)
 })
 
 // Discord Login

@@ -1,0 +1,2 @@
+exports.botReputation = (message, firebaseDatabase) => {
+}
