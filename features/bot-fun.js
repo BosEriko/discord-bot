@@ -23,6 +23,13 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command = message.cleanContent.split(" ")[0]
         const parameter = message.cleanContent.replace(command + " ", "")
+        let parameterNoTag = parameter.split(" ")
+        parameterNoTag.map((text, key) => {
+            if (text[0] === '@') {
+                parameterNoTag.splice(key, 1)
+            }
+        })
+        parameterNoTag = parameterNoTag.join(" ")
         switch (command) {
             // Show Avatar
             case symbolCommand + 'avatar':
@@ -47,6 +54,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount + 1
                         })
                     })
+                    console.log(parameterNoTag);
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t upvote yourself!');
@@ -63,6 +71,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount - 1
                         })
                     })
+                    console.log(parameterNoTag);
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t downvote yourself!');
