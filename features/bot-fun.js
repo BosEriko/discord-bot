@@ -40,11 +40,21 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: Upvote
             case symbolCommand + 'upvote':
-
+                firebaseDatabase.child('reputation/' + message.author.id).once('value').then(snap => {
+                    let voteCount = snap.exists() ? snap.val() : 0
+                    firebaseDatabase.child('reputation/' + message.author.id).set({
+                        vote: voteCount + 1
+                    })
+                })
                 break
             // Reputation: Downvote
             case symbolCommand + 'downvote':
-
+                firebaseDatabase.child('reputation/' + message.author.id).once('value').then(snap => {
+                    let voteCount = snap.exists() ? snap.val() : 0
+                    firebaseDatabase.child('reputation/' + message.author.id).set({
+                        vote: voteCount - 1
+                    })
+                })
                 break
             // Reputation: History
             case symbolCommand + 'reputation':
