@@ -1,4 +1,6 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
+    let cooldownMinute = 60000;
+    let cooldownHour = cooldownMinute * 24;
     const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count')
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
     const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
@@ -52,6 +54,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         }
                         firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount + 1)
                         firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
+                        firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
@@ -72,6 +75,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         }
                         firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount - 1)
                         firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
+                        firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
