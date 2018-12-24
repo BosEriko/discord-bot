@@ -63,6 +63,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     message.reply('Please specify a user by tagging them.');
                 }
                 break
+                
             // Reputation: Downvote
             case symbolCommand + 'downvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
