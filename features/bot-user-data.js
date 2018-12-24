@@ -1,4 +1,4 @@
-exports.botUserData = (message, Client, firebase, symbolCommand, firebaseDatabase) => {
+exports.botUserData = (message, firebaseDatabase) => {
     if (message.author.username !== 'Kuru Anime') {
         const currentName = message.member.nickname === null ? message.author.username + " (Default)" : message.member.nickname;
         const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id));
