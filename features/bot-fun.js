@@ -1,6 +1,7 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
     const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count')
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
+    const currentName = message.member.nickname === null ? message.author.username : message.member.nickname
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0
         firebaseDatabase.child('statistics/' + message.author.id).set({
@@ -46,7 +47,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount + 1,
-                            reasons: "**+1:**" + parameterNoTag
+                            reasons: "**+1 by " + currentName + ":**" + parameterNoTag
                         })
                     })
                     message.delete()
@@ -63,7 +64,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         let voteCount = snap.exists() ? snap.val() : 0
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount - 1,
-                            reasons: "**-1:**" + parameterNoTag
+                            reasons: "**-1 by " + currentName + ":**" + parameterNoTag
                         })
                     })
                     message.delete()
