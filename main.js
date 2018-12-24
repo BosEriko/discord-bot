@@ -50,7 +50,7 @@ Client.on('message', message => {
     botElection.botElection(message, Client)
     botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
     botPost.botPost(message, Client, Axios)
-    botTopic.botTopic(message, Client, symbolCommand)
+    botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
 })
 

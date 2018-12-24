@@ -1,4 +1,4 @@
-exports.botTopic = (message, Client, symbolCommand) => {
+exports.botTopic = (message, Client, symbolCommand, firebaseDatabase) => {
     const now = new Date()
     const start = new Date(now.getFullYear(), 0, 0)
     const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000)
