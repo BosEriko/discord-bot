@@ -45,16 +45,23 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Reputation: Upvote
             case symbolCommand + 'upvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
-                    firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
-                        let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
-                        let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
-                        voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag })
-                        if (voteReasons.length > 10) {
-                            voteReasons.shift()
+                    firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
+                        let cooldown = snap.exists() ? snap.val() : 0
+                        if (cooldown > Date.now()) {
+                            firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
+                                let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
+                                let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
+                                voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag })
+                                if (voteReasons.length > 10) {
+                                    voteReasons.shift()
+                                }
+                                firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount + 1)
+                                firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
+                                firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
+                            })
+                        } else {
+                            message.reply("Please wait " + Math.round((cooldowns[message.author.id] - Date.now) / minute) + " minutes before you can vote again!");
                         }
-                        firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount + 1)
-                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
-                        firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
@@ -66,16 +73,23 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Reputation: Downvote
             case symbolCommand + 'downvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
-                    firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
-                        let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
-                        let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
-                        voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag })
-                        if (voteReasons.length > 10) {
-                            voteReasons.shift()
+                    firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
+                        let cooldown = snap.exists() ? snap.val() : 0
+                        if (cooldown > Date.now()) {
+                            firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
+                                let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
+                                let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
+                                voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag })
+                                if (voteReasons.length > 10) {
+                                    voteReasons.shift()
+                                }
+                                firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount - 1)
+                                firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
+                                firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
+                            })
+                        } else {
+                            message.reply("Please wait " + Math.round((cooldowns[message.author.id] - Date.now) / minute) + " minutes before you can vote again!");
                         }
-                        firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').set(voteCount - 1)
-                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').set(voteReasons)
-                        firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                     })
                     message.delete()
                 } else if (taggedUser !== null && taggedUser.id === message.author.id) {
