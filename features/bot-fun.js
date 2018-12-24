@@ -10,11 +10,14 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
+**${symbolCommand}downvote** Downvote someone by 1
 **${symbolCommand}flip** Flip a coin
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}message-count** Show how much messages you've sent
 **${symbolCommand}nicknames** Show a list of the past 10 nicknames
+**${symbolCommand}reputation** List your Reputation
+**${symbolCommand}upvote** Upvote someone by 1
     `
     const eightBall = [
         "It is certain.",
@@ -207,6 +210,18 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 messageCountRef.once('value').then(snap => {
                     message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!')
                 })
+                break
+            // Reputation: Upvote
+            case symbolCommand + 'upvote':
+
+                break
+            // Reputation: Downvote
+            case symbolCommand + 'downvote':
+
+                break
+            // Reputation: History
+            case symbolCommand + 'reputation':
+
                 break
             // Flip a coin
             case symbolCommand + 'flip':
