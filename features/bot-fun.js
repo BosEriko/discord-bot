@@ -43,7 +43,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
                         let voteCount = snap.exists() ? snap.val() : 0
-                        firebaseDatabase.child('reputation/' + message.author.id).set({
+                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount + 1
                         })
                     })
@@ -59,7 +59,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + taggedUser.id + '/vote').once('value').then(snap => {
                         let voteCount = snap.exists() ? snap.val() : 0
-                        firebaseDatabase.child('reputation/' + message.author.id).set({
+                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount - 1
                         })
                     })
