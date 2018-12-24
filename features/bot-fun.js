@@ -47,8 +47,10 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount + 1
                         })
                     })
-                } else if (taggedUser.id === message.author.id) {
+                } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t upvote yourself!');
+                } else if (taggedUser === null) {
+                    message.reply('Please specify a user by tagging them.');
                 }
                 break
             // Reputation: Downvote
@@ -60,8 +62,10 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             vote: voteCount - 1
                         })
                     })
-                } else if (taggedUser.id === message.author.id) {
+                } else if (taggedUser !== null && taggedUser.id === message.author.id) {
                     message.reply('You can\'t downvote yourself!');
+                } else if (taggedUser === null) {
+                    message.reply('Please specify a user by tagging them.');
                 }
                 break
             // Reputation: History
