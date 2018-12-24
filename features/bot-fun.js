@@ -60,7 +60,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)])
                 })
                 break
-            // Fortune Cookie
+            // Fornute Cookie
             case symbolCommand + 'fornute':
                 firebaseDatabase.child('fun_data/fornute_cookie').once('value').then(snap => {
                     let fornuteCookie = snap.val()
@@ -74,7 +74,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     snap.val().map((names, key) => {
                         nicknameMessage += "\n**" + (key + 1) + "**. " + names
                     })
-                    message.channel.send(nicknameMessage)
+                    message.reply(nicknameMessage)
                 })
                 break
             // 8-ball
