@@ -48,12 +48,12 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         firebaseDatabase.child('reputation/' + taggedUser.id).set({
                             vote: voteCount + 1
                         })
-                        firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').once('value').then(snap => {
-                            let voteReasons = snap.exists() ? snap.val() : []
-                            voteReasons.push({ "status": "upvote", "by": currentName, "reason": parameterNoTag })
-                            firebaseDatabase.child('reputation/' + taggedUser.id).set({
-                                reasons: voteReasons
-                            })
+                    })
+                    firebaseDatabase.child('reputation/' + taggedUser.id + '/reasons').once('value').then(snap => {
+                        let voteReasons = snap.exists() ? snap.val() : []
+                        voteReasons.push({ "status": "upvote", "by": currentName, "reason": parameterNoTag })
+                        firebaseDatabase.child('reputation/' + taggedUser.id).set({
+                            reasons: voteReasons
                         })
                     })
                     message.delete()
