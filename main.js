@@ -31,7 +31,7 @@ const firebaseDatabase = firebase.database().ref(process.env.FIREBASE_PERSONAL_A
 const appTitle = 'Kuru Anime'
 
 // Symbol Command of Fun
-const symbolCommand = '~'
+const symbolCommand = '/'
 
 // Bot Ready Message
 Client.on('ready', () => {
