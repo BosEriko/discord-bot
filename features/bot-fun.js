@@ -60,6 +60,13 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)])
                 })
                 break
+            // Fortune Cookie
+            case symbolCommand + 'fornute':
+                firebaseDatabase.child('fun_data/fornute_cookie').once('value').then(snap => {
+                    let fornuteCookie = snap.val()
+                    message.reply(fornuteCookie[Math.floor(Math.random() * fornuteCookie.length)])
+                })
+                break
             // Nicknames
             case symbolCommand + 'nicknames':
                 firebaseDatabase.child('user_account/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('nicknames').once('value').then(snap => {
