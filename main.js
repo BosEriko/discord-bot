@@ -39,7 +39,7 @@ Client.on('ready', () => {
 
 // New User
 Client.on('guildMemberAdd', member => {
-    member.send('Hello! Thanks for joining ' + appTitle + '! Feel free to talk to me here or if you prefer, talk to me on the #kuru-anime channel. Don\'t forget to read our rules, okay? Have a nice stay!')
+    member.send('Hello! Thanks for joining **' + appTitle + '**! Feel free to talk to me here or if you prefer, talk to me on the **#kuru-anime** channel inside the server. Don\'t forget to read **#rules**, okay? Have a nice stay!')
         .then(message => console.log(`Sent message: ${message.content}`))
         .catch(console.error)
 })
