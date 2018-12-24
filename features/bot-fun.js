@@ -17,6 +17,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
 **${symbolCommand}message-count** Show how much messages you've sent
 **${symbolCommand}nicknames** Show a list of the past 10 nicknames
 **${symbolCommand}reputation** List your Reputation
+**${symbolCommand}topic** Show the topic of the day (Only works in #general)
 **${symbolCommand}upvote** Upvote someone by 1
     `
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
