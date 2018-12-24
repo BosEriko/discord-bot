@@ -1,12 +1,12 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
-    const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count');
-    const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null;
+    const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count')
+    const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
     messageCountRef.once('value').then(snap => {
-        let messageCountData = snap.exists() ? snap.val() : 0;
+        let messageCountData = snap.exists() ? snap.val() : 0
         firebaseDatabase.child('statistics/' + message.author.id).set({
             message_count: messageCountData + 1
-        });
-    });
+        })
+    })
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
@@ -15,7 +15,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}message-count** Show how much messages you've sent
 **${symbolCommand}nicknames** Show a list of the past 10 nicknames
-    `;
+    `
     const eightBall = [
         "It is certain.",
         "It is decidedly so.",
@@ -37,7 +37,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "My sources say no.",
         "Outlook not so good.",
         "Very doubtful.",
-    ];
+    ]
     const fortuneCookie = [
         "A chance meeting opens new doors to success and friendship.",
         "A dream you have will come true.",
@@ -59,8 +59,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "All your fingers can't be of the same length.",
         "An upward movement initiated in time can counteract fate.",
         "Ask yourself if what you are doing today is getting you closer to where you want to be tomorrow.",
-        "Be on the lookout for coming events; They cast their shadows beforehand.",
-        "Be tactful; overlook your own opportunity.",
+        "Be on the lookout for coming events They cast their shadows beforehand.",
+        "Be tactful overlook your own opportunity.",
         "Before trying to please others think of what makes you happy.",
         "Believing that you are beautiful will make you appear beautiful to others around you.",
         "Change can hurt, but it leads a path to something better.",
@@ -103,7 +103,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "In this life it is not what we take up, but what we give up, that makes us rich.",
         "Integrity is doing the right thing, even if nobody is watching.",
         "Integrity is the essence of everything successful.",
-        "It is not necessary to show others you have change; the change will be obvious.",
+        "It is not necessary to show others you have change the change will be obvious.",
         "It is now, and in this world, that we must live.",
         "It is very possible that you will achieve greatness in your lifetime.",
         "It's better to be alone sometimes.",
@@ -118,7 +118,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "Meeting adversity well is the source of your strength.",
         "Never give up. Always find a reason to keep trying.",
         "Never give up. You're not a failure if you don't give up.",
-        "Never upset the driver of the car you're in; they're the master of your destiny until you get home.",
+        "Never upset the driver of the car you're in they're the master of your destiny until you get home.",
         "Nothing astonishes men so much as common sense and plain dealing.",
         "Now is the time to try something new.",
         "Our deeds determine us, as much as we determine our deeds.",
@@ -153,8 +153,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "When you look down, all you see is dirt, so keep looking up.",
         "Wise sayings often fall on barren ground, but a kind word is never thrown away.",
         "You already know the answer to the questions lingering inside your head.",
-        "You are a lover of words; One day you will write a book.",
-        "You are not judged by your efforts you put in; you are judged on your performance.",
+        "You are a lover of words One day you will write a book.",
+        "You are not judged by your efforts you put in you are judged on your performance.",
         "You are the controller of your destiny.",
         "You are very talented in many ways.",
         "You can make your own happiness.",
@@ -189,58 +189,58 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
         "Your high-minded principles spell success.",
         "Your life will be filled with magical moments.",
         "Your shoes will make you happy today.",
-    ];
+    ]
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
-        const command = message.cleanContent.split(" ")[0];
-        const parameter = message.cleanContent.replace(command + " ", "");
+        const command = message.cleanContent.split(" ")[0]
+        const parameter = message.cleanContent.replace(command + " ", "")
         switch (command) {
             // Show Avatar
             case symbolCommand + 'avatar':
                 const avatarEmbed = new Discord.RichEmbed()
                     .setTitle('Avatar Full View')
                     .setColor(0xcd3c2a)
-                    .setImage(message.author.avatarURL);
-                message.channel.send(avatarEmbed);
-                break;
+                    .setImage(message.author.avatarURL)
+                message.channel.send(avatarEmbed)
+                break
             // Message Count
             case symbolCommand + 'message-count':
                 messageCountRef.once('value').then(snap => {
-                    message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!');
-                });
-                break;
+                    message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!')
+                })
+                break
             // Flip a coin
             case symbolCommand + 'flip':
-                message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails');
-                break;
+                message.reply((Math.floor(Math.random() * 2) == 0) ? 'Heads' : 'Tails')
+                break
             // Fortune Cookie
             case symbolCommand + 'fortune':
-                message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)]);
-                break;
+                message.reply(fortuneCookie[Math.floor(Math.random() * fortuneCookie.length)])
+                break
             // Nicknames
             case symbolCommand + 'nicknames':
                 firebaseDatabase.child('user_account/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('nicknames').once('value').then(snap => {
-                    let nicknameMessage = "Only the previous **10** nickname change will be shown:";
+                    let nicknameMessage = "Only the previous **10** nickname change will be shown:"
                     snap.val().map((names, key) => {
-                        nicknameMessage += "\n**" + (key + 1) + "**. " + names;
-                    });
-                    message.channel.send(nicknameMessage);
-                });
-                break;
+                        nicknameMessage += "\n**" + (key + 1) + "**. " + names
+                    })
+                    message.channel.send(nicknameMessage)
+                })
+                break
             // 8-ball
             case symbolCommand + '8ball':
-                message.reply('My answer to "' + parameter + '" is "' + eightBall[Math.floor(Math.random() * eightBall.length)] + '"');
-                break;
+                message.reply('My answer to "' + parameter + '" is "' + eightBall[Math.floor(Math.random() * eightBall.length)] + '"')
+                break
             // Show Help
             case symbolCommand + 'help':
                 const helpEmbed = new Discord.RichEmbed()
                     .setTitle('List of commands')
                     .setColor(0xcd3c2a)
-                    .setDescription(funHelp);
-                message.channel.send(helpEmbed);
-                break;
+                    .setDescription(funHelp)
+                message.channel.send(helpEmbed)
+                break
             // Normal Message
             default:
-                message.reply("Command not found!");
+                message.reply("Command not found!")
         }
     }
-};
+}

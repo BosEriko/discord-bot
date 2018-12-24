@@ -1,9 +1,9 @@
 exports.botTopic = (message, Client, symbolCommand) => {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-    const oneDay = 1000 * 60 * 60 * 24;
-    const day = Math.floor(diff / oneDay);
+    const now = new Date()
+    const start = new Date(now.getFullYear(), 0, 0)
+    const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000)
+    const oneDay = 1000 * 60 * 60 * 24
+    const day = Math.floor(diff / oneDay)
     const topicOfTheDay = [
         "What is something you hate but you wished you loved?",
         "Where do you go and what do you do to wind down/relax?",
@@ -106,10 +106,10 @@ exports.botTopic = (message, Client, symbolCommand) => {
         "What would you do if you could do anything for 8 hours a day for the rest of your life, assuming money were no object?",
         "What is the biggest waste of time in your life?",
         "What is the biggest change you want to make in your life?",
-    ];
+    ]
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id) {
         if(message.content.startsWith(symbolCommand + 'topic')) {
-            message.reply(topicOfTheDay[day % topicOfTheDay.length]);
+            message.reply(topicOfTheDay[day % topicOfTheDay.length])
         }
     }
-};
+}

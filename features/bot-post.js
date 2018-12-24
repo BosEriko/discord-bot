@@ -4,21 +4,21 @@ exports.botPost = (message, Client, Axios) => {
             "content": message.content
         })
         .then(function (response) {
-            console.log(response);
+            console.log(response)
         })
         .catch(function (error) {
-            console.log(error);
-        });
+            console.log(error)
+        })
     }
     if (message.channel.name === 'announcements-post' && Client.user.id !== message.author.id) {
         Axios.post(process.env.ANNOUNCEMENTS_WEBHOOK, {
             "content": message.content
         })
         .then(function (response) {
-            console.log(response);
+            console.log(response)
         })
         .catch(function (error) {
-            console.log(error);
-        });
+            console.log(error)
+        })
     }
-};
+}
