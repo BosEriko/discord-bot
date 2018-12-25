@@ -109,7 +109,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     if (snap.exists()) {
                         reputationHistory = "Only the previous **10** reputation change will be shown:"
                         snap.val().map((data) => {
-                            reputationHistory += "\n**" + data.status + "1:** '" + data.reason + "' by " + data.by
+                            reputationHistory += "\n**" + data.status + "1:**" + data.reason + " by " + data.by
                         })
                     } else {
                         reputationHistory = "No reputation change found!"
