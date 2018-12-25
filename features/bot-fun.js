@@ -100,7 +100,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: History
             case symbolCommand + 'reputation':
-
+                message.author.send("This is a test")
                 break
             // Flip a coin
             case symbolCommand + 'flip':
