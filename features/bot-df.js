@@ -13,7 +13,7 @@ exports.botDF = (message, Client, App) => {
                 resolve(null)
             })
             request.end()
-        })
+        });
         (async function () {
             let result = await promise
             if (result) {
