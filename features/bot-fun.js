@@ -60,7 +60,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                                 firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                             })
                         } else {
-                            message.reply("Please wait " + (Math.floor(Math.round((cooldown - Date.now()) / cooldownMinute)/24)) + ":" + (60 - (60 * parseFloat("0." + Math.round((cooldown - Date.now()) / cooldownMinute)%24))) + " minutes before you can vote again!")
+                            message.reply("Please wait " + (Math.floor(Math.round((cooldown - Date.now()) / cooldownMinute) / 24)) + " hours and " + (60 - (60 * parseFloat("0." + Math.round((cooldown - Date.now()) / cooldownMinute) % 24))) + " minutes before you can vote again!")
                         }
                     })
                     message.delete()
@@ -88,7 +88,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                                 firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').set(Date.now() + cooldownHour * 24)
                             })
                         } else {
-                            message.reply("Please wait " + Math.round((cooldown - Date.now()) / cooldownMinute) + " minutes before you can vote again!")
+                            message.reply("Please wait " + (Math.floor(Math.round((cooldown - Date.now()) / cooldownMinute) / 24)) + " hours and " + (60 - (60 * parseFloat("0." + Math.round((cooldown - Date.now()) / cooldownMinute) % 24))) + " minutes before you can vote again!")
                         }
                     })
                     message.delete()
