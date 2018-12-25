@@ -46,7 +46,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             case symbolCommand + 'upvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
-                        let cooldown = snap.exists() ? snap.val() : Date.now()
+                        let cooldown = snap.exists() ? snap.val() : 0
                         if (cooldown < Date.now()) {
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
                                 let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
@@ -74,7 +74,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             case symbolCommand + 'downvote':
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
-                        let cooldown = snap.exists() ? snap.val() : Date.now()
+                        let cooldown = snap.exists() ? snap.val() : 0
                         if (cooldown < Date.now()) {
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
                                 let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
