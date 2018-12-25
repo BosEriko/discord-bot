@@ -109,7 +109,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     if (snap.child('reasons').exists()) {
                         reputationHistory = "Only the previous **10** reputation change will be shown:"
                         snap.child('reasons').val().map((data) => {
-                            reputationHistory += "\n**" + data.status + "1:**" + data.reason + " by " + data.by
+                            reputationHistory += "\n**" + data.status + "1:**" + (data.reason !== "" ? data.reason : " No reason given") + " _by " + data.by + "_"
                         })
                         if (snap.child('vote').exists()) {
                             reputationHistory += "\nYou have " + snap.child('vote').val() + " reputation"
