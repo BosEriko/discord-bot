@@ -128,7 +128,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     snap.val().map((names, key) => {
                         nicknameMessage += "\n**" + (key + 1) + "**. " + names
                     })
-                    message.reply(nicknameMessage)
+                    message.author.send(nicknameMessage)
+                    message.reply("A message has been sent to your DMs!");
                 })
                 break
             // 8-ball
