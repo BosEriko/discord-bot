@@ -114,7 +114,6 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                         firebaseDatabase.child('reputation/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('vote').once('value').then(snap => {
                             if (snap.exists()) {
                                 reputationHistory += "\nYou have " + snap.val() + " reputation"
-                                
                             }
                         })
                     } else {
