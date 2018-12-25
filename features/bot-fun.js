@@ -112,7 +112,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             reputationHistory += "\n**" + data.status + "1:**" + data.reason + " by " + data.by
                         })
                         if (snap.child('vote').exists()) {
-                            reputationHistory += "\nYou have " + snap.val() + " reputation"
+                            reputationHistory += "\nYou have " + snap.child('vote').val() + " reputation"
                         }
                     } else {
                         reputationHistory = "No reputation change found!"
