@@ -13,15 +13,19 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
-**${symbolCommand}downvote** Downvote someone by 1
 **${symbolCommand}flip** Flip a coin
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}message-count** Show how much messages you've sent
 **${symbolCommand}nicknames** Show a list of the past 10 nicknames
+    `
+    const reputationHelp = `
+**${symbolCommand}downvote** Downvote someone by 1
 **${symbolCommand}reputation** List your Reputation
-**${symbolCommand}topic** Show the topic of the day (Only works in main #general)
 **${symbolCommand}upvote** Upvote someone by 1
+    `
+    const generalHelp = `
+**${symbolCommand}topic** Show the topic of the day
     `
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command = message.cleanContent.split(" ")[0]
@@ -153,10 +157,20 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Show Help
             case symbolCommand + 'help':
                 const helpEmbed = new Discord.RichEmbed()
-                    .setTitle('List of commands')
+                    .setTitle('List of basic commands')
                     .setColor(0xcd3c2a)
                     .setDescription(funHelp)
+                const reputationEmbed = new Discord.RichEmbed()
+                    .setTitle('List of reputation commands')
+                    .setColor(0xcd3c2a)
+                    .setDescription(reputationHelp)
+                const generalEmbed = new Discord.RichEmbed()
+                    .setTitle('List of commands for #general (Kuru Anime Community)')
+                    .setColor(0xcd3c2a)
+                    .setDescription(generalHelp)
                 message.channel.send(helpEmbed)
+                message.channel.send(reputationEmbed)
+                message.channel.send(generalEmbed)
                 break
             // Normal Message
             default:
