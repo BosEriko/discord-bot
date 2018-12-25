@@ -3,7 +3,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     let cooldownHour = cooldownMinute * 24
     const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count')
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
-    const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
+    const currentName = message.channel.type !== 'dm' && message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0
         firebaseDatabase.child('statistics/' + message.author.id).set({
