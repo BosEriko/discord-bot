@@ -100,8 +100,19 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: History
             case symbolCommand + 'reputation':
-                message.author.send("This is a test")
-                message.reply("A message has been sent to your DMs!");
+                firebaseDatabase.child('reputation/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('reasons').once('value').then(snap => {
+                    let reputationHistory
+                    if (snap.exists()) {
+                        reputationHistory = "Only the previous **10** reputation change will be shown:"
+                        snap.val().map((data) => {
+                            reputationHistory += "\n**" + data.status + "1:** '" + data.reason + "' by " + data.by
+                        })
+                    } else {
+                        reputationHistory = "No reputation change found!"
+                    }
+                    message.author.send(reputationHistory)
+                    message.reply("A message has been sent to your DMs!");
+                })
                 break
             // Flip a coin
             case symbolCommand + 'flip':
