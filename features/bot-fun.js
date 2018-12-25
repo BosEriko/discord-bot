@@ -47,6 +47,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
                         let cooldown = snap.exists() ? snap.val() : Date.now()
+                        console.log("Cooldown: ", cooldown);
+                        console.log("Date now:", Date.now());
                         // if (cooldown > Date.now()) {
                         if (true) {
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
@@ -76,6 +78,8 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 if (taggedUser !== null && taggedUser.id !== message.author.id) {
                     firebaseDatabase.child('reputation/' + message.author.id + '/vote_cooldown_timestamp').once('value').then(snap => {
                         let cooldown = snap.exists() ? snap.val() : Date.now()
+                        console.log("Cooldown: ", cooldown);
+                        console.log("Date now:", Date.now());
                         // if (cooldown > Date.now()) {
                         if (true) {
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
