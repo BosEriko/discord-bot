@@ -104,19 +104,16 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Reputation: History
             case symbolCommand + 'reputation':
-                firebaseDatabase.child('reputation/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('reasons').once('value').then(snap => {
+                firebaseDatabase.child('reputation/' + (taggedUser !== null ? taggedUser.id : message.author.id)).once('value').then(snap => {
                     let reputationHistory
-                    if (snap.exists()) {
+                    if (snap.child('reasons').exists()) {
                         reputationHistory = "Only the previous **10** reputation change will be shown:"
-                        snap.val().map((data) => {
+                        snap.child('reasons').val().map((data) => {
                             reputationHistory += "\n**" + data.status + "1:**" + data.reason + " by " + data.by
                         })
-                        firebaseDatabase.child('reputation/' + (taggedUser !== null ? taggedUser.id : message.author.id)).child('vote').once('value').then(snap => {
-                            if (snap.exists()) {
-                                reputationHistory += "\nYou have " + snap.val() + " reputation"
-                                console.log(snap.val());
-                            }
-                        })
+                        if (snap.child('vote').exists()) {
+                            reputationHistory += "\nYou have " + snap.val() + " reputation"
+                        }
                     } else {
                         reputationHistory = "No reputation change found!"
                     }
