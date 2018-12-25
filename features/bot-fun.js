@@ -51,7 +51,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
                                 let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
                                 let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
-                                voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag })
+                                voteReasons.push({ "status": "+", "by": currentName, "reason": parameterNoTag, "voter_discord_id": message.author.id })
                                 if (voteReasons.length > 10) {
                                     voteReasons.shift()
                                 }
@@ -79,7 +79,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                             firebaseDatabase.child('reputation/' + taggedUser.id).once('value').then(snap => {
                                 let voteCount = snap.child('vote').exists() ? snap.child('vote').val() : 0
                                 let voteReasons = snap.child('reasons').exists() ? snap.child('reasons').val() : []
-                                voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag })
+                                voteReasons.push({ "status": "-", "by": currentName, "reason": parameterNoTag, "voter_discord_id": message.author.id })
                                 if (voteReasons.length > 10) {
                                     voteReasons.shift()
                                 }
