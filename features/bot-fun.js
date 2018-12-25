@@ -101,6 +101,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Reputation: History
             case symbolCommand + 'reputation':
                 message.author.send("This is a test")
+                message.reply("A message has been sent to your DMs!");
                 break
             // Flip a coin
             case symbolCommand + 'flip':
