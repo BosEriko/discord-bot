@@ -16,6 +16,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
 **${symbolCommand}flip** Flip a coin
 **${symbolCommand}fortune** Fortune cookie
 **${symbolCommand}help** Show all available commands
+**${symbolCommand}invite** Show the invite link for this server
 **${symbolCommand}message-count** Show how much messages you've sent
 **${symbolCommand}nicknames** Show a list of the past 10 nicknames
     `
@@ -158,6 +159,13 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     let eightBall = snap.val()
                     message.reply('My answer to "' + parameter + '" is "' + eightBall[Math.floor(Math.random() * eightBall.length)] + '"')
                 })
+                break
+            // Invite Link
+            case symbolCommand + 'invite':
+                const helpEmbed = new Discord.RichEmbed()
+                    .setTitle('Server Vanity URL')
+                    .setColor(0xcd3c2a)
+                    .setDescription('Server Invitation Link: http://discord.kuru-anime.com/')
                 break
             // Show Help
             case symbolCommand + 'help':
