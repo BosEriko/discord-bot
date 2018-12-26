@@ -163,9 +163,9 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
             // Invite Link
             case symbolCommand + 'invite':
                 const inviteEmbed = new Discord.RichEmbed()
-                    .setTitle('Server Vanity URL')
+                    .setTitle('Server Invitation')
                     .setColor(0xcd3c2a)
-                    .setDescription('Server Invitation Link: http://discord.kuru-anime.com/')
+                    .setDescription('**Server Vanity Link:** http://discord.kuru-anime.com/ \n**Server Invite Link:** https://discord.gg/Qs4kjnU')
                 message.channel.send(inviteEmbed)
                 break
             // Show Help
