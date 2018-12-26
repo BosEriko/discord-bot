@@ -162,10 +162,11 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Invite Link
             case symbolCommand + 'invite':
-                const helpEmbed = new Discord.RichEmbed()
+                const inviteEmbed = new Discord.RichEmbed()
                     .setTitle('Server Vanity URL')
                     .setColor(0xcd3c2a)
                     .setDescription('Server Invitation Link: http://discord.kuru-anime.com/')
+                message.channel.send(inviteEmbed)
                 break
             // Show Help
             case symbolCommand + 'help':
@@ -181,10 +182,9 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     .setTitle('List of commands for #general (Kuru Anime Community)')
                     .setColor(0xcd3c2a)
                     .setDescription(generalHelp)
-                message.author.send(helpEmbed)
-                message.author.send(reputationEmbed)
-                message.author.send(generalEmbed)
-                message.reply("A message has been sent to your DMs!");
+                message.channel.send(helpEmbed)
+                message.channel.send(reputationEmbed)
+                message.channel.send(generalEmbed)
                 break
             // Normal Message
             default:
