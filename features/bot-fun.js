@@ -28,6 +28,16 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
     const generalHelp = `
 **${symbolCommand}topic** Show the topic of the day
     `
+    const discordHelp = `
+**${symbolCommand}xivdb** Search XIVDB's database and embed link to any in-game content
+**${symbolCommand}giphy** Search Animated GIFs on Giphy
+**${symbolCommand}tenor** Search Animated GIFs on Tenor
+**${symbolCommand}me** Displays text with emphasis
+**${symbolCommand}tableflip** Appends (╯°□°）╯︵ ┻━┻ to your message
+**${symbolCommand}unflip** Appends ┬─┬ ノ( ゜-゜ノ) to your message
+**${symbolCommand}shrug** Appends ¯\\_(ツ)_/¯ to your message
+**${symbolCommand}nick** Change nickname on this server
+    `
     if (message.channel.name === 'kuru-fun' && Client.user.id !== message.author.id) {
         const command = message.cleanContent.split(" ")[0]
         const parameter = message.cleanContent.replace(command + " ", "")
@@ -182,9 +192,14 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                     .setTitle('List of commands for #general (Kuru Anime Community)')
                     .setColor(0xcd3c2a)
                     .setDescription(generalHelp)
+                const discordEmbed = new Discord.RichEmbed()
+                    .setTitle('List of discord commands')
+                    .setColor(0xcd3c2a)
+                    .setDescription(discordHelp)
                 message.channel.send(helpEmbed)
                 message.channel.send(reputationEmbed)
                 message.channel.send(generalEmbed)
+                message.channel.send(discordEmbed)
                 break
             // Normal Message
             default:
