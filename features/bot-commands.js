@@ -1,8 +1,11 @@
 exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
-    let cooldownMinute = 60000
-    let cooldownHour = cooldownMinute * 24
+    const cooldownMinute = 60000
+    const cooldownHour = cooldownMinute * 24
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
     const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
+    const command = message.cleanContent.split(" ")[0]
+    const parameter = message.cleanContent.replace(command + " ", "")
+    const parameterNoTag = message.content.replace(command + " ", "").replace(/<((@!?\d+)|(:.+?:\d+))>/g, '')
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar
@@ -31,9 +34,6 @@ exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
 **${symbolCommand}shrug** Appends ¯\\_(ツ)_/¯ to your message
 **${symbolCommand}nick** Change nickname on this server
     `
-    const command = message.cleanContent.split(" ")[0]
-    const parameter = message.cleanContent.replace(command + " ", "")
-    const parameterNoTag = message.content.replace(command + " ", "").replace(/<((@!?\d+)|(:.+?:\d+))>/g, '')
     switch (command) {
         // Show Avatar
         case symbolCommand + 'avatar':
