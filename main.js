@@ -9,7 +9,7 @@ const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 // Bot Modules
 const botDF = require('./features/bot-df')
 const botFun = require('./features/bot-fun')
-const botPostAnnouncements = require('./features/bot-announcements')
+const botPostAnnouncements = require('./features/bot-post-announcements')
 const botPostRabbit = require('./features/bot-post-rabbit')
 const botTopic = require('./features/bot-topic')
 const botUserData = require('./features/bot-user-data')
