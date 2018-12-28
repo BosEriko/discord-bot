@@ -53,13 +53,17 @@ Client.on('message', message => {
     botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
     // Dialogflow Bot
-    if ((message.channel.id === '514736191095177246' || message.channel.type === 'dm') && Client.user.id !== message.author.id) botDF.botDF(App, message)
+    if ((message.channel.id === '514736191095177246' || message.channel.type === 'dm') && Client.user.id !== message.author.id)
+        botDF.botDF(App, message)
     // Post to #rabbit using the Webhook
-    if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id) botPostRabbit.botPostRabbit(Axios, message)
+    if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id)
+        botPostRabbit.botPostRabbit(Axios, message)
     // Post to #announcements using the Webhook
-    if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id) botPostAnnouncements.botPostAnnouncements(Axios, message)
+    if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id)
+        botPostAnnouncements.botPostAnnouncements(Axios, message)
     // All posts on #video will be deleted unless they are a YouTube url
-    if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id) botVideoOnly.botVideoOnly(message)
+    if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id)
+        botVideoOnly.botVideoOnly(message)
 })
 
 // Discord Login
