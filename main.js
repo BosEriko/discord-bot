@@ -1,8 +1,9 @@
+const Discord = require('discord.js')
+const Client = new Discord.Client()
+
 const ApiAI = require('apiai')
 const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 const Axios = require('axios')
-const Client = new Discord.Client()
-const Discord = require('discord.js')
 const firebase = require('firebase')
 
 // Bot Modules
