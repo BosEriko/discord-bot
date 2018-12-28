@@ -9,7 +9,8 @@ const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 // Bot Modules
 const botDF = require('./features/bot-df')
 const botFun = require('./features/bot-fun')
-const botPost = require('./features/bot-post')
+const botPostAnnouncements = require('./features/bot-announcements')
+const botPostRabbit = require('./features/bot-post-rabbit')
 const botTopic = require('./features/bot-topic')
 const botUserData = require('./features/bot-user-data')
 const botVideoOnly = require('./features/bot-video-only')
@@ -51,9 +52,12 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     botDF.botDF(message, Client, App)
     botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
-    botPost.botPost(message, Client, Axios)
     botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
+    // Post to #rabbit using the Webhook
+    if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id) botPostRabbit.botPostRabbit(message, Axios)
+    // Post to #announcements using the Webhook
+    if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id) botPostAnnouncements.botPostAnnouncements(message, Axios)
     // All posts on #video will be deleted unless they are a YouTube url
     if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id) botVideoOnly.botVideoOnly(message)
 })
