@@ -179,7 +179,6 @@ exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .setDescription(discordHelp)
             message.channel.send(helpEmbed)
             message.channel.send(reputationEmbed)
-            message.channel.send(generalEmbed)
             message.channel.send(discordEmbed)
             break
         // Normal Message
