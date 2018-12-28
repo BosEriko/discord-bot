@@ -23,6 +23,6 @@ exports.botPassive = (firebaseDatabase, message) => {
     const messageCountRef = statisticsRef.child('message_count')
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0
-        messageCountRef.set(messageCountData++)
+        messageCountRef.set(messageCountData + 1)
     })
 }
