@@ -9,6 +9,7 @@ const firebase = require('firebase')
 // Bot Modules
 const botCommands = require('./features/bot-commands')
 const botDF = require('./features/bot-df')
+const botMarket = require('./features/bot-market')
 const botPassive = require('./features/bot-passive')
 const botPostAnnouncements = require('./features/bot-post-announcements')
 const botPostRabbit = require('./features/bot-post-rabbit')
@@ -68,6 +69,9 @@ Client.on('message', message => {
     // All posts on #video will be deleted unless they are a YouTube url
     if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id)
         botVideoOnly.botVideoOnly(message)
+    // Kuru Market
+    if ((message.channel.id === '528252653390790676' || message.channel.id === '528253499893350430') && Client.user.id !== message.author.id)
+        botMarket.botMarket(message)
 })
 
 // Discord Login
