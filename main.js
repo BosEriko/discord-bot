@@ -49,9 +49,11 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
     botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
+    // Topic of the Day on #general
+    if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
+        botFun.botFun(firebaseDatabase, message, symbolCommand)
     // Dialogflow Bot
     if ((message.channel.id === '514736191095177246' || message.channel.type === 'dm') && Client.user.id !== message.author.id)
         botDF.botDF(App, message)
