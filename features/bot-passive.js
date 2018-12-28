@@ -1,5 +1,6 @@
 exports.botPassive = (firebaseDatabase, message) => {
     const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id))
+    const statisticsRef = firebaseDatabase.child('statistics/' + (message.author.id))
     const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
     // Nickname Change History
     const nicknamesRef = userAccountRef.child('nicknames')
@@ -19,7 +20,7 @@ exports.botPassive = (firebaseDatabase, message) => {
         }
     })
     // Message Count
-    const messageCountRef = userAccountRef.child('message_count')
+    const messageCountRef = statisticsRef.child('message_count')
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0
         messageCountRef.set(messageCountData++)
