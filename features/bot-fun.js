@@ -172,11 +172,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Invite Link
             case symbolCommand + 'invite':
-                const inviteEmbed = new Discord.RichEmbed()
-                    .setTitle('Server Invitation Links')
-                    .setColor(0xcd3c2a)
-                    .setDescription('**Server Vanity Link:** http://discord.kuru-anime.com/ \n**Server Invite Link:** https://discord.gg/Qs4kjnU')
-                message.channel.send(inviteEmbed)
+                message.channel.send('https://discord.gg/Qs4kjnU')
                 break
             // Show Help
             case symbolCommand + 'help':

@@ -29,8 +29,11 @@ const firebaseDatabase = firebase.database().ref(process.env.FIREBASE_PERSONAL_A
 // App Title
 const appTitle = 'Kuru Anime'
 
-// Symbol Command of Fun
+// Symbol Command
 const symbolCommand = '/'
+
+// Passive Commands
+const passiveCommands = true
 
 // Bot Ready Message
 Client.on('ready', () => {
@@ -51,7 +54,7 @@ Client.on('message', message => {
     botPost.botPost(message, Client, Axios)
     botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
-    // Video Only
+    // All posts on #video will be deleted unless they are a YouTube url
     if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id) botVideoOnly.botVideoOnly(message)
 })
 
