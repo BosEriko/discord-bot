@@ -1,15 +1,8 @@
 exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => {
     let cooldownMinute = 60000
     let cooldownHour = cooldownMinute * 24
-    const messageCountRef = firebaseDatabase.child('statistics/' + message.author.id + '/message_count')
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null
     const currentName = message.channel.type !== 'dm' && message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
-    messageCountRef.once('value').then(snap => {
-        let messageCountData = snap.exists() ? snap.val() : 0
-        firebaseDatabase.child('statistics/' + message.author.id).set({
-            message_count: messageCountData + 1
-        })
-    })
     const funHelp = `
 **${symbolCommand}8ball** Magic 8-ball
 **${symbolCommand}avatar** Show your avatar

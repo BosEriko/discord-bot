@@ -1,7 +1,7 @@
 exports.botPassive = (firebaseDatabase, message) => {
-    // Nickname Change History
-    const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
     const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id))
+    const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
+    // Nickname Change History
     const nicknamesRef = userAccountRef.child('nicknames')
     nicknamesRef.once('value').then(snap => {
         if (!snap.exists()) {
@@ -17,5 +17,11 @@ exports.botPassive = (firebaseDatabase, message) => {
                 nicknamesRef.set(nicknamesArray)
             }
         }
+    })
+    // Message Count
+    const messageCountRef = userAccountRef.child('message_count')
+    messageCountRef.once('value').then(snap => {
+        let messageCountData = snap.exists() ? snap.val() : 0
+        messageCountRef.set(messageCountData++)
     })
 }
