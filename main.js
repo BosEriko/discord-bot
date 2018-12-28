@@ -12,6 +12,7 @@ const botFun = require('./features/bot-fun')
 const botPost = require('./features/bot-post')
 const botTopic = require('./features/bot-topic')
 const botUserData = require('./features/bot-user-data')
+const botVideoOnly = require('./features/bot-video-only')
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -50,6 +51,8 @@ Client.on('message', message => {
     botPost.botPost(message, Client, Axios)
     botTopic.botTopic(message, Client, symbolCommand, firebaseDatabase)
     botUserData.botUserData(message, firebaseDatabase)
+    // Video Only
+    if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id) botVideoOnly.botVideoOnly(message)
 })
 
 // Discord Login
