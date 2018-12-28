@@ -1,4 +1,4 @@
-exports.botPostAnnouncements = (message, Axios) => {
+exports.botPostAnnouncements = (Axios, message) => {
     Axios.post(process.env.ANNOUNCEMENTS_WEBHOOK, {
         "content": message.content
     })

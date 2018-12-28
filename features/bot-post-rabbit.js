@@ -1,4 +1,4 @@
-exports.botPostRabbit = (message, Axios) => {
+exports.botPostRabbit = (Axios, message) => {
     Axios.post(process.env.RABBIT_WEBHOOK, {
         "content": message.content
     })
