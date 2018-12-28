@@ -1,17 +1,17 @@
-const Discord = require('discord.js')
 const ApiAI = require('apiai')
-const firebase = require('firebase')
+const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 const Axios = require('axios')
 const Client = new Discord.Client()
-const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
+const Discord = require('discord.js')
+const firebase = require('firebase')
 
 // Bot Modules
 const botDF = require('./features/bot-df')
 const botFun = require('./features/bot-fun')
+const botPassive = require('./features/bot-passive')
 const botPostAnnouncements = require('./features/bot-post-announcements')
 const botPostRabbit = require('./features/bot-post-rabbit')
 const botTopic = require('./features/bot-topic')
-const botUserData = require('./features/bot-user-data')
 const botVideoOnly = require('./features/bot-video-only')
 
 // Initialize Firebase
@@ -32,9 +32,6 @@ const appTitle = 'Kuru Anime'
 // Symbol Command
 const symbolCommand = '/'
 
-// Passive Commands
-const passiveCommands = true
-
 // Bot Ready Message
 Client.on('ready', () => {
     console.log('Bot is ready.')
@@ -49,8 +46,10 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botUserData.botUserData(message, firebaseDatabase)
     botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
+    // Passive Comands
+    if (message.channel.type !== 'dm')
+        botPassive.botPassive(firebaseDatabase, message)
     // Topic of the Day on #general
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
         botTopic.botTopic(firebaseDatabase, message, symbolCommand)
