@@ -21,9 +21,6 @@ exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
 **${symbolCommand}reputation** List your Reputation
 **${symbolCommand}upvote** Upvote someone by 1
     `
-    const generalHelp = `
-**${symbolCommand}topic** Show the topic of the day
-    `
     const discordHelp = `
 **${symbolCommand}xivdb** Search XIVDB's database and embed link to any in-game content
 **${symbolCommand}giphy** Search Animated GIFs on Giphy
@@ -176,10 +173,6 @@ exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .setTitle('List of reputation commands')
                 .setColor(0xcd3c2a)
                 .setDescription(reputationHelp)
-            const generalEmbed = new Discord.RichEmbed()
-                .setTitle('List of commands for #general (Kuru Anime Community)')
-                .setColor(0xcd3c2a)
-                .setDescription(generalHelp)
             const discordEmbed = new Discord.RichEmbed()
                 .setTitle('List of discord commands')
                 .setColor(0xcd3c2a)
