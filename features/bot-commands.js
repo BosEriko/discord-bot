@@ -1,4 +1,4 @@
-exports.botFun = (Discord, firebaseDatabase, message, symbolCommand) => {
+exports.botCommands = (Discord, firebaseDatabase, message, symbolCommand) => {
     let cooldownMinute = 60000
     let cooldownHour = cooldownMinute * 24
     const taggedUser = message.mentions.users.first() ? message.guild.member(message.mentions.users.first()) : null

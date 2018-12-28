@@ -7,8 +7,8 @@ const Axios = require('axios')
 const firebase = require('firebase')
 
 // Bot Modules
+const botCommands = require('./features/bot-commands')
 const botDF = require('./features/bot-df')
-const botFun = require('./features/bot-fun')
 const botPassive = require('./features/bot-passive')
 const botPostAnnouncements = require('./features/bot-post-announcements')
 const botPostRabbit = require('./features/bot-post-rabbit')
@@ -48,8 +48,8 @@ Client.on('guildMemberAdd', member => {
 // Main Code
 Client.on('message', message => {
     // Kuru Commands
-    if (message.channel.id === '517566179242672137' && message.channel.type !== 'dm' && Client.user.id !== message.author.id)
-        botFun.botFun(Discord, firebaseDatabase, message, symbolCommand)
+    if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
+        botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
     // Passive Comands
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
         botPassive.botPassive(firebaseDatabase, message)
