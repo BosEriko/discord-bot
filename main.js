@@ -47,7 +47,7 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    if (message.channel.name === 'kuru-fun' && message.channel.type !== 'dm' && Client.user.id !== message.author.id)
+    if (message.channel.id === '517566179242672137' && message.channel.type !== 'dm' && Client.user.id !== message.author.id)
         botFun.botFun(Discord, firebaseDatabase, message, symbolCommand)
     // Passive Comands
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
