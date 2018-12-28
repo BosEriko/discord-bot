@@ -46,7 +46,7 @@ exports.botFun = (message, symbolCommand, Discord, Client, firebaseDatabase) => 
                 break
             // Message Count
             case symbolCommand + 'message-count':
-                messageCountRef.once('value').then(snap => {
+                firebaseDatabase.child('statistics/' + (message.author.id) + '/message_count').once('value').then(snap => {
                     message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!')
                 })
                 break
