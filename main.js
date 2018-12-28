@@ -47,9 +47,10 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    botFun.botFun(message, symbolCommand, Discord, Client, firebaseDatabase)
+    if (message.channel.name === 'kuru-fun' && message.channel.type !== 'dm' && Client.user.id !== message.author.id)
+        botFun.botFun(Discord, firebaseDatabase, message, symbolCommand)
     // Passive Comands
-    if (message.channel.type !== 'dm')
+    if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
         botPassive.botPassive(firebaseDatabase, message)
     // Topic of the Day on #general
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
