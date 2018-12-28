@@ -2,7 +2,6 @@ const Discord = require('discord.js')
 const ApiAI = require('apiai')
 const firebase = require('firebase')
 const Axios = require('axios')
-
 const Client = new Discord.Client()
 const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 
