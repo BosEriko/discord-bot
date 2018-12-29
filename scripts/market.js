@@ -12,7 +12,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
     `
     switch (command) {
         // Shop
-        case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (if applicable)
+        case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (Only applicable if item has real word USD price)
             const shopEmbed = new Discord.RichEmbed()
                 .setTitle('Shop')
                 .setColor(0xcd3c2a)
