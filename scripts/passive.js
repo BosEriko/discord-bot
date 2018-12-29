@@ -1,4 +1,4 @@
-exports.botPassive = (firebaseDatabase, message) => {
+exports.botPassive = (cooldownStorage, firebaseDatabase, message) => {
     // Nickname Change History
     const userAccountRef = firebaseDatabase.child('user_account/' + message.author.id)
     const nicknamesRef = userAccountRef.child('nicknames')
@@ -27,9 +27,17 @@ exports.botPassive = (firebaseDatabase, message) => {
     })
     // Passive Earn Money
     const marketRef = firebaseDatabase.child('market/' + message.author.id)
+    const balanceEarn = .0001
+    const cooldownTimeout = 60000
     const balanceRef = marketRef.child('balance')
     balanceRef.once('value').then(snap => {
         let balanceValueData = snap.exists() ? snap.val() : 0
-        balanceRef.set(balanceValueData + .0001)
+        if (!cooldownStorage.has(message.author.id)) {
+            balanceRef.set(balanceValueData + balanceEarn)
+            cooldownStorage.add(message.author.id)
+            setTimeout(() => {
+                cooldownStorage.delete(message.author.id)
+            }, cooldownTimeout)
+        }
     })
 }

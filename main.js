@@ -34,6 +34,9 @@ const appTitle = 'Kuru Anime'
 // Symbol Command
 const symbolCommand = '/'
 
+// Cooldown Storage
+const cooldownStorage = new Set()
+
 // Bot Ready Message
 Client.on('ready', () => {
     console.log('Bot is ready.')
@@ -50,7 +53,7 @@ Client.on('guildMemberAdd', member => {
 Client.on('message', message => {
     // Passive Comands
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
-        botPassive.botPassive(firebaseDatabase, message)
+        botPassive.botPassive(cooldownStorage, firebaseDatabase, message)
     // Kuru Commands
     if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
         botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
