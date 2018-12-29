@@ -24,6 +24,9 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .addField("name", "value", true)
                 .addField("name", "value", true)
                 .addField("name", "value", true)
+                .addField("name", "value", true)
+                .addField("name", "value", true)
+                .addField("name", "value", true)
             message.channel.send(shopEmbed)
             break
         // Check Balance
