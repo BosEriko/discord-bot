@@ -1,7 +1,11 @@
-exports.botMarket = (firebaseDatabase, message, symbolCommand) => {
-    const marketRef = firebaseDatabase.child('market/' + message.author.id)
-    const command = message.cleanContent.split(" ")[0]
-    const currencySymbol = "₱"
+exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
+    const marketRef         = firebaseDatabase.child('market/' + message.author.id)
+    const command           = message.cleanContent.split(" ")[0]
+    const currencySymbol    = "₱"
+    const marketHelp = `
+**${symbolCommand}balance** Show your balance
+**${symbolCommand}help** Show all available commands
+    `
     switch (command) {
         // Check Balance
         case symbolCommand + 'balance':
@@ -13,8 +17,12 @@ exports.botMarket = (firebaseDatabase, message, symbolCommand) => {
             })
             break
         // Show Help
-        case symbolCommand + 'balance':
-            message.reply('Market is under maintenance!')
+        case symbolCommand + 'help':
+            const marketEmbed = new Discord.RichEmbed()
+                .setTitle('List of market commands')
+                .setColor(0xcd3c2a)
+                .setDescription(marketHelp)
+            message.channel.send(marketEmbed)
             break
         // Normal Message
         default:

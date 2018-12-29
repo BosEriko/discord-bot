@@ -74,7 +74,7 @@ Client.on('message', message => {
         botVideoOnly.botVideoOnly(message)
     // Kuru Market
     if ((message.channel.id === '528252653390790676' || message.channel.id === '528253499893350430') && Client.user.id !== message.author.id)
-        botMarket.botMarket(firebaseDatabase, message, symbolCommand)
+        botMarket.botMarket(Discord, firebaseDatabase, message, symbolCommand)
 })
 
 // Discord Login
