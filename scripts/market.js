@@ -8,7 +8,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
 **${symbolCommand}shop** Open shop
     `
     const shopHelp = `
-**1 Month Discord Nitro:** ${currencySymbol}49,950
+**1 Month Discord Nitro with Free Nitro Games:** ${currencySymbol}49,950
     `
     switch (command) {
         // Shop
