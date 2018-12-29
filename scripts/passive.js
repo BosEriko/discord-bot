@@ -1,6 +1,6 @@
 exports.botPassive = (firebaseDatabase, message) => {
     // Nickname Change History
-    const userAccountRef = firebaseDatabase.child('user_account/' + (message.author.id))
+    const userAccountRef = firebaseDatabase.child('user_account/' + message.author.id)
     const nicknamesRef = userAccountRef.child('nicknames')
     const currentName = message.author.username !== 'Kuru Anime' ? (message.member.nickname === null ? message.author.username : message.member.nickname) : 'Kuru Anime'
     nicknamesRef.once('value').then(snap => {
@@ -19,10 +19,17 @@ exports.botPassive = (firebaseDatabase, message) => {
         }
     })
     // Message Count
-    const statisticsRef = firebaseDatabase.child('statistics/' + (message.author.id))
+    const statisticsRef = firebaseDatabase.child('statistics/' + message.author.id)
     const messageCountRef = statisticsRef.child('message_count')
     messageCountRef.once('value').then(snap => {
         let messageCountData = snap.exists() ? snap.val() : 0
         messageCountRef.set(messageCountData + 1)
+    })
+    // Passive Earn Money
+    const marketRef = firebaseDatabase.child('market/' + message.author.id)
+    const balanceRef = marketRef.child('balance')
+    balanceRef.once('value').then(snap => {
+        let balanceValueData = snap.exists() ? snap.val() : 0
+        balanceRef.set(balanceValueData + .0001)
     })
 }
