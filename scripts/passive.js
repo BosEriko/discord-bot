@@ -32,9 +32,9 @@ exports.botPassive = (cooldownStorage, firebaseDatabase, message) => {
     const cooldownTimeout = 500
     const balanceRef = marketRef.child('balance')
     balanceRef.once('value').then(snap => {
-        let balanceValueData = snap.exists() ? snap.val() : 0
+        let balanceValueData = snap.exists() ? snap.val() : 0.000
         if (!cooldownStorage.has(message.author.id)) {
-            balanceRef.set(balanceValueData + balanceEarn)
+            balanceRef.set(parseFloat((balanceValueData + balanceEarn).toFixed(4)))
             cooldownStorage.add(message.author.id)
             setTimeout(() => {
                 cooldownStorage.delete(message.author.id)
