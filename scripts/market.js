@@ -1,14 +1,14 @@
 exports.botMarket = (firebaseDatabase, message, symbolCommand) => {
     const marketRef = firebaseDatabase.child('market/' + message.author.id)
     const command = message.cleanContent.split(" ")[0]
-    const currencySymbol = "₭€"
+    const currencySymbol = "₱"
     switch (command) {
         // Check Balance
         case symbolCommand + 'balance':
             const balanceRef = marketRef.child('balance')
             balanceRef.once('value').then(snap => {
                 let balanceValueData = snap.exists() ? snap.val() : 0
-                message.author.send('Your current balance is ' + currencySymbol + balanceValueData + ".")
+                message.author.send('Your current balance is ' + currencySymbol + " " + balanceValueData + ".")
                 message.reply("A message has been sent to your DMs!")
             })
             break
