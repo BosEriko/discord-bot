@@ -9,6 +9,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
     `
     const shopHelp = `
 **1 Month Discord Nitro with Free Nitro Games:** ${currencySymbol}49,950
+**1 Year Discord Nitro with Free Nitro Games:** ${currencySymbol}499,950 (-16%)
     `
     switch (command) {
         // Shop
