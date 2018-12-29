@@ -14,7 +14,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .setTitle('Shop')
                 .setColor(0xcd3c2a)
                 .addField("1 Month Discord Nitro with Free Nitro Games", `${currencySymbol}49,950`, true)
-                .addField(`${currencySymbol}499,950 (-16%)`, "1 Year Discord Nitro with Free Nitro Games", true)
+                .addField("1 Year Discord Nitro with Free Nitro Games", `${currencySymbol}499,950 (-16%)`, true)
             message.channel.send(shopEmbed)
             break
         // Check Balance
