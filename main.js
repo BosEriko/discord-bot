@@ -48,12 +48,12 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    // Kuru Commands
-    if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
-        botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
     // Passive Comands
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
         botPassive.botPassive(firebaseDatabase, message)
+    // Kuru Commands
+    if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
+        botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
     // Topic of the Day on #general
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
         botTopic.botTopic(firebaseDatabase, message, symbolCommand)
