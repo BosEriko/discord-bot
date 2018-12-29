@@ -18,6 +18,9 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .setTitle('Shop')
                 .setColor(0xcd3c2a)
                 .setDescription(shopHelp)
+                .addField("name", "value", false)
+                .addField("name", "value", false)
+                .addField("name", "value", false)
             message.channel.send(shopEmbed)
             break
         // Check Balance
