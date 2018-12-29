@@ -1,20 +1,20 @@
-const Discord = require('discord.js')
-const Client = new Discord.Client()
+const Discord   = require('discord.js')
+const Client    = new Discord.Client()
 
-const ApiAI = require('apiai')
-const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
-const Axios = require('axios')
-const firebase = require('firebase')
+const ApiAI     = require('apiai')
+const App       = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
+const Axios     = require('axios')
+const firebase  = require('firebase')
 
 // Bot Modules
-const botCommands = require('./features/bot-commands')
-const botDF = require('./features/bot-df')
-const botMarket = require('./features/bot-market')
-const botPassive = require('./features/bot-passive')
-const botPostAnnouncements = require('./features/bot-post-announcements')
-const botPostRabbit = require('./features/bot-post-rabbit')
-const botTopic = require('./features/bot-topic')
-const botVideoOnly = require('./features/bot-video-only')
+const botCommands           = require('./scripts/commands')
+const botDF                 = require('./scripts/dialogflow')
+const botMarket             = require('./scripts/market')
+const botPassive            = require('./scripts/passive')
+const botPostAnnouncements  = require('./scripts/post-announcements')
+const botPostRabbit         = require('./scripts/post-rabbit')
+const botTopic              = require('./scripts/topic')
+const botVideoOnly          = require('./scripts/video-only')
 
 // Initialize Firebase
 const firebaseConfig = {
