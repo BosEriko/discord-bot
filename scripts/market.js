@@ -19,6 +19,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
                 .setColor(0xcd3c2a)
                 .setDescription(shopHelp)
                 .addField("name", "value", true)
+                .addField("name", "value", true)
                 .addField("name", "value", false)
                 .addField("name", "value", true)
                 .addField("name", "value", true)
