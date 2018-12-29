@@ -1,4 +1,4 @@
-exports.botMarket = (firebaseDatabase, message) => {
+exports.botMarket = (firebaseDatabase, message, symbolCommand) => {
     const marketRef = firebaseDatabase.child('market/' + message.author.id)
     const command = message.cleanContent.split(" ")[0]
     const currencySymbol = "₭€"
