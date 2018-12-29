@@ -1,7 +1,7 @@
 exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
     const marketRef         = firebaseDatabase.child('market/' + message.author.id)
     const command           = message.cleanContent.split(" ")[0]
-    const currencySymbol    = "₱"
+    const currencySymbol    = "¥"
     const marketHelp = `
 **${symbolCommand}balance** Show your balance
 **${symbolCommand}help** Show all available commands
