@@ -1,12 +1,24 @@
 exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
-    const marketRef         = firebaseDatabase.child('market/' + message.author.id)
-    const command           = message.cleanContent.split(" ")[0]
-    const currencySymbol    = "¥"
+    const marketRef = firebaseDatabase.child('market/' + message.author.id)
+    const command = message.cleanContent.split(" ")[0]
+    const currencySymbol = "¥"
     const marketHelp = `
 **${symbolCommand}balance** Show your balance
 **${symbolCommand}help** Show all available commands
+**${symbolCommand}shop** Open shop
+    `
+    const shopHelp = `
+**1 Month Discord Nitro:** ${currencySymbol}49,950
     `
     switch (command) {
+        // Shop
+        case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (if applicable)
+            const shopEmbed = new Discord.RichEmbed()
+                .setTitle('Shop')
+                .setColor(0xcd3c2a)
+                .setDescription(shopHelp)
+            message.channel.send(shopEmbed)
+            break
         // Check Balance
         case symbolCommand + 'balance':
             const balanceRef = marketRef.child('balance')
