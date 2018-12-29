@@ -1,4 +1,4 @@
-exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
+exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand) => {
     const marketRef = firebaseDatabase.child('market/' + message.author.id)
     const command = message.cleanContent.split(" ")[0]
     const currencySymbol = "¥"
@@ -11,7 +11,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
         // Shop
         case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (Only applicable if item has real word USD price)
             const shopEmbed = new Discord.RichEmbed()
-                .setTitle('Shop')
+                .setTitle(`${appTitle} Shop`)
                 .setColor(0xcd3c2a)
                 .addField("1 Month Discord Nitro with Free Nitro Games", `${currencySymbol}49,950`, true)
                 .addField("1 Year Discord Nitro with Free Nitro Games", `${currencySymbol}499,950 (-16%)`, true)
