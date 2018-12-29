@@ -28,7 +28,8 @@ exports.botPassive = (cooldownStorage, firebaseDatabase, message) => {
     // Passive Earn Money
     const marketRef = firebaseDatabase.child('market/' + message.author.id)
     const balanceEarn = 0.0001
-    const cooldownTimeout = 60000
+    // const cooldownTimeout = 60000
+    const cooldownTimeout = 500
     const balanceRef = marketRef.child('balance')
     balanceRef.once('value').then(snap => {
         let balanceValueData = snap.exists() ? snap.val() : 0
