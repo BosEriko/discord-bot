@@ -7,26 +7,14 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}shop** Open shop
     `
-    const shopHelp = `
-**1 Month Discord Nitro with Free Nitro Games:** ${currencySymbol}49,950
-**1 Year Discord Nitro with Free Nitro Games:** ${currencySymbol}499,950 (-16%)
-    `
     switch (command) {
         // Shop
         case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (Only applicable if item has real word USD price)
             const shopEmbed = new Discord.RichEmbed()
                 .setTitle('Shop')
                 .setColor(0xcd3c2a)
-                .setDescription(shopHelp)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
-                .addField("name", "value", false)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
-                .addField("name", "value", true)
+                .addField("1 Month Discord Nitro with Free Nitro Games", `${currencySymbol}49,950`, true)
+                .addField(`${currencySymbol}499,950 (-16%)`, "1 Year Discord Nitro with Free Nitro Games", true)
             message.channel.send(shopEmbed)
             break
         // Check Balance
