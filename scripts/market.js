@@ -12,7 +12,7 @@ exports.botMarket = (Discord, firebaseDatabase, message, symbolCommand) => {
             const balanceRef = marketRef.child('balance')
             balanceRef.once('value').then(snap => {
                 let balanceValueData = snap.exists() ? snap.val() : 0
-                message.author.send('Your current balance is ' + currencySymbol + " " + balanceValueData + ".")
+                message.author.send(`Your current balance is ${currencySymbol}${balanceValueData}.`)
                 message.reply("A message has been sent to your DMs!")
             })
             break
