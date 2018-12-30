@@ -4,6 +4,7 @@ exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand
     const currencySymbol = "¥"
     const marketHelp = `
 **${symbolCommand}balance** Show your balance
+**${symbolCommand}buy** Buy an item
 **${symbolCommand}help** Show all available commands
 **${symbolCommand}shop** Open shop
     `
