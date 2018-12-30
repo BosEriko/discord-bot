@@ -13,9 +13,9 @@ exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand
             const shopEmbed = new Discord.RichEmbed()
                 .setTitle(`${appTitle} Shop`)
                 .setColor(0xcd3c2a)
-                .addField('1 Month Discord Nitro with Free Nitro Games', `${currencySymbol}49,950`, false)
-                .addField('1 Year Discord Nitro with Free Nitro Games', `${currencySymbol}499,950 (-16%)`, false)
-                .addField('1 time use of server Megaphone', `${currencySymbol}00.1`, false)
+                .addField('1 Month Discord Nitro with Free Nitro Games', `/shop 1 • ${currencySymbol}49,950`, false)
+                .addField('1 Year Discord Nitro with Free Nitro Games', `/shop 2 • ${currencySymbol}499,950 (-16%)`, false)
+                .addField('1 time use of server Megaphone', `/shop 3 • ${currencySymbol}00.1`, false)
                 .setThumbnail('https://i.imgur.com/nYbEBaS.png')
             message.channel.send(shopEmbed)
             break
