@@ -2,7 +2,7 @@ exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand
     const marketRef         = firebaseDatabase.child('market/' + message.author.id)
     const command           = message.cleanContent.split(" ")[0]
     const currencySymbol    = "¥"
-    const convertedPrice    = price => price * 5000
+    const convertedPrice    = price => (price * 5000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     const marketHelp = `
 **${symbolCommand}balance** Show your balance
 **${symbolCommand}buy** Buy an item
