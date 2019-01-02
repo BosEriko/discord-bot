@@ -49,6 +49,14 @@ Client.on('guildMemberAdd', member => {
         .catch(console.error)
 })
 
+// Set Status
+Client.user.setPresence({
+    game: {
+        name: "Kuru Anime"
+    },
+    status: 'idle'
+})
+
 // Main Code
 Client.on('message', message => {
     // Passive Comands
