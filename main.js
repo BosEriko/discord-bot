@@ -50,7 +50,7 @@ Client.on('guildMemberAdd', member => {
 })
 
 // Set Status
-Client.user.setPresence({
+Client.setPresence({
     game: {
         name: "Kuru Anime"
     },
