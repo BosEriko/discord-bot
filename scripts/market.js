@@ -1,7 +1,8 @@
 exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand) => {
-    const marketRef = firebaseDatabase.child('market/' + message.author.id)
-    const command = message.cleanContent.split(" ")[0]
-    const currencySymbol = "¥"
+    const marketRef         = firebaseDatabase.child('market/' + message.author.id)
+    const command           = message.cleanContent.split(" ")[0]
+    const currencySymbol    = "¥"
+    const convertedPrice    = price => price * 5000
     const marketHelp = `
 **${symbolCommand}balance** Show your balance
 **${symbolCommand}buy** Buy an item
@@ -10,12 +11,12 @@ exports.botMarket = (appTitle, Discord, firebaseDatabase, message, symbolCommand
     `
     switch (command) {
         // Shop
-        case symbolCommand + 'shop': // Remember to multiply real word USD prices to 5000 (Only applicable if item has real word USD price)
+        case symbolCommand + 'shop':
             const shopEmbed = new Discord.RichEmbed()
                 .setTitle(`${appTitle} Shop`)
                 .setColor(0xcd3c2a)
-                .addField('Discord Nitro (1 Month)', `/buy nitro-short • ${currencySymbol}49,950 • Stocked`, false)
-                .addField('Discord Nitro (1 Year)', `/buy nitro-long • ${currencySymbol}499,950 (-16%) • Stocked`, false)
+                .addField('Discord Nitro (1 Month)', `/buy nitro-short • ${currencySymbol}${convertedPrice(1)} • Stocked`, false)
+                .addField('Discord Nitro (1 Year)', `/buy nitro-long • ${currencySymbol}${convertedPrice(10)} (-16%) • Stocked`, false)
                 .addField('Megaphone', `/buy megaphone • ${currencySymbol}00.1 • Stocked`, false)
                 .setThumbnail('https://i.imgur.com/nYbEBaS.png')
             message.channel.send(shopEmbed)
