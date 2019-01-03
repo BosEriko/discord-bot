@@ -13,6 +13,7 @@ const botMarket             = require('./scripts/market')
 const botPassive            = require('./scripts/passive')
 const botPostAnnouncements  = require('./scripts/post-announcements')
 const botPostRabbit         = require('./scripts/post-rabbit')
+const botPostWaifuRating    = require('./scripts/post-waifu-rating')
 const botTopic              = require('./scripts/topic')
 const botVideoOnly          = require('./scripts/video-only')
 
@@ -69,6 +70,9 @@ Client.on('message', message => {
     // Post to #announcements using the Webhook
     if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id)
         botPostAnnouncements.botPostAnnouncements(Axios, message)
+    // Post to #waifu-rating using the Webhook
+    if (message.channel.id === '530348718952808449' && Client.user.id !== message.author.id)
+        botPostWaifuRating.botPostWaifuRating(Axios, message)
     // All posts on #video will be deleted unless they are a YouTube url
     if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id)
         botVideoOnly.botVideoOnly(message)
