@@ -1,3 +1,3 @@
 exports.botList = (message) => {
-    message.reply("git gud");
+    message.reply('AJ');
 }
