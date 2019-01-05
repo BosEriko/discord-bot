@@ -9,6 +9,7 @@ const firebase  = require('firebase')
 // Bot Modules
 const botCommands           = require('./scripts/commands')
 const botDF                 = require('./scripts/dialogflow')
+const botList               = require('./scripts/list')
 const botMarket             = require('./scripts/market')
 const botPassive            = require('./scripts/passive')
 const botPostAnnouncements  = require('./scripts/post-announcements')
@@ -79,6 +80,9 @@ Client.on('message', message => {
     // Kuru Market
     if ((message.channel.id === '528252653390790676' || message.channel.id === '528253499893350430') && Client.user.id !== message.author.id)
         botMarket.botMarket(appTitle, Discord, firebaseDatabase, message, symbolCommand)
+    // Kuru List
+    if ((message.channel.id === '531062120134082570') && Client.user.id !== message.author.id)
+        botList.botList(message)
 })
 
 // Discord Login
