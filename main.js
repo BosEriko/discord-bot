@@ -53,7 +53,8 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    message.reply('The bot is under maintenance!')
+    if (Client.user.id !== message.author.id)
+        message.reply('The bot is under maintenance!')
     // // Passive Comands
     // if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
     //     botPassive.botPassive(cooldownStorage, firebaseDatabase, message)
