@@ -53,6 +53,7 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
+    // Under Maintenance Message
     if (message.channel.id === '514736191095177246' && Client.user.id !== message.author.id)
         message.reply('The bot is under maintenance!')
     // // Passive Comands
@@ -61,21 +62,21 @@ Client.on('message', message => {
     // // Kuru Commands
     // if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
     //     botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
-    // // Topic of the Day on #general
-    // if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
-    //     botTopic.botTopic(firebaseDatabase, message, symbolCommand)
-    // // Dialogflow Bot
-    // if ((message.channel.id === '514736191095177246' || message.channel.type === 'dm') && Client.user.id !== message.author.id)
-    //     botDF.botDF(App, message)
-    // // Post to #rabbit using the Webhook
-    // if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id)
-    //     botPostRabbit.botPostRabbit(Axios, message)
-    // // Post to #announcements using the Webhook
-    // if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id)
-    //     botPostAnnouncements.botPostAnnouncements(Axios, message)
-    // // Post to #waifu-rating using the Webhook
-    // if (message.channel.id === '530348718952808449' && Client.user.id !== message.author.id)
-    //     botPostWaifuRating.botPostWaifuRating(Axios, message)
+    // Topic of the Day on #general
+    if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
+        botTopic.botTopic(firebaseDatabase, message, symbolCommand)
+    // Dialogflow Bot
+    if (message.channel.type === 'dm' && Client.user.id !== message.author.id)
+        botDF.botDF(App, message)
+    // Post to #rabbit using the Webhook
+    if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id)
+        botPostRabbit.botPostRabbit(Axios, message)
+    // Post to #announcements using the Webhook
+    if (message.channel.id === '526264250230898698' && Client.user.id !== message.author.id)
+        botPostAnnouncements.botPostAnnouncements(Axios, message)
+    // Post to #waifu-rating using the Webhook
+    if (message.channel.id === '530348718952808449' && Client.user.id !== message.author.id)
+        botPostWaifuRating.botPostWaifuRating(Axios, message)
     // // All posts on #video will be deleted unless they are a YouTube url
     // if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id)
     //     botVideoOnly.botVideoOnly(message)
