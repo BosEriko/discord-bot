@@ -53,7 +53,7 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    if (Client.user.id !== message.author.id)
+    if (message.channel.id === '514736191095177246' && Client.user.id !== message.author.id)
         message.reply('The bot is under maintenance!')
     // // Passive Comands
     // if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
