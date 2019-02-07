@@ -1,6 +1,6 @@
 exports.botPostRabbit = (Axios, message) => {
     Axios.post(process.env.RABBIT_WEBHOOK, {
-        "content": message.content,
+        "content": message.content + " - http://rabbit.kuru-anime.com",
         "embeds": [
             {
                 "title": "Rabbit",
