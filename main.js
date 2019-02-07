@@ -53,15 +53,9 @@ Client.on('guildMemberAdd', member => {
 
 // Main Code
 Client.on('message', message => {
-    // Under Maintenance Message
-    if (message.channel.id === '514736191095177246' && Client.user.id !== message.author.id)
-        message.reply('The bot is under maintenance!')
-    // // Passive Comands
-    // if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
-    //     botPassive.botPassive(cooldownStorage, firebaseDatabase, message)
-    // // Kuru Commands
-    // if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
-    //     botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
+    // Passive Comands
+    if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
+        botPassive.botPassive(cooldownStorage, firebaseDatabase, message)
     // Topic of the Day on #general
     if (message.channel.id === '510302403031990274' && Client.user.id !== message.author.id)
         botTopic.botTopic(firebaseDatabase, message, symbolCommand)
@@ -77,6 +71,12 @@ Client.on('message', message => {
     // Post to #waifu-rating using the Webhook
     if (message.channel.id === '530348718952808449' && Client.user.id !== message.author.id)
         botPostWaifuRating.botPostWaifuRating(Axios, message)
+    // Under Maintenance Message
+    if (message.channel.id === '514736191095177246' && Client.user.id !== message.author.id)
+        message.reply('The bot is under maintenance!')
+    // // Kuru Commands
+    // if ((message.channel.id === '517566179242672137' || message.channel.id === '523150879562661892') && Client.user.id !== message.author.id)
+    //     botCommands.botCommands(Discord, firebaseDatabase, message, symbolCommand)
     // // All posts on #video will be deleted unless they are a YouTube url
     // if (message.channel.id === '528028883623346211' && Client.user.id !== message.author.id)
     //     botVideoOnly.botVideoOnly(message)
