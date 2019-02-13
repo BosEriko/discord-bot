@@ -6,7 +6,7 @@ Client.on('ready', () => {
 })
 
 Client.on('message', (message: any) => {
-    if (Client.user.id !== message.author.id)
+    if (message.channel.type !== 'dm' && Client.user.id !== message.author.id)
         message.reply("Under Maintenance!")
 })
 
