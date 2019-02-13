@@ -1,5 +1,5 @@
 node_modules
 public
 
-# Delete Later along with the legacy folder
+# Delete after successfully moving everything from JavaScript to TypeScript
 legacy
