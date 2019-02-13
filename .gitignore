@@ -1,1 +1,5 @@
 node_modules
+public
+
+# Delete Later along with the legacy folder
+legacy
