@@ -2,8 +2,6 @@ const Discord = require('discord.js')
 const Client = new Discord.Client()
 
 Client.on('ready', () => {
-    const channel = Client.channels.find('name', 'disboard-bump')
-    channel.send("!disboard bump")
     console.log('Bot is ready.')
 })
 
