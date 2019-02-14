@@ -33,8 +33,12 @@ Client.on('message', (message: any) => {
     const data: any = {
         message: message
     }
-    if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
-        webhooks.rabbit(data)
+    if (message.guild.id !== "") {
+
+    } else {
+        // if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
+        //     webhooks.rabbit(data)
+        // }
     }
 })
 
