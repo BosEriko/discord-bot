@@ -33,12 +33,12 @@ Client.on('message', (message: any) => {
     const data: any = {
         message: message
     }
-    if (message.guild.id !== "") {
+    if (message.guild.id !== "510302403031990272") {
 
     } else {
-        // if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
-        //     webhooks.rabbit(data)
-        // }
+        if (message.channel.id === '526264102859964416' && Client.user.id !== message.author.id) {
+            webhooks.rabbit(data)
+        }
     }
 })
 
