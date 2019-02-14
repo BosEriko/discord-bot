@@ -11,6 +11,9 @@ const firebase = require('firebase')
 const Axios = require('axios')
 
 // Modules Import
+const webhooks: any = {
+    rabbit: require('./modules/webhooks/rabbit'),
+}
 
 // Initialize Firebase
 const firebaseConfig: object = {
@@ -29,7 +32,7 @@ Client.on('ready', () => {
 // Bot Message Event Trigger
 Client.on('message', (message: any) => {
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
-        console.log("MESSAGE >>", message.guild.id)
+        webhooks.rabbit()
     }
 })
 
