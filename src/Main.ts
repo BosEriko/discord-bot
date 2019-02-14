@@ -33,6 +33,7 @@ Client.on('ready', () => {
 Client.on('message', (message: any) => {
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
         webhooks.rabbit()
+        // message.guild.id
     }
 })
 
