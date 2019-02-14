@@ -30,9 +30,11 @@ Client.on('ready', () => {
 
 // Bot Message Event Trigger
 Client.on('message', (message: any) => {
+    const data: any = {
+        message: message
+    }
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
-        webhooks.rabbit({ message: message })
-        // message.guild.id
+        webhooks.rabbit(data)
     }
 })
 
