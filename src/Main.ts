@@ -28,8 +28,9 @@ Client.on('ready', () => {
 
 // Bot Message Event Trigger
 Client.on('message', (message: any) => {
-    if (message.channel.type === 'dm' && Client.user.id !== message.author.id)
-        message.reply("Under Maintenance!")
+    if (message.channel.type === 'dm' && Client.user.id !== message.author.id) {
+        console.log("MESSAGE >>", message)
+    }
 })
 
 // Discord Login
