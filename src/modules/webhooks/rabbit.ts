@@ -1,3 +1,5 @@
+const Axios = require('axios')
+
 const component: any = (data) => {
     Axios.post(process.env.RABBIT_WEBHOOK, {
         "content": data.message.content + " - http://rabbit.kuru-anime.com (@.everyone)",

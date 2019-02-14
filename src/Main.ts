@@ -8,7 +8,6 @@ const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 
 // Other Import
 const firebase = require('firebase')
-const Axios = require('axios')
 
 // Modules Import
 const webhooks: any = {
