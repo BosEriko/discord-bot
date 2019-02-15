@@ -40,8 +40,8 @@ Client.on('message', (message: any) => {
             // Rabbit Cross Post
             if (message.channel.id === '526264102859964416') {
                 webhooks.rabbit({
+                    axios: axios,
                     message: message,
-                    axios: axios
                 })
             }
         }
