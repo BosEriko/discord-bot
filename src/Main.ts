@@ -47,7 +47,7 @@ Client.on('message', (message: any) => {
             }
             // Waifu Rating Cross Post
             if (message.channel.id === '530348718952808449') {
-                webhooks.rabbit({
+                webhooks.waifuRating({
                     axios: axios,
                     message: message,
                 })
