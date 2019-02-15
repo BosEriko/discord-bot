@@ -1,3 +1,6 @@
+// Sentry Import
+import * as Sentry from '@sentry/browser'
+
 // DiscordJS Import
 const Discord = require('discord.js')
 const Client = new Discord.Client()
@@ -16,9 +19,12 @@ const webhooks: any = {
     rabbit: require('./modules/webhooks/rabbit'),
     waifuRating: require('./modules/webhooks/waifuRating'),
 }
-const dialogflow: any = require('./modules/dialogflow')
 
 // Modules Import
+const dialogflow: any = require('./modules/dialogflow')
+
+// Initialize Sentry
+Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' })
 
 // Initialize Firebase
 const firebaseConfig: object = {

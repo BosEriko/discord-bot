@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/KuruAnime/kuru-anime-bot#readme",
   "dependencies": {
+    "@sentry/browser": "4.6.1",
     "@types/node": "^11.9.3",
     "apiai": "^4.0.3",
     "axios": "^0.18.0",
