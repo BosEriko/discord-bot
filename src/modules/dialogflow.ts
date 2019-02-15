@@ -12,8 +12,8 @@ const modulesDialogflow: any = (data) => {
             resolve(null)
         })
         request.end()
-    })
-    ;(async function () {
+    });
+    (async function () {
         let result = await promise
         if (result) {
             data.message.reply(result)
