@@ -1,7 +1,5 @@
-const Axios = require('axios')
-
-const component: any = (data) => {
-    Axios.post(process.env.WEBHOOK_RABBIT, {
+const modulesWebhooksRabbit: any = (data) => {
+    data.axios.post(process.env.WEBHOOK_RABBIT, {
         "content": data.message.content + " - http://rabbit.kuru-anime.com (@everyone)",
         "embeds": [
             {
@@ -22,4 +20,4 @@ const component: any = (data) => {
         })
 }
 
-module.exports = component
+module.exports = modulesWebhooksRabbit

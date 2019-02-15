@@ -6,8 +6,9 @@ const Client = new Discord.Client()
 const ApiAI = require('apiai')
 const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
 
-// Firebase Import
+// Other Import
 const firebase = require('firebase')
+const axios = require('axios')
 
 // Webhooks Import
 const webhooks: any = {
@@ -32,18 +33,16 @@ Client.on('ready', () => {
 
 // Bot Message Event Trigger
 Client.on('message', (message: any) => {
-    // Passed Data
-    const data: any = {
-        message: message,
-        firebase: firebase
-    }
     // Not Direct Message and not the bot itself
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
         // Kuru Anime Only
         if (message.guild.id === "510302403031990272") {
             // Rabbit Cross Post
             if (message.channel.id === '526264102859964416') {
-                webhooks.rabbit(data)
+                webhooks.rabbit({
+                    message: message,
+                    axios: axios
+                })
             }
         }
         // All Guild
