@@ -1,11 +1,11 @@
-const modulesWebhooksAnnouncements: any = (data) => {
+const modulesWebhooksAnnouncements: any = (data: any) => {
     data.axios.post(process.env.WEBHOOK_ANNOUNCEMENTS, {
         "content": data.message.content
     })
-        .then(function (response) {
+        .then(function (response: any) {
             console.log(response)
         })
-        .catch(function (error) {
+        .catch(function (error: any) {
             console.log(error)
         })
 }

@@ -1,4 +1,4 @@
-const modulesWebhooksRabbit: any = (data) => {
+const modulesWebhooksRabbit: any = (data: any) => {
     data.axios.post(process.env.WEBHOOK_RABBIT, {
         "content": data.message.content + " - http://rabbit.kuru-anime.com (@everyone)",
         "embeds": [
@@ -12,10 +12,10 @@ const modulesWebhooksRabbit: any = (data) => {
             }
         ]
     })
-        .then(function (response) {
+        .then(function (response: any) {
             console.log(response)
         })
-        .catch(function (error) {
+        .catch(function (error: any) {
             console.log(error)
         })
 }
