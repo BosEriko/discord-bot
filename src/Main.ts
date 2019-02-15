@@ -3,8 +3,8 @@ const Discord = require('discord.js')
 const Client = new Discord.Client()
 
 // Dialogflow Import
-const ApiAI = require('apiai')
-const App = ApiAI(process.env.DF_CLIENT_ACCESS_TOKEN)
+const df = require('apiai')
+const dfClient = df(process.env.DF_CLIENT_ACCESS_TOKEN)
 
 // Other Import
 const firebase = require('firebase')
@@ -16,6 +16,7 @@ const webhooks: any = {
     rabbit: require('./modules/webhooks/rabbit'),
     waifuRating: require('./modules/webhooks/waifuRating'),
 }
+const dialogflow: any = require('./modules/dialogflow')
 
 // Modules Import
 
@@ -67,7 +68,10 @@ Client.on('message', (message: any) => {
     // Direct Message and not the bot itself
     if (message.channel.type === 'dm' && Client.user.id !== message.author.id) {
         // Dialogflow Bot
-        message.reply('Under Maintenance')
+        dialogflow({
+            df: dfClient,
+            message: message,
+        })
     }
 })
 
