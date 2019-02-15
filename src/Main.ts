@@ -13,6 +13,7 @@ const axios = require('axios')
 // Webhooks Import
 const webhooks: any = {
     rabbit: require('./modules/webhooks/rabbit'),
+    waifuRating: require('./modules/webhooks/waifuRating'),
 }
 
 // Modules Import
@@ -39,6 +40,13 @@ Client.on('message', (message: any) => {
         if (message.guild.id === "510302403031990272") {
             // Rabbit Cross Post
             if (message.channel.id === '526264102859964416') {
+                webhooks.rabbit({
+                    axios: axios,
+                    message: message,
+                })
+            }
+            // Waifu Rating Cross Post
+            if (message.channel.id === '530348718952808449') {
                 webhooks.rabbit({
                     axios: axios,
                     message: message,
