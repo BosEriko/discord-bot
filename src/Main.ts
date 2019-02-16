@@ -70,11 +70,13 @@ Client.on('message', (message: any) => {
             }
         }
         // All Guild
-        // Prefix
-        if (message.content.startsWith("/")) {
-            prefix({
-                message: message,
-            })
+        if (true) {
+            // Prefix
+            if (message.content.startsWith("/")) {
+                prefix({
+                    message: message,
+                })
+            }
         }
     }
     // Direct Message and not the bot itself
