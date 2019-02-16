@@ -22,6 +22,7 @@ const webhooks: any = {
 
 // Modules Import
 const dialogflow: any = require('./modules/dialogflow')
+const prefix: any = require('./modules/prefix')
 
 // Initialize Sentry
 Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' })
@@ -69,7 +70,12 @@ Client.on('message', (message: any) => {
             }
         }
         // All Guild
-
+        // Prefix
+        if (message.content.startsWith("/")) {
+            prefix({
+                message: message,
+            })
+        }
     }
     // Direct Message and not the bot itself
     if (message.channel.type === 'dm' && Client.user.id !== message.author.id) {
