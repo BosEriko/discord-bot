@@ -46,6 +46,15 @@ Client.on('ready', () => {
 
 // ===========================================================================================[ Bot Message Event Trigger ]===== //
 Client.on('message', (message: any) => {
+    // ======================================================================================================[ Parameters ]===== //
+    let parameterSplit: any = message.cleanContent.split(" ")
+    let parameters: object = {
+        "$1": parameterSplit[1],
+        "$2": parameterSplit[2],
+        "$3": parameterSplit[3],
+        "$4": parameterSplit[4],
+        "$5": parameterSplit[5],
+    }
     // =============================================================================================[ Declare guildPrefix ]===== //
     let guildPrefix: string = "/"
     // ==================================================================================================[ Get the Prefix ]===== //
@@ -85,9 +94,10 @@ Client.on('message', (message: any) => {
         // ===================================================================================================[ All Guild ]===== //
         if (true) {
             // ===========================================================================================[ Modify Prefix ]===== //
-            if (message.content.startsWith("/")) {
+            if (message.content.startsWith(`${guildPrefix}prefix`)) {
                 prefix({
                     message: message,
+                    parameters: parameters,
                 })
             }
         }
