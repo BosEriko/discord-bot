@@ -38,6 +38,7 @@ firebase.initializeApp(firebaseConfig)
 
 // ========================================================================================[ Initialize Firebase Database ]===== //
 const database: any = firebase.database()
+let guildPrefix: string
 
 // =============================================================================================[ Bot Mount Event Trigger ]===== //
 Client.on('ready', () => {
@@ -55,8 +56,6 @@ Client.on('message', (message: any) => {
         "$4": parameterSplit[4],
         "$5": parameterSplit[5],
     }
-    // =============================================================================================[ Declare guildPrefix ]===== //
-    let guildPrefix: string
     // ==================================================================================================[ Get the Prefix ]===== //
     database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
