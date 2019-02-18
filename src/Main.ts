@@ -46,14 +46,13 @@ Client.on('ready', () => {
 
 // ===========================================================================================[ Bot Message Event Trigger ]===== //
 Client.on('message', (message: any) => {
-    // ==================================================================================================[ Get the Prefix ]===== //
-    let guildPrefix: string
+    // =============================================================================================[ Declare guildPrefix ]===== //
+    let guildPrefix: string = "/"
     // ==================================================================================================[ Get the Prefix ]===== //
     database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
             guildPrefix = snap.val()
         } else {
-            guildPrefix = "/"
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix)
         }
     })
