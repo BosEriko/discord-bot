@@ -47,14 +47,16 @@ Client.on('ready', () => {
 // ===========================================================================================[ Bot Message Event Trigger ]===== //
 Client.on('message', (message: any) => {
     // ==================================================================================================[ Get the Prefix ]===== //
-    // database.child(`guild/${message.guild.id}/prefix`).once('value').then((snap: any) => {
-    //     message.reply('There are ' + (snap.exists() ? snap.val() : 0) + ' messages sent by you!')
-    //     if (snap.exists()) {
-
-    //     } else {
-
-    //     }
-    // })
+    let guildPrefix: string
+    // ==================================================================================================[ Get the Prefix ]===== //
+    database.child(`guild/${message.guild.id}/prefix`).once('value').then((snap: any) => {
+        if (snap.exists()) {
+            guildPrefix = snap.val()
+        } else {
+            guildPrefix = "/"
+            database.child(`guild/${message.guild.id}/prefix`).set(guildPrefix)
+        }
+    })
     // =======================================================================[ Not Direct Message and not the bot itself ]===== //
     if (message.channel.type !== 'dm' && Client.user.id !== message.author.id) {
         // =============================================================================================[ Kuru Anime Only ]===== //
@@ -84,11 +86,11 @@ Client.on('message', (message: any) => {
         // ===================================================================================================[ All Guild ]===== //
         if (true) {
             // ===========================================================================================[ Modify Prefix ]===== //
-            // if (message.content.startsWith("/")) {
-            //     prefix({
-            //         message: message,
-            //     })
-            // }
+            if (message.content.startsWith("/")) {
+                prefix({
+                    message: message,
+                })
+            }
         }
     }
     // ===========================================================================[ Direct Message and not the bot itself ]===== //
