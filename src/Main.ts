@@ -62,6 +62,7 @@ Client.on('message', (message: any) => {
     database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
             guildPrefix = snap.val()
+            console.log(`PREFIX ============> ${snap.val()}`);
         } else {
             guildPrefix = "/"
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix)
