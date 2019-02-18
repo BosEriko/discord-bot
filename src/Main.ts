@@ -56,12 +56,13 @@ Client.on('message', (message: any) => {
         "$5": parameterSplit[5],
     }
     // =============================================================================================[ Declare guildPrefix ]===== //
-    let guildPrefix: string = "/"
+    let guildPrefix: string
     // ==================================================================================================[ Get the Prefix ]===== //
     database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
             guildPrefix = snap.val()
         } else {
+            guildPrefix = "/"
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix)
         }
     })
