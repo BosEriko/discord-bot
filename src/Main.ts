@@ -49,12 +49,12 @@ Client.on('message', (message: any) => {
     // ==================================================================================================[ Get the Prefix ]===== //
     let guildPrefix: string
     // ==================================================================================================[ Get the Prefix ]===== //
-    database.child(`guild/${message.guild.id}/prefix`).once('value').then((snap: any) => {
+    database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
             guildPrefix = snap.val()
         } else {
             guildPrefix = "/"
-            database.child(`guild/${message.guild.id}/prefix`).set(guildPrefix)
+            database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix)
         }
     })
     // =======================================================================[ Not Direct Message and not the bot itself ]===== //
