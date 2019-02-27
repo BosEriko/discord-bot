@@ -1,31 +1,31 @@
 // =======================================================================================================[ Sentry Import ]===== //
-import * as Sentry from '@sentry/browser'
+import * as Sentry from '@sentry/browser';
 
 // ====================================================================================================[ DiscordJS Import ]===== //
-const Discord = require('discord.js')
-const Client = new Discord.Client()
+const Discord = require('discord.js');
+const Client = new Discord.Client();
 
 // ===================================================================================================[ Dialogflow Import ]===== //
-const df = require('apiai')
-const dfClient = df(process.env.DF_CLIENT_ACCESS_TOKEN)
+const df = require('apiai');
+const dfClient = df(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 // ========================================================================================================[ Other Import ]===== //
-const firebase = require('firebase')
-const axios = require('axios')
+const firebase = require('firebase');
+const axios = require('axios');
 
 // =====================================================================================================[ Webhooks Import ]===== //
 const webhooks: any = {
     announcements: require('./modules/webhooks/announcements'),
     rabbit: require('./modules/webhooks/rabbit'),
     waifuRating: require('./modules/webhooks/waifuRating'),
-}
+};
 
 // ======================================================================================================[ Modules Import ]===== //
-const dialogflow: any = require('./modules/dialogflow')
-const prefix: any = require('./modules/prefix')
+const dialogflow: any = require('./modules/dialogflow');
+const prefix: any = require('./modules/prefix');
 
 // ===================================================================================================[ Initialize Sentry ]===== //
-Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' })
+Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' });
 
 // =================================================================================================[ Initialize Firebase ]===== //
 const firebaseConfig: object = {
@@ -33,31 +33,31 @@ const firebaseConfig: object = {
     authDomain: process.env.FIREBASE_PROJECT_ID + '.firebaseapp.com',
     databaseURL: 'https://' + process.env.FIREBASE_PROJECT_ID + '.firebaseio.com',
     storageBucket: process.env.FIREBASE_PROJECT_ID + '.appspot.com',
-}
-firebase.initializeApp(firebaseConfig)
+};
+firebase.initializeApp(firebaseConfig);
 
 // ========================================================================================[ Initialize Firebase Database ]===== //
-const database: any = firebase.database()
+const database: any = firebase.database();
 
 // =================================================================================================[ Declare guildPrefix ]===== //
-let guildPrefix: string
+let guildPrefix: string;
 
 // =============================================================================================[ Bot Mount Event Trigger ]===== //
 Client.on('ready', () => {
-    console.log('Bot is ready.')
-})
+    console.log('Bot is ready.');
+});
 
 // ===========================================================================================[ Bot Message Event Trigger ]===== //
 Client.on('message', (message: any) => {
     // ======================================================================================================[ Parameters ]===== //
-    let parameterSplit: any = message.cleanContent.split(" ")
+    let parameterSplit: any = message.cleanContent.split(" ");
     let parameters: object = {
         "$1": parameterSplit[1],
         "$2": parameterSplit[2],
         "$3": parameterSplit[3],
         "$4": parameterSplit[4],
         "$5": parameterSplit[5],
-    }
+    };
     // ==================================================================================================[ Get the Prefix ]===== //
     // database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
     //     if (snap.exists()) {
@@ -76,21 +76,21 @@ Client.on('message', (message: any) => {
                 webhooks.rabbit({
                     axios: axios,
                     message: message,
-                })
+                });
             }
             // =================================================================================[ Waifu Rating Cross Post ]===== //
             if (message.channel.id === '530348718952808449') {
                 webhooks.waifuRating({
                     axios: axios,
                     message: message,
-                })
+                });
             }
             // ================================================================================[ Announcements Cross Post ]===== //
             if (message.channel.id === '526264250230898698') {
                 webhooks.announcements({
                     axios: axios,
                     message: message,
-                })
+                });
             }
         }
         // ===================================================================================================[ All Guild ]===== //
@@ -110,9 +110,9 @@ Client.on('message', (message: any) => {
         dialogflow({
             df: dfClient,
             message: message,
-        })
+        });
     }
-})
+});
 
 // =======================================================================================================[ Discord Login ]===== //
-Client.login(process.env.BOT_TOKEN)
+Client.login(process.env.BOT_TOKEN);
