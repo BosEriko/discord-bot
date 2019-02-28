@@ -14,15 +14,15 @@ const firebase = require('firebase');
 const axios = require('axios');
 
 // Webhooks Import
-const webhooks: any = {
+const webhooks = {
     announcements: require('./modules/webhooks/announcements'),
     rabbit: require('./modules/webhooks/rabbit'),
     waifuRating: require('./modules/webhooks/waifuRating'),
 };
 
 // Modules Import
-const dialogflow: any = require('./modules/dialogflow');
-const prefix: any = require('./modules/prefix');
+const dialogflow = require('./modules/dialogflow');
+const prefix = require('./modules/prefix');
 
 // Initialize Sentry
 Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' });
@@ -37,7 +37,7 @@ const firebaseConfig: object = {
 firebase.initializeApp(firebaseConfig);
 
 // Initialize Firebase Database
-const database: any = firebase.database();
+const database = firebase.database();
 
 // Declare guildPrefix
 let guildPrefix: string;
