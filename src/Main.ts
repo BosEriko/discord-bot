@@ -49,15 +49,6 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', (message: any) => {
-    // Parameters
-    let parameterSplit: any = message.cleanContent.split(" ");
-    let parameters: object = {
-        "$1": parameterSplit[1],
-        "$2": parameterSplit[2],
-        "$3": parameterSplit[3],
-        "$4": parameterSplit[4],
-        "$5": parameterSplit[5],
-    };
     // Get the Prefix
     // database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
     //     if (snap.exists()) {
