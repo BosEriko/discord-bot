@@ -50,15 +50,18 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', (message: any) => {
+    // Command
+    const args = message.content.slice(prefix.length).split(' ');
+    const command = args.shift().toLowerCase();
     // Get the Prefix
-    // database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
-    //     if (snap.exists()) {
-    //         guildPrefix = snap.val()
-    //     } else {
-    //         guildPrefix = "/"
-    //         database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix)
-    //     }
-    // })
+    database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
+        if (snap.exists()) {
+            guildPrefix = snap.val();
+        } else {
+            guildPrefix = "/";
+            database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix);
+        }
+    });
     // Not Direct Message and not the bot itself
     if (message.channel.type !== 'dm' && client.user.id !== message.author.id) {
         // Kuru Anime Only
@@ -88,12 +91,12 @@ client.on('message', (message: any) => {
         // All Guild
         if (true) {
             // Modify Prefix
-            // if (message.content.startsWith(`${guildPrefix}prefix`)) {
-            //     prefix({
-            //         message: message,
-            //         parameters: parameters,
-            //     })
-            // }
+            if (message.content.startsWith(`${guildPrefix}prefix`)) {
+                prefix({
+                    message,
+                    command,
+                });
+            }
         }
     }
     // Direct Message and not the bot itself
