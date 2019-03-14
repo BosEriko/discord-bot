@@ -62,7 +62,6 @@ client.on('message', (message: any) => {
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix);
         }
     });
-    console.log("prefix ====> ", guildPrefix);
     // Not Direct Message and not the bot itself
     if (message.channel.type !== 'dm' && client.user.id !== message.author.id) {
         // Kuru Anime Only
