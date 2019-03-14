@@ -1,5 +1,4 @@
 // tslint:disable: no-any
-
 // Sentry Import
 import * as Sentry from '@sentry/browser';
 
