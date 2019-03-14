@@ -103,6 +103,7 @@ client.on('message', (message: any) => {
     if (message.channel.type === 'dm' && client.user.id !== message.author.id) {
         // Dialogflow Bot
         dialogflow({
+            database,
             dfClient,
             message,
         });
