@@ -1,27 +1,29 @@
+// tslint:disable: no-any
 const modulesDialogflow: any = (data: any) => {
-    let promise = new Promise((resolve, reject) => {
-        let request = data.df.textRequest(data.message.cleanContent, {
+    const promise = new Promise((resolve, reject) => {
+        const request = data.dfClient.textRequest(data.message.cleanContent, {
             sessionId: data.message.author.id
-        })
+        });
         request.on('response', (response: any) => {
-            console.log(response)
-            let rep = response.result.fulfillment.speech
-            resolve(rep)
-        })
+            console.log(response);
+            const rep = response.result.fulfillment.speech;
+            resolve(rep);
+        });
         request.on('error', (error: any) => {
-            const resolveData: any = null
-            resolve(resolveData)
-        })
-        request.end()
+            const resolveData: any = null;
+            resolve(resolveData);
+        });
+        request.end();
     });
+    // tslint:disable-next-line: only-arrow-functions
     (async function () {
-        let result = await promise
+        const result = await promise;
         if (result) {
-            data.message.reply(result)
+            data.message.reply(result);
         } else {
-            data.message.reply('nothing here')
+            data.message.reply('nothing here');
         }
-    }())
-}
+    }());
+};
 
-module.exports = modulesDialogflow
+module.exports = modulesDialogflow;

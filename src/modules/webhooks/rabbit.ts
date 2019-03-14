@@ -1,3 +1,4 @@
+// tslint:disable: no-any
 const modulesWebhooksRabbit: any = (data: any) => {
     data.axios.post(process.env.WEBHOOK_RABBIT, {
         "content": data.message.content + " - http://rabbit.kuru-anime.com (@everyone)",
@@ -12,12 +13,12 @@ const modulesWebhooksRabbit: any = (data: any) => {
             }
         ]
     })
-        .then(function (response: any) {
-            console.log(response)
+        .then((response: any) => {
+            console.log(response);
         })
-        .catch(function (error: any) {
-            console.log(error)
-        })
-}
+        .catch((error: any) => {
+            console.log(error);
+        });
+};
 
-module.exports = modulesWebhooksRabbit
+module.exports = modulesWebhooksRabbit;

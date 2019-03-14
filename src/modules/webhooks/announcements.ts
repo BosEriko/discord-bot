@@ -1,13 +1,14 @@
+// tslint:disable: no-any
 const modulesWebhooksAnnouncements: any = (data: any) => {
     data.axios.post(process.env.WEBHOOK_ANNOUNCEMENTS, {
         "content": data.message.content
     })
-        .then(function (response: any) {
-            console.log(response)
+        .then((response: any) => {
+            console.log(response);
         })
-        .catch(function (error: any) {
-            console.log(error)
-        })
-}
+        .catch((error: any) => {
+            console.log(error);
+        });
+};
 
-module.exports = modulesWebhooksAnnouncements
+module.exports = modulesWebhooksAnnouncements;

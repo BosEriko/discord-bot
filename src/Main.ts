@@ -1,3 +1,5 @@
+// tslint:disable: no-any
+
 // Sentry Import
 import * as Sentry from '@sentry/browser';
 
@@ -65,22 +67,22 @@ client.on('message', (message: any) => {
             // Rabbit Cross Post
             if (message.channel.id === '526264102859964416') {
                 webhooks.rabbit({
-                    axios: axios,
-                    message: message,
+                    axios,
+                    message,
                 });
             }
             // Waifu Rating Cross Post
             if (message.channel.id === '530348718952808449') {
                 webhooks.waifuRating({
-                    axios: axios,
-                    message: message,
+                    axios,
+                    message,
                 });
             }
             // Announcements Cross Post
             if (message.channel.id === '526264250230898698') {
                 webhooks.announcements({
-                    axios: axios,
-                    message: message,
+                    axios,
+                    message,
                 });
             }
         }
@@ -99,8 +101,8 @@ client.on('message', (message: any) => {
     if (message.channel.type === 'dm' && client.user.id !== message.author.id) {
         // Dialogflow Bot
         dialogflow({
-            df: dfClient,
-            message: message,
+            dfClient,
+            message,
         });
     }
 });
