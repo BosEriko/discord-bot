@@ -89,7 +89,7 @@ client.on('message', (message: any) => {
             }
         }
         // All Guild
-        if (true) {
+        if (message.guild.id) {
             // Modify Prefix
             if (message.content.startsWith(`${guildPrefix}prefix`)) {
                 prefix({

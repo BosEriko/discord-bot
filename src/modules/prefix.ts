@@ -1,5 +1,6 @@
 // tslint:disable: no-any
 const modulesPrefix: any = (data: any) => {
+    console.log("called");
     data.database.ref('guild').child(`${data.message.guild.id}/prefix`).set(data.command);
     data.message.reply(`Prefix has been set to ${data.command}.`);
 };
