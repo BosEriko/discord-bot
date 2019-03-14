@@ -50,9 +50,6 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', (message: any) => {
-    // Command
-    const args = message.content.slice(prefix.length).split(' ');
-    const command = args.shift().toLowerCase();
     // Get the Prefix
     database.ref('guild').child(`${message.guild.id}/prefix`).once('value').then((snap: any) => {
         if (snap.exists()) {
@@ -62,8 +59,9 @@ client.on('message', (message: any) => {
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix);
         }
     });
-    // DELETE LATER
-    console.log("Guild Prefix:", guildPrefix);
+    // Command
+    const args = message.content.slice(guildPrefix.length).split(' ');
+    const command = args.shift().toLowerCase();
     // Not Direct Message and not the bot itself
     if (message.channel.type !== 'dm' && client.user.id !== message.author.id) {
         // Kuru Anime Only
