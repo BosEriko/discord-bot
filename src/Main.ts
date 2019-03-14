@@ -41,7 +41,7 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 // Declare guildPrefix
-let guildPrefix: string;
+let guildPrefix = "/";
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
@@ -55,7 +55,6 @@ client.on('message', (message: any) => {
         if (snap.exists()) {
             guildPrefix = snap.val();
         } else {
-            guildPrefix = "/";
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix);
         }
     });
