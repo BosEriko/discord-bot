@@ -62,6 +62,7 @@ client.on('message', (message: any) => {
             database.ref('guild').child(`${message.guild.id}/prefix`).set(guildPrefix);
         }
     });
+    // DELETE LATER
     console.log("Guild Prefix:", guildPrefix);
     // Not Direct Message and not the bot itself
     if (message.channel.type !== 'dm' && client.user.id !== message.author.id) {
