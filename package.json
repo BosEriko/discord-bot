@@ -30,7 +30,6 @@
     "apiai": "^4.0.3",
     "axios": "^0.18.0",
     "discord.js": "^11.4.2",
-    "firebase": "^5.5.9",
     "request": "^2.88.0",
     "typescript": "^3.3.3"
   },

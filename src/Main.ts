@@ -11,7 +11,6 @@ const df = require('apiai');
 const dfClient = df(process.env.DF_CLIENT_ACCESS_TOKEN);
 
 // Other Import
-const firebase = require('firebase');
 const axios = require('axios');
 
 // Webhooks Import
@@ -27,18 +26,6 @@ const prefix = require('./modules/prefix');
 
 // Initialize Sentry
 Sentry.init({ dsn: 'https://6777645d9bbd45a4bee12fa056c2d413@sentry.io/1394578' });
-
-// Initialize Firebase
-const firebaseConfig: object = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_PROJECT_ID + '.firebaseapp.com',
-    databaseURL: 'https://' + process.env.FIREBASE_PROJECT_ID + '.firebaseio.com',
-    storageBucket: process.env.FIREBASE_PROJECT_ID + '.appspot.com',
-};
-firebase.initializeApp(firebaseConfig);
-
-// Initialize Firebase Database
-const database = firebase.database();
 
 // Declare guildPrefix
 let guildPrefix = "/";
