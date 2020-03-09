@@ -1,6 +1,6 @@
 # Story Title
 
-[This is the Card Title](https://github.com/kuru-project/discord-bot/projects/)
+[This is the Card Title](https://github.com/kuru-project/discord-bot/issues/1)
 
 # Changes made
 
