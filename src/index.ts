@@ -11,7 +11,7 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', (message: any) => {
-  console.log("Someone messaged!!!");
+  console.log("Message received.");
 });
 
 // Discord Login
