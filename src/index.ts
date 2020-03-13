@@ -1,5 +1,3 @@
-// tslint:disable: no-any
-
 // DiscordJS Import
 const discord = require('discord.js');
 const client = new discord.Client();
