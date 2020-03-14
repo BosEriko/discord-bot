@@ -3,7 +3,7 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 
-import { token } from '../config.json';
+import { prefix } from '../config.json';
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
@@ -12,9 +12,10 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', message => {
-  if (message.content === '!ping') {
-    // send back "Pong." to the channel the message was sent in
-    message.channel.send('Pong.' + token);
+  if (message.content === `${prefix}ping`) {
+    message.channel.send('Pong.');
+  } else if (message.content === `${prefix}beep`) {
+    message.channel.send('Boop.');
   }
 });
 
