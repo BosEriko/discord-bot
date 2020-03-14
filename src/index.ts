@@ -12,16 +12,21 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', message => {
-  if (message.content.startsWith(`${prefix}ping`)) {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+  const args = message.content.slice(prefix.length).split(' ');
+  const command = args.shift().toLowerCase();
+
+  if (command === 'ping') {
     message.channel.send('Pong.');
   }
-  else if (message.content.startsWith(`${prefix}beep`)) {
+  else if (command === 'beep') {
     message.channel.send('Boop.');
   }
-  else if (message.content === `${prefix}server`) {
+  else if (command === 'server') {
     message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
   }
-  else if (message.content === `${prefix}user-info`) {
+  else if (command === 'user-info') {
     message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
   }
 });
