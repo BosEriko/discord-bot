@@ -3,7 +3,7 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 
-const prefix = "!";
+const prefix = '!';
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
@@ -12,9 +12,9 @@ client.on('ready', () => {
 
 // Bot Message Event Trigger
 client.on('message', message => {
-  if (message.content === `${prefix}ping`) {
+  if (message.content.startsWith(`${prefix}ping`)) {
     message.channel.send('Pong.');
-  } else if (message.content === `${prefix}beep`) {
+  } else if (message.content.startsWith(`${prefix}beep`)) {
     message.channel.send('Boop.');
   }
 });
