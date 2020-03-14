@@ -5,8 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node -r dotenv/config src/index.ts",
-    "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
-    "watch:serve": "ts-node --inspect src/index.ts"
+    "watch": "ts-node-dev -r dotenv/config src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,10 +18,10 @@
     "discord.js": "^11.4.2",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
-    "nodemon": "^2.0.2",
     "ts-node": "^8.6.2"
   },
   "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.3.3"
   }
 }
