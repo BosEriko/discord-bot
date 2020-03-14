@@ -1,3 +1,4 @@
+// Guide: https://discordjs.guide/
 // DiscordJS Import
 const discord = require('discord.js');
 const client = new discord.Client();
