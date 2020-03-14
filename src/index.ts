@@ -1,4 +1,5 @@
 // Guide: https://discordjs.guide/
+// Current Point: https://discordjs.guide/creating-your-bot/commands-with-user-input.html#basic-arguments
 // DiscordJS Import
 const discord = require('discord.js');
 const client = new discord.Client();
