@@ -3,6 +3,8 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 
+import config from '../config.json';
+
 // Bot Mount Event Trigger
 client.on('ready', () => {
   console.log('Bot is ready.');
