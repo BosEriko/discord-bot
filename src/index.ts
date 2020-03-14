@@ -16,6 +16,8 @@ client.on('message', message => {
     message.channel.send('Pong.');
   } else if (message.content.startsWith(`${prefix}beep`)) {
     message.channel.send('Boop.');
+  } else if (message.content === `${prefix}server`) {
+    message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
   }
 });
 
