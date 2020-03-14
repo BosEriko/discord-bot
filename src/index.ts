@@ -3,7 +3,7 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 
-import { prefix } from '../config.json';
+const prefix = "!";
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
