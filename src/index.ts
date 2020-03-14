@@ -9,8 +9,11 @@ client.on('ready', () => {
 });
 
 // Bot Message Event Trigger
-client.on('message', (message: any) => {
-  console.log("Message received.");
+client.on('message', message => {
+  if (message.content === '!ping') {
+    // send back "Pong." to the channel the message was sent in
+    message.channel.send('Pong.');
+  }
 });
 
 // Discord Login
