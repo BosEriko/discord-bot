@@ -4,7 +4,7 @@
 const discord = require('discord.js');
 const client = new discord.Client();
 
-const prefix = '!';
+const prefix = ':';
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
