@@ -71,7 +71,10 @@ client.on('message', message => {
       return message.reply('you need to input a number between 2 and 100.');
     }
 
-    message.channel.bulkDelete(amount);
+    message.channel.bulkDelete(amount, true).catch(err => {
+      console.error(err);
+      message.channel.send('there was an error trying to prune messages in this channel!');
+    });
   }
 });
 
