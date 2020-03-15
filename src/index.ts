@@ -5,10 +5,16 @@ const discord = require('discord.js');
 const client = new discord.Client();
 
 const prefix = ':';
+const adminID = '230249439481167872';
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
   console.log('Bot is ready.');
+});
+
+// Bot Join Event Trigger
+client.on('guildMemberAdd', member => {
+  member.send('Welcome to the server!');
 });
 
 // Bot Message Event Trigger
@@ -62,6 +68,10 @@ client.on('message', message => {
     message.channel.send(avatarList);
   }
   else if (command === 'prune') {
+    if (message.author.id !== adminID) {
+      return message.reply('You\' not an powerfule enough!');
+    }
+
     const amount = parseInt(args[0]) + 1;
 
     if (isNaN(amount)) {
