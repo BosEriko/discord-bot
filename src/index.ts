@@ -1,5 +1,5 @@
 // Guide: https://discordjs.guide/
-// Current Point: https://discordjs.guide/creating-your-bot/commands-with-user-input.html#mentions
+// Current Point: https://discordjs.guide/command-handling/#individual-command-files
 // DiscordJS Import
 const discord = require('discord.js');
 const client = new discord.Client();
