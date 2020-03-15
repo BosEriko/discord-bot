@@ -61,6 +61,13 @@ client.on('message', message => {
     // by default, discord.js will `.join()` the array with `\n`
     message.channel.send(avatarList);
   }
+  else if (command === 'prune') {
+    const amount = parseInt(args[0]);
+
+    if (isNaN(amount)) {
+      return message.reply('that doesn\'t seem to be a valid number.');
+    }
+  }
 });
 
 // Discord Login
