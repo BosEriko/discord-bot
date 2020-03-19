@@ -1,11 +1,32 @@
 // Guide: https://discordjs.guide/
-// Current Point: https://discordjs.guide/command-handling/#individual-command-files
-// DiscordJS Import
+// Current Point: https://discordjs.guide/command-handling/dynamic-commands.html#how-it-works
+
+// const fs = require('fs');
 const discord = require('discord.js');
 const client = new discord.Client();
 
 const prefix = ':';
 const adminID = '230249439481167872';
+
+client.commands = new discord.Collection();
+
+// const commandFiles = fs.readdirSync('/').filter(file => file.endsWith('.ts'));
+const commandFiles = [
+  'args-info.ts',
+  'avatar.ts',
+  'beep.ts',
+  'kick.ts',
+  'ping.ts',
+  'prune.ts',
+  'rules.ts',
+  'server.ts',
+  'user-info.ts',
+];
+
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.name, command);
+}
 
 // Bot Mount Event Trigger
 client.on('ready', () => {
@@ -24,30 +45,32 @@ client.on('message', message => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (command === 'beep') {
-    message.channel.send('Boop.');
+  if (command === 'ping') {
+    client.commands.get('ping').execute(message);
+  }
+  else if (command === 'beep') {
+    client.commands.get('beep').execute(message);
+  }
+  else if (command === 'server') {
+    client.commands.get('server').execute(message);
+  }
+  else if (command === 'user-info') {
+    client.commands.get('user-info').execute(message);
+  }
+  else if (command === 'args-info') {
+    client.commands.get('args-info').execute(message, args);
+  }
+  else if (command === 'kick') {
+    client.commands.get('kick').execute(message);
+  }
+  else if (command === 'avatar') {
+    client.commands.get('avatar').execute(message, args);
   }
   else if (command === 'prune') {
-    if (message.author.id !== adminID) {
-      return message.reply('You\' not an powerfule enough!');
-    }
-
-    const amount = parseInt(args[0]) + 1;
-
-    if (isNaN(amount)) {
-      return message.reply('that doesn\'t seem to be a valid number.');
-    }
-    else if (amount <= 1 || amount > 100) {
-      return message.reply('you need to input a number between 1 and 99.');
-    }
-
-    message.channel.bulkDelete(amount, true).catch(err => {
-      console.error(err);
-      message.channel.send('there was an error trying to prune messages in this channel!');
-    });
+    client.commands.get('prune').execute(message, args, adminID);
   }
   else if (command === 'rules') {
-    message.channel.send('Read our rules at https://web.kuru-anime.com/discord/rules');
+    client.commands.get('rules').execute(message, args);
   }
 });
 
