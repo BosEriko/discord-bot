@@ -11,15 +11,15 @@ client.commands = new discord.Collection();
 
 // const commandFiles = fs.readdirSync('/').filter(file => file.endsWith('.ts'));
 const commandFiles = [
-  'args-info.ts',
-  'avatar.ts',
-  'beep.ts',
-  'kick.ts',
-  'ping.ts',
-  'prune.ts',
-  'rules.ts',
-  'server.ts',
-  'user-info.ts',
+  'args-info',
+  'avatar',
+  'beep',
+  'kick',
+  'ping',
+  'prune',
+  'rules',
+  'server',
+  'user-info',
 ];
 
 for (const file of commandFiles) {
