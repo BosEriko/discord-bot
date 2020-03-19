@@ -1,11 +1,10 @@
 // Guide: https://discordjs.guide/
-// Current Point: https://discordjs.guide/command-handling/dynamic-commands.html#how-it-works
-
+// Current Point: https://discordjs.guide/command-handling/#individual-command-files
 // const fs = require('fs');
 const discord = require('discord.js');
 const client = new discord.Client();
 
-const prefix = ':';
+const prefix = ';';
 const adminID = '230249439481167872';
 
 client.commands = new discord.Collection();
@@ -64,13 +63,13 @@ client.on('message', message => {
     client.commands.get('kick').execute(message);
   }
   else if (command === 'avatar') {
-    client.commands.get('avatar').execute(message, args);
+    client.commands.get('avatar').execute(message);
   }
   else if (command === 'prune') {
     client.commands.get('prune').execute(message, args, adminID);
   }
   else if (command === 'rules') {
-    client.commands.get('rules').execute(message, args);
+    client.commands.get('rules').execute(message);
   }
 });
 
