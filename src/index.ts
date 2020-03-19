@@ -44,32 +44,14 @@ client.on('message', message => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (command === 'ping') {
-    client.commands.get('ping').execute(message);
+  if (!client.commands.has(command)) return;
+
+  try {
+    client.commands.get(command).execute(message, args, adminID);
   }
-  else if (command === 'beep') {
-    client.commands.get('beep').execute(message);
-  }
-  else if (command === 'server') {
-    client.commands.get('server').execute(message);
-  }
-  else if (command === 'user-info') {
-    client.commands.get('user-info').execute(message);
-  }
-  else if (command === 'args-info') {
-    client.commands.get('args-info').execute(message, args);
-  }
-  else if (command === 'kick') {
-    client.commands.get('kick').execute(message);
-  }
-  else if (command === 'avatar') {
-    client.commands.get('avatar').execute(message);
-  }
-  else if (command === 'prune') {
-    client.commands.get('prune').execute(message, args, adminID);
-  }
-  else if (command === 'rules') {
-    client.commands.get('rules').execute(message);
+  catch (error) {
+    console.error(error);
+    message.reply('There was an error trying to execute that command!');
   }
 });
 
