@@ -1,5 +1,5 @@
 // Guide: https://discordjs.guide/
-// Current Point: https://discordjs.guide/command-handling/#individual-command-files
+// Current Point: https://discordjs.guide/command-handling/adding-features.html#required-arguments
 // const fs = require('fs');
 const discord = require('discord.js');
 const client = new discord.Client();
