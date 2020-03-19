@@ -1,6 +1,3 @@
-// Guide: https://discordjs.guide/
-// Current Point: https://discordjs.guide/command-handling/adding-features.html#required-arguments
-// const fs = require('fs');
 const discord = require('discord.js');
 const client = new discord.Client();
 
@@ -9,7 +6,7 @@ const adminID = '230249439481167872';
 
 client.commands = new discord.Collection();
 
-// const commandFiles = fs.readdirSync('/').filter(file => file.endsWith('.ts'));
+// List all arugments inside ./commands
 const commandFiles = [
   'args-info',
   'avatar',
@@ -22,6 +19,7 @@ const commandFiles = [
   'user-info',
 ];
 
+// Read commandFiles
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
@@ -34,7 +32,7 @@ client.on('ready', () => {
 
 // Bot Join Event Trigger
 client.on('guildMemberAdd', member => {
-  member.send('Welcome to the server!');
+  member.send('Welcome to the server!\nRead our rules at https://web.kuru-anime.com/discord/rules');
 });
 
 // Bot Message Event Trigger
