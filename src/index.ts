@@ -27,31 +27,6 @@ client.on('message', message => {
   if (command === 'beep') {
     message.channel.send('Boop.');
   }
-  else if (command === 'user-info') {
-    message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
-  }
-  else if (command === 'kick') {
-    if (!message.mentions.users.size) {
-      return message.reply('you need to tag a user in order to kick them!');
-    }
-    else {
-      // grab the "first" mentioned user from the message
-      // this will return a `User` object, just like `message.author`
-      const taggedUser = message.mentions.users.first();
-      message.channel.send(`You wanted to kick: ${taggedUser.username}`);
-    }
-  }
-  else if (command === 'avatar') {
-    if (!message.mentions.users.size) {
-      return message.channel.send(`Your avatar: ${message.author.avatar}`);
-    }
-    const avatarList = message.mentions.users.map(user => {
-      return `${user.username}'s avatar: ${message.author.avatar}`;
-    });
-    // send the entire array of strings as a message
-    // by default, discord.js will `.join()` the array with `\n`
-    message.channel.send(avatarList);
-  }
   else if (command === 'prune') {
     if (message.author.id !== adminID) {
       return message.reply('You\' not an powerfule enough!');
