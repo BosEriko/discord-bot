@@ -47,3 +47,16 @@ git --version
 ```
 
 They should, in theory, return their versions if they are properly installed.
+
+### Setting up your own application
+
+Once they are all installed we can then proceed to setting up our own server and bot for testing.
+
+It easy! So don't worry.
+
+1. Open up the Discord website and login.
+2. Hover over the "Developers" drop-down menu and click on the Developer Portal link.
+3. Click on the "New Application" button.
+4. Enter a name and optionally select a team (if you want the bot to belong to one). Then confirm the pop-up window by clicking the "Create" button.
+
+You should see a page like this:
