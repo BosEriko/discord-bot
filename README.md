@@ -5,12 +5,12 @@ Kuru Anime's Discord Bot
 
 Kuru Anime's Discord Bot is your one-stop bot for Anime servers! It keeps on growing day by day and if there's a feature that you want to be included we'll be glad to help you add it! Our Discord Bot also follows one of Kuru Anime's main core value which is staying open-source!
 
-<!--
 **Links**
- - [YAGPDB.xyz](http://yagpdb.xyz)
- - [For updates and support join my discord server](https://discord.gg/4udtcA5)
- - [The documentation of YAGPDB](https://docs.yagpdb.xyz/)
+ - [Kuru Anime](https://web.kuru-anime.com/)
+ - [Discord Server](http://discord.kuru-anime.com/)
+ - [Documentation](https://docs.kuru-anime.com/)
 
+<!--
 ### Running YAGPDB yourself
 
 Running this bot may seem challenging, and that's because I don't have time to make it easy to run for everyone, for the most part, it should run fine after the initial work has been done. Please view [this page](https://docs.yagpdb.xyz/development/self-hosting-with-docker) for more information.
