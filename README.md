@@ -45,3 +45,5 @@ For Git
 ```
 git --version
 ```
+
+They should, in theory, return their versions if they are properly installed.
