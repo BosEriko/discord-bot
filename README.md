@@ -17,6 +17,7 @@ Before you start working on the bot we need to first install some prerequisites.
 - An editor of your choice or you can use [Visual Studio Code](https://code.visualstudio.com/Download)
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 
 It's also worth mentioning that if you don't know that much about JavaScript then you will have a hard time working on the bot. You still can work on the bot but you'll probably have some problems here and there. If you want to know more, here are a few links that [discordjs.guide](https://discordjs.guide/) compiled:
 
@@ -25,3 +26,22 @@ It's also worth mentioning that if you don't know that much about JavaScript the
 - [Nodeschool, for both JavaScript and Node.js lessons](https://nodeschool.io/)
 - [MDN's JavaScript guide and full documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Google, your best friend](https://google.com/)
+
+### Checking if they are installed
+
+Test if the prerequisites are installed properly by checking their current versions in your system.
+
+For Yarn:
+```
+yarn --version
+```
+
+For Node.js:
+```
+node --version
+```
+
+For Git
+```
+git --version
+```
