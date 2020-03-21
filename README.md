@@ -5,6 +5,7 @@ Kuru Anime's Discord Bot
 
 YAGPDB is a multifunctional, modular Discord bot. It's modular in that plugins exist for the most part on their own (with exceptions to some lazy things in the main stylesheet), some plugins do however depend on other plugins (most plugins depend on the commands plugin, for example).
 
+<--
 **Links**
  - [YAGPDB.xyz](http://yagpdb.xyz)
  - [For updates and support join my discord server](https://discord.gg/4udtcA5)
@@ -163,3 +164,4 @@ Expect web, bot and feed instances to be run separately.
 For basic utility/fun commands, you can just jam them in stdcommands. Use the existing commands there as an example of how to add one.
 
 **If you need any help finding things in the source or have any other questions, don't be afraid of messaging me.**
+-->
