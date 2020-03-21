@@ -3,7 +3,7 @@ Kuru Anime's Discord Bot
 
 ### General purpose Discord Bot for Anime Servers
 
-Kuru Anime's Discord Bot is your one-stop bot for Anime servers!
+Kuru Anime's Discord Bot is your one-stop bot for Anime servers! It keeps on growing day by day and if there's a feature that you want to be included we'll be glad to help you add it! Our Discord Bot also follows one of Kuru Anime's main core value which is staying open-source!
 
 <!--
 **Links**
