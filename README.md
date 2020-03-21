@@ -60,3 +60,5 @@ It easy! So don't worry.
 4. Enter a name and optionally select a team (if you want the bot to belong to one). Then confirm the pop-up window by clicking the "Create" button.
 
 You should see a page like this:
+
+![A wild bot has appeared!](https://discordjs.guide/assets/img/created-bot.c422fe87.png)
