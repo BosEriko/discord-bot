@@ -82,3 +82,23 @@ In this panel you'll be able to do stuff like, add avatar, set its username or m
 ### What's a token, anyway?
 
 Think of it as your bot's password. The bot uses the token to login to Discord. Just like a normal password, you should not share it to anyone. If someone gets a hold of your bot's token they'll be able to do malicious acts with it.
+
+### Adding your bot to servers
+
+If everything's been done correctly you should have a bot application set up and an access to its token. It's missing a server, though, so we need to invite it in one.
+
+You'll need a special link to invite your bot. You'll need its cliend ID to do so.
+
+### Bot invite links
+
+An invite link for a bot looks like this:
+
+```
+https://discordapp.com/oauth2/authorize?client_id=123456789012345678&scope=bot
+```
+
+Let's break it down:
+
+- The first part is just Discord's standard structure for authorizing an OAuth2 application (such as your bot application) for entry to a Discord server.
+- The second part that says `client_id=...` is to specify which application you want to authorize. You'll need to replace this part with your client's ID in order to create a valid invite link.
+- Lastly, the third part which says `scope=bot` specifies that you want to add this application as a Discord bot.
