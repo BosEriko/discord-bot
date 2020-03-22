@@ -128,3 +128,9 @@ To start working on the bot you will need to clone this repository to your syste
 ```
 cp sample.env .env
 ```
+
+Open `.env` and replace `xxxxx` with your bot's token. Your `.env` should look similar to this:
+
+```
+BOT_TOKEN="NjYwNzI1NzYwMTg0ODExNTIy.Xnbq9w.e5a7b261eFywwc-WfC7aopD86lM"
+```
