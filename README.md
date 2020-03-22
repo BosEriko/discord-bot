@@ -120,3 +120,11 @@ Choose the server you want to add it to and click "Authorize". Do note that you'
 Congratulations! You've successfully added your bot to your Discord server. It should show up in your server's member list somewhat like this:
 
 ![img](https://imgur.com/WjpymWF.png)
+
+### Setting up your local environment
+
+To start working on the bot you will need to clone this repository to your system. Once you've done that `cd` to the repository then copy `sample.env` to `.env`.
+
+```
+cp sample.env .env
+```
