@@ -76,3 +76,9 @@ This is one of the important step on this instruction so please pay close attent
 After creating the bot you'll see a page like this:
 
 ![c422fe87](https://discordjs.guide/assets/img/created-bot.c422fe87.png)
+
+In this panel you'll be able to do stuff like, add avatar, set its username or make it public/private. This is also the panel where you can get your bot's token. When you're asked for the bot's token, this is where you'll find it. Just hit copy and you'll have it in your clipboard.
+
+### What's a token, anyway?
+
+Think of it as your bot's password. The bot uses the token to login to Discord. Just like a normal password, you should not share it to anyone. If someone gets a hold of your bot's token they'll be able to do malicious acts with it.
