@@ -12,14 +12,14 @@ Kuru Anime's Discord Bot is your one-stop bot for Anime servers! It keeps on gro
 
 ### Running Kuru Anime's Discord Bot yourself
 
-Before you start working on the bot we need to first install some prerequisites.
+Before we can start working on the bot we need to first install some prerequisites.
 
-- An editor of your choice or you can use [Visual Studio Code](https://code.visualstudio.com/Download)
+- Text Editor (We recommend [Visual Studio Code](https://code.visualstudio.com/Download) if you're new to programming)
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 
-It's also worth mentioning that if you don't know that much about JavaScript then you will have a hard time working on the bot. You still can work on the bot but you'll probably have some problems here and there. If you want to know more, here are a few links that [discordjs.guide](https://discordjs.guide/) compiled:
+It's also worth mentioning that if you don't know that much about JavaScript then you will have a hard time working on the bot. You can still work on the bot but you'll probably have some problems here and there. If you want to know more, here are a few links where you can do that:
 
 - [CodeCademy's interactive JavaScript course](https://www.codecademy.com/learn/learn-javascript)
 - [Eloquent JavaScript, a free online book](http://eloquentjavascript.net/)
@@ -31,11 +31,6 @@ It's also worth mentioning that if you don't know that much about JavaScript the
 
 Test if the prerequisites are installed properly by checking their current versions in your system.
 
-For Yarn:
-```
-yarn --version
-```
-
 For Node.js:
 ```
 node --version
@@ -46,13 +41,18 @@ For Git
 git --version
 ```
 
+For Yarn:
+```
+yarn --version
+```
+
 They should, in theory, return their versions if they are properly installed.
 
 ### Setting up your own application
 
 Once they are all installed we can then proceed to setting up our own server and bot for testing.
 
-It easy! So don't worry.
+It looks hard but it's actually pretty easy! So don't worry.
 
 1. Open up the Discord website and login.
 2. Hover over the "Developers" drop-down menu and click on the Developer Portal link.
@@ -81,13 +81,13 @@ In this panel you'll be able to do stuff like, add avatar, set its username or m
 
 ### What's a token, anyway?
 
-Think of it as your bot's password. The bot uses the token to login to Discord. Just like a normal password, you should not share it to anyone. If someone gets a hold of your bot's token they'll be able to do malicious acts with it.
+Think of it as your bot's password. The bot uses the token to login to Discord. Just like a normal password, you should not share it to anyone. If someone gets a hold of your bot's token they'll be able to do malicious activities with it.
 
 ### Adding your bot to servers
 
 If everything's been done correctly you should have a bot application set up and an access to its token. It's missing a server, though, so we need to invite it in one.
 
-You'll need a special link to invite your bot. You'll need its cliend ID to do so.
+You'll need a special link to invite your bot. You'll need its client's ID to do so.
 
 ### Bot invite links
 
@@ -129,7 +129,7 @@ To start working on the bot you will need to clone this repository to your syste
 cp sample.env .env
 ```
 
-Open `.env` and replace `xxxxx` with your bot's token. Your `.env` should look similar to this:
+Open `.env` and replace `xxxxx` with your bot's token. Your `.env` should look similar to this afterwards:
 
 ```
 BOT_TOKEN="NjYwNzI1NzYwMTg0ODExNTIy.Xnbq9w.e5a7b261eFywwc-WfC7aopD86lM"
