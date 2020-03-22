@@ -61,10 +61,18 @@ It easy! So don't worry.
 
 You should see a page like this:
 
-![A wild bot has appeared!](https://discordjs.guide/assets/img/created-bot.c422fe87.png)
+![c422fe87](https://discordjs.guide/assets/img/created-bot.c422fe87.png)
 
 Fill in the necessary details and save it. Once you're done you can move on to the next step by clicking on the "Bot" tab on the left pane.
 
-![Bot Tab](https://discordjs.guide/assets/img/create-bot.dff0f01e.png)
+![dff0f01e](https://discordjs.guide/assets/img/create-bot.dff0f01e.png)
 
 Click the "Add Bot" button on the right and confirm the pop-up window by clicking "Yes, do it!". You made it! You've created your own Discord Bot! We're not done yet, though.
+
+### Your token
+
+This is one of the important step on this instruction so please pay close attention.
+
+After creating the bot you'll see a page like this:
+
+![c422fe87](https://discordjs.guide/assets/img/created-bot.c422fe87.png)
