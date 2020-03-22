@@ -151,4 +151,4 @@ We can now start working on the bot! Just run the following code below to start 
 yarn watch
 ```
 
-That's it! Head over to the [issue board] for issues that you can work on. Enjoy!
+That's it! Head over to the [issue board](https://github.com/kuru-project/discord-bot/issues) for issues that you can work on. Enjoy!
