@@ -134,3 +134,21 @@ Open `.env` and replace `xxxxx` with your bot's token. Your `.env` should look s
 ```
 BOT_TOKEN="NjYwNzI1NzYwMTg0ODExNTIy.Xnbq9w.e5a7b261eFywwc-WfC7aopD86lM"
 ```
+
+### Installing the dependencies
+
+We'll now move to installing the dependencies for this project. While inside the directory run the following code to build your `node_modules`:
+
+```
+yarn install
+```
+
+### Running the bot locally
+
+We can now start working on the bot! Just run the following code below to start the bot for testing on your own server:
+
+```
+yarn watch
+```
+
+That's it! Head over to the [issue board] for issues that you can work on. Enjoy!
