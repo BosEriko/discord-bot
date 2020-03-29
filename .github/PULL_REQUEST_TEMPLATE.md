@@ -1,6 +1,6 @@
 # Story Title
 
-[This is the Card Title](https://github.com/kuru-project/discord-bot/issues/1)
+[This is the Issue Title](https://github.com/kuru-project/discord-bot/issues/1)
 
 # Changes made
 
@@ -9,4 +9,8 @@
 
 # How does the solution address the problem
 
-By solving it
+This PR will...
+
+# Linked issues
+
+Resolves #1
