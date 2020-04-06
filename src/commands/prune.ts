@@ -3,7 +3,7 @@ module.exports = {
   description: 'Prune Messages',
   execute(message, args, adminID) {
     if (message.author.id !== adminID) {
-      return message.reply('You\'re not an powerful enough!');
+      return message.reply('You\'re not powerful enough!');
     }
 
     const amount = parseInt(args[0]) + 1;
